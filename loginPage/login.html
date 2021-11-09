@@ -8,10 +8,17 @@
     <title>단기·대타 아르바이트</title>
 </head>
 <body>
-    <p>Login</p>
-    <input type="text">
-    <input type="password">
-    <button type="submit">로그인</button>
-    <a href="../signupPage/signup.html">회원가입</a>
+    <p id="loginLogo"><b>Login</b></p>
+    <div class="inputContainer">
+        <input class="idbox" type="text" placeholder="ID"><br>
+        <input class="pwbox" type="password" placeholder="PW">
+        <button id="loginBtn" type="submit">Login</button><br>
+        <a href="../signupPage/signup.html">sign up</a>
+    </div>
 </body>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.slim.js"
+  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
+  crossorigin="anonymous"></script>
+<script src="login.js"></script>
 </html>

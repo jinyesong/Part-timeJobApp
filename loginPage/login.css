@@ -1,0 +1,50 @@
+body{
+    padding-top: 100px;
+    background-color: #B8f3B8;
+  }
+#loginLogo{
+    font-size: 40px;
+    text-align: center;
+}
+.inputContainer{
+    text-align: center;
+    width: 100%;
+}
+.idbox{
+    border: none;
+    background-color: #ffffff;
+    border-bottom: 3px solid #d9d9d9;
+    width:80%;
+    margin-bottom: 25px;
+    font-size: 20px;
+    padding: 3px 0px 3px 0px;
+}
+.pwbox{
+    border: none;
+    background-color: #ffffff;
+    border-bottom: 3px solid #d9d9d9;
+    width:80%;
+    margin-bottom: 25px;
+    font-size: 20px;
+    padding: 3px 0px 3px 0px;
+}
+a{
+    width: 100%;
+    color: inherit;
+    text-align: center;
+}
+#loginBtn{
+    background-color: white;
+    color:lightcoral;
+    border:none;
+    cursor:pointer;
+    width:80%;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+    padding: 3px;
+}
+#loginBtn:hover{
+    background-color: lightcoral;
+    color:white;
+}
