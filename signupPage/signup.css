@@ -1,0 +1,30 @@
+body {
+  background: #b8f3b8;
+}
+
+#header {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 10px;
+}
+
+h1 {
+  margin: 0;
+  text-align: start;
+  flex-grow: 5;
+}
+#signupForm {
+  display: flex;
+  justify-content: center;
+  width: 344px;
+  height: 100%;
+  align-items: center;
+}
+
+.backBtn {
+  color: black;
+  left: 32px;
+  font-size: 30px;
+  flex-grow: 3.2;
+}

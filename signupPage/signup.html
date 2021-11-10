@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./signup.css">
+    <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
+    <script src="signup.js" defer></script>
     <title>회원가입</title>
 </head>
+
 <body>
-    <p>회원가입</p>
+
+    <div id="header">
+        <a href="../loginPage/login.html" class="backBtn">
+            <i class="fas fa-undo-alt"></i>
+        </a>
+        <div> </div>
+        <h1>회원가입</h1>
+        
+    </div>
+   
+    <div id="signupForm" style="line-height:170%;">
+        <form name="signup" action="값을 보낼 주소" method="post">
+            <div>
+                <label>이름</label><br>
+                <input type="text" name="userName" required /><br>
+            </div>
+            <div>
+                <label>이메일</label><br>
+                <input type="email" name="userId" required />
+                <button onclick="">중복확인</button><br>
+            </div>
+            <div>
+                <label>비밀번호</label><br>
+                <input type="password" name="userPw" required /><br>
+            </div>
+            <div>
+                <label>비밀번호 확인</label><br>
+                <input type="password" name="userPw2" required /><br>
+
+            </div>
+            <div>
+                <label>성별</label><br>
+                <input type="radio" name="userGender" value="man" checked />남
+                <input type="radio" name="userGender" value="woman" />여<br>
+            </div>
+            <div>
+                <label>주소</label><br>
+                <input type="text" name="userAddr" required /><br>
+            </div>
+            <div>
+                <label>생년월일</label><br>
+                <input type="number" name="userBirthDay" placeholder="6자리 숫자 입력" required /><br>
+            </div>
+            <div>
+                <label>전화번호</label> <br>
+                <input type="number" name="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required /><br>
+            </div>
+            <div>
+                <label>이력서</label> <br>
+                <input type="file" name="resume" /><br>
+            </div>
+            <div>
+                <label>사업자등록증</label><br>
+                <input type="file" name="businessLicense" /><br>
+            </div>
+            <br>
+            <div id="submit" style="text-align: center;"><input type="submit" name="submit" value="완료" /></div>
+
+        </form>
 </body>
+
 </html>
