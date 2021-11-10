@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./jobOfferBoard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="page">
+        <h1>구직게시판</h1>
+    </div>
+    
+    <div id="content">
+        <div id="menubar">
+            <button class="menu_btn" id="filter">필터</button>
+            <button class="menu_btn" id="sort">정렬</button>
+            <button class="menu_btn" id="write">글쓰기</button>
+        </div>
+        <div id="postList">
+            
+        </div>
+    </div>
+
+    <div id="modal">
+        <div class="modal_content">
+            <h3>FILTER</h3>
+            <div>
+                성별<input type="radio" name="gender" id="no_gender" checked> 해당없음 
+                <input type="radio" name="gender"> 남
+                <input type="radio" name="gender"> 여 <br>
+            지역 <select name="area" id="area" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+                <option name="area" value="No" id="no_area">해당없음</option>
+                <option name="area" value="Seoul">서울</option>
+                <option name="area" value="Gyeonggi">경기</option>
+                <option name="area" value="Incheon">인천</option>
+                <option name="area" value="Gangwon">강원</option>
+                <option name="area" value="Daejeon">대전</option>
+                <option name="area" value="Sejong">세종</option>
+                <option name="area" value="Chungnam">충남</option>
+                <option name="area" value="Chungbuk">충북</option>
+                <option name="area" value="Busan">부산</option>
+                <option name="area" value="Ulsan">울산</option>
+                <option name="area" value="Gyeongnam">경남</option>
+                <option name="area" value="Gyeongbuk">경북</option>
+                <option name="area" value="Daegu">대구</option>
+                <option name="area" value="Gwangju">광주</option>
+                <option name="area" value="Jeonnam">전남</option>
+                <option name="area" value="Jeonbuk">전북</option>
+                <option name="area" value="Jeju">제주</option>
+                <option name="area" value="Nationwide">전국</option>
+            </select><br>
+             기간 <select name="period" id="period">
+                <option value="No" id="no_period">해당없음</option>
+                <option value="day">하루</option>
+        <option value="week">일주일</option>
+        <option value="month">한달</option>
+        <option value="monthOver">한달 이상</option>
+      </select><br>
+      시급 <input type="text" value="최저시급" id="pay"><br>
+            </div>
+            <button id="confirm">확인</button>
+            <button id="reset">초기화</button>
+        </div>
+        <div class="modal_layer"></div>
+    </div>
+    <script src="./jobSearchBoard.js"></script>
+</body>
+</html>

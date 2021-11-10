@@ -14,5 +14,5 @@ document.getElementById("reset").onclick = function(){
 }
 
 document.getElementById("write").onclick = function(){
-    location.href="../postwritingPage/jobOfferwriting.html"
+    location.href="../postwritingPage/jobSearchwriting.html"
 }
