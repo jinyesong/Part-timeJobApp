@@ -1,35 +1,60 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="postwriting.css">
-    <title>구인게시글 작성</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="postwriting.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+  <title>구인게시글 작성</title>
 </head>
+
 <body>
-    <h1>구인게시판</h1>
-    <div class="writingContainer">
-      <label>게시글</label>
-      <button id="saveBtn">저장</button><br>
-      <input id="titlebox" type="text" placeholder="제목"><br>
-      <input id="contentbox" type="text" placeholder="본문"><br>
-      성별 <input type="radio" name="gender" checked> 남
-      <input type="radio" name="gender"> 여 <br>
-      기간 <select name="period">
-        <option value="day">하루</option>
-        <option value="week">일주일</option>
-        <option value="month">한달</option>
-        <option value="monthOver">한달 이상</option>
-      </select><br>
-      시급 <input type="text" value="최저시급"><br>
-      주소 <input type="text" placeholder="ㅇㅇ시 ㅇㅇ동">
-      
+  <div id="page">
+    <span class="slide">
+      <div></div>
+      <h1>구인게시판</h1>
+      <a href="#" onclick="openSlideMenu()">
+        <i class="fas fa-bars"></i>
+      </a>
+    </span>
+
+    <div id="menu" class="nav">
+      <a href="#" class="close" onclick="closeSlideMenu()">
+        <i class="fas fa-times "></i>
+      </a>
+      <a href="#">000님</a>
+      <a href="#">마이페이지</a>
+      <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+      <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+      <br>
+      <a href="#">Logout</a>
+      <a href="#"><i class="far fa-question-circle"></i></a>
     </div>
+  </div>
+
+
+  <div class="writingContainer">
+    <label>게시글</label>
+    <button id="saveBtn">저장</button><br>
+    <input id="titlebox" type="text" placeholder="제목"><br>
+    <input id="contentbox" type="text" placeholder="본문"><br>
+    성별 <input type="radio" name="gender" checked> 남
+    <input type="radio" name="gender"> 여 <br>
+    기간 <select name="period">
+      <option value="day">하루</option>
+      <option value="week">일주일</option>
+      <option value="month">한달</option>
+      <option value="monthOver">한달 이상</option>
+    </select><br>
+    시급 <input type="text" value="최저시급"><br>
+    주소 <input type="text" placeholder="ㅇㅇ시 ㅇㅇ동">
+
+  </div>
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.slim.js"
-  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <script src="postwriting.js"></script>
+
 </html>

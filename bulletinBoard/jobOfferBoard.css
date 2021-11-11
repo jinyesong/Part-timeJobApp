@@ -1,51 +1,98 @@
-body{
-    text-align: center;
-
+body {
+  text-align: center;
 }
-#content{
-    margin: 20px;
-    flex-direction: column;
+#content {
+  margin: 20px;
+  flex-direction: column;
 }
-#menubar{
-    border: black solid 1px;
-    height: 30px;
-    width: 100%;
-    margin: 20px, 0;
-}
-
-#menu_btn{
-    margin: 10px;
+#menubar {
+  border: black solid 1px;
+  height: 30px;
+  width: 100%;
+  margin: 20px, 0;
 }
 
-#postList{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: black solid 1px;
-    width: 100%;
-    height: 450px;
+#menu_btn {
+  margin: 10px;
 }
 
+#postList {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: black solid 1px;
+  width: 100%;
+  height: 450px;
+}
 
 /*필터 모달창*/
 #modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal_content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 70%;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+
+/* 사이드바 */
+.nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffadc5;
+  font-size: 30px;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0;
+}
+.slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 0px;
+}
+#menuIcon {
+  color: #ffadc5;
+}
+.nav a {
+  display: block;
+  padding: 20px 30px;
+  font-size: 25px;
+  text-decoration: none;
+  color: #fff;
+}
+.nav a:hover {
+  color: #fff;
+}
+.nav .close {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-right: 50px;
+  font-size: 30px;
+}
+.slide a {
+  font-size: 32px;
+}
+#page {
+  transition: margin-right 0.7s;
+  overflow: hidden;
+  width: 100%;
 }

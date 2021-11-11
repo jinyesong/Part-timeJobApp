@@ -1,27 +1,3 @@
-body {
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-}
-
-.board {
-  border-radius: 3;
-  border: black solid 1px;
-  width: 100px;
-  height: 100px;
-  padding: 30px;
-  margin: 20px;
-  margin-left: 80px;
-}
-
-#user {
-  text-align: left;
-  border: none;
-}
-#name {
-  color: red;
-}
-
 /* 사이드바 */
 .nav {
   height: 100%;

@@ -16,3 +16,13 @@ document.getElementById("reset").onclick = function(){
 document.getElementById("write").onclick = function(){
     location.href="../postwritingPage/jobOfferwriting.html"
 }
+
+/* 사이드바 */
+function openSlideMenu(){
+    document.getElementById('menu').style.width = '260px';
+    document.getElementById('page').style.marginRight = '260px';
+  }
+  function closeSlideMenu(){
+    document.getElementById('menu').style.width = '0';
+    document.getElementById('page').style.marginRight = '0';
+  }
