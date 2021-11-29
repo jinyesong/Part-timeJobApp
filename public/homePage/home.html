@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+    <title>HOME</title>
+</head>
+<body>
+    <div id="page">
+        <span class="slide">
+            <div></div>
+            <h1>HOME</h1>
+            <a href="#" onclick="openSlideMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i> 
+            </a>
+        </span>
+
+        <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+                <i class="fas fa-times "></i>
+            </a>
+            <a href="#">000님</a>
+            <a href="#">마이페이지</a>
+            <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+            <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+            <br>
+            <a href="#">Logout</a>
+            <a href="#"><i class="far fa-question-circle"></i></a>
+        </div>
+    </div>
+
+
+    
+    <div id="user">
+        <span id="name">000</span>님
+    </div>
+    <div class="board" onclick="location.href='../bulletinBoard/jobOfferBoard.html';">
+        <h3>구인게시판</h3>
+    </div>
+    <div class="board" onclick="location.href='../bulletinBoard/jobSearchBoard.html';">
+        <h3>구직게시판</h3>
+    </div>
+   
+</body>
+</html>
