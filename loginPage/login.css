@@ -1,50 +1,64 @@
-body{
-    padding-top: 100px;
-    background-color: #B8f3B8;
-  }
-#loginLogo{
-    font-size: 40px;
-    text-align: center;
+body {
+  background-color: #0e3746;
 }
-.inputContainer{
-    text-align: center;
-    width: 100%;
+.form {
+  position: relative;
+  z-index: 1;
+  background: #f4f2ec;
+  width: 250px;
+  height: 280px;
+  margin-top: 120px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.idbox{
-    border: none;
-    background-color: #ffffff;
-    border-bottom: 3px solid #d9d9d9;
-    width:80%;
-    margin-bottom: 25px;
-    font-size: 20px;
-    padding: 3px 0px 3px 0px;
+#loginLogo {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
-.pwbox{
-    border: none;
-    background-color: #ffffff;
-    border-bottom: 3px solid #d9d9d9;
-    width:80%;
-    margin-bottom: 25px;
-    font-size: 20px;
-    padding: 3px 0px 3px 0px;
+.inputContainer {
+  text-align: center;
+  width: 100%;
 }
-a{
-    width: 100%;
-    color: inherit;
-    text-align: center;
+.idbox {
+  border: none;
+  background-color: #f4f2ec;
+  border-bottom: 3px solid #d9d9d9;
+  width: 80%;
+  margin-bottom: 25px;
+  font-size: 19px;
+  padding: 3px 0px 3px 0px;
 }
-#loginBtn{
-    background-color: white;
-    color:lightcoral;
-    border:none;
-    cursor:pointer;
-    width:80%;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 25px;
-    padding: 3px;
+.pwbox {
+  border: none;
+  background-color: #f4f2ec;
+  border-bottom: 3px solid #d9d9d9;
+  width: 80%;
+  margin-bottom: 25px;
+  font-size: 18px;
+  padding: 3px 0px 3px 0px;
 }
-#loginBtn:hover{
-    background-color: lightcoral;
-    color:white;
+a {
+  width: 100%;
+  color: inherit;
+  text-align: center;
+}
+#loginBtn {
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+  padding: 3px;
+}
+
+#signupBtn {
+  font-family: sans-serif;
 }
