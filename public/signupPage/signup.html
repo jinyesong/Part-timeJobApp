@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./signup.css">
     <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
-    <script src="signup.js" defer></script>
     <title>회원가입</title>
 </head>
 
 <body>
-
     <div id="header">
         <a href="../loginPage/login.html" class="backBtn">
             <i class="fas fa-chevron-left"></i>
@@ -72,6 +70,29 @@
             <div id="submit" style="text-align: center;"><input type="submit" name="submit" value="완료" /></div>
 
         </form>
-</body>
+    <!-- update the version number as needed -->
+    <script src="../__/firebase/8.6.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src="../__/firebase/8.6.5/firebase-firestore.js"></script>
+    <script src="../__/firebase/8.6.5/firebase-storage.js"></script>
 
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
+            authDomain: "part-time-job-38ba6.firebaseapp.com",
+            projectId: "part-time-job-38ba6",
+            storageBucket: "part-time-job-38ba6.appspot.com",
+            messagingSenderId: "107342558639",
+            appId: "1:107342558639:web:f0e8e5c3845e6ed667eb5a"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="signup.js"></script>
+</body>
 </html>
