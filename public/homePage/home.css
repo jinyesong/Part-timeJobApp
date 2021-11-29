@@ -3,7 +3,7 @@ body {
   text-align: center;
   align-items: center;
   margin: 0;
-  background-color: #faffff;
+  background-color: #f4f2ec;
 }
 
 .board {
@@ -15,8 +15,10 @@ body {
   margin: 20px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #c7dfff;
+  background-color: #be2623;
   text-align: center;
+  color: #f4f2ec;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 3px 3px 0 rgba(0, 0, 0, 0.24);
 }
 
 #user {
@@ -29,7 +31,7 @@ body {
   text-decoration: underline;
 }
 #name {
-  color: red;
+  color: #f75c4c;
 }
 
 .board h3 {
@@ -56,7 +58,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #0032a1;
+  background-color: #0e3746;
   height: 50px;
   padding-left: 25px;
   padding-right: 20px;

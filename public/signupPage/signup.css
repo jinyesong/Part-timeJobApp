@@ -1,12 +1,22 @@
 body {
-  background: #b8f3b8;
+  background: #0e3746;
 }
 
 #header {
-  display: flex;
+  /* display: flex;
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 10px;
+  color: #f4f2ec; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #0e3746;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 h1 {
@@ -15,6 +25,8 @@ h1 {
   flex-grow: 5;
 }
 #signupForm {
+  background: #f4f2ec;
+  padding-top: 20px;
   display: flex;
   justify-content: center;
   width: 344px;
@@ -23,8 +35,8 @@ h1 {
 }
 
 .backBtn {
-  color: black;
+  color: #f4f2ec;
   left: 32px;
   font-size: 30px;
-  flex-grow: 3.2;
+  flex-grow: 4.1;
 }
