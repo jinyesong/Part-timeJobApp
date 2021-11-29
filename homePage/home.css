@@ -2,24 +2,40 @@ body {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  margin: 0;
+  background-color: #faffff;
 }
 
 .board {
   border-radius: 3;
-  border: black solid 1px;
+
   width: 100px;
   height: 100px;
   padding: 30px;
   margin: 20px;
-  margin-left: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #c7dfff;
+  text-align: center;
 }
 
 #user {
+  margin: 10px;
+  margin-left: 30px;
+  padding-top: 30px;
   text-align: left;
   border: none;
+  font-size: 20px;
+  text-decoration: underline;
 }
 #name {
   color: red;
+}
+
+.board h3 {
+  margin-top: 30px;
+  margin-bottom: auto;
+  text-align: center;
 }
 
 /* 사이드바 */
@@ -30,7 +46,7 @@ body {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #ffadc5;
+  background-color: #dcebff;
   font-size: 30px;
   overflow-x: hidden;
   padding-top: 60px;
@@ -40,21 +56,24 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 30px;
+  background-color: #0032a1;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #menuIcon {
-  color: #ffadc5;
+  color: #fff;
 }
 .nav a {
   display: block;
   padding: 20px 30px;
   font-size: 25px;
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
-.nav a:hover {
-  color: #fff;
-}
+
 .nav .close {
   position: absolute;
   top: 0;
@@ -64,9 +83,17 @@ body {
 }
 .slide a {
   font-size: 32px;
+  height: 50px;
 }
 #page {
   transition: margin-right 0.7s;
   overflow: hidden;
   width: 100%;
+}
+
+h1 {
+  margin: 0;
+  color: #ffffff;
+  height: 50px;
+  margin-left: 15px;
 }

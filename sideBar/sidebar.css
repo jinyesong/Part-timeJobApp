@@ -19,6 +19,7 @@
   padding-bottom: 30px;
 }
 #menuIcon {
+  float: right;
   color: #ffadc5;
 }
 .nav a {
@@ -45,4 +46,8 @@
   transition: margin-right 0.7s;
   overflow: hidden;
   width: 100%;
+}
+
+h3 {
+  margin-left: 50px;
 }
