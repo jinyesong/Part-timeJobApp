@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./signup.css">
     <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>회원가입</title>
 </head>
 
@@ -27,19 +28,19 @@
         <!-- <form name="signup" action="값을 보낼 주소" method="post"> -->
             <div>
                 <label>이름</label><br>
-                <input class="inputBar" type="text" name="userName" required /><br>
+                <input class="inputBar" type="text" name="userName"id="userName" required /><br>
             </div>
             <div>
                 <label>이메일</label><br>
-                <input class="inputBar" type="email" name="userId" required />
+                <input class="inputBar" type="email" name="userId" id="userId" required />
             </div>
             <div>
                 <label>비밀번호</label><br>
-                <input class="inputBar" type="password" name="userPw" required /><br>
+                <input class="inputBar" type="password" name="userPw" id="userPw" required /><br>
             </div>
             <div>
                 <label>비밀번호 확인</label><br>
-                <input  class="inputBar" type="password" name="userPw2" required /><br>
+                <input  class="inputBar" type="password" name="userPw2" id="userPw2" required /><br>
             </div>
             <div>
                 <label>성별</label><br>
@@ -51,7 +52,7 @@
             </div>
             <div>
                 <label >주소</label><br>
-                <select name="area" size="1" class="inputBar">
+                <select name="area" id="area" size="1" class="inputBar">
                     <option value="Seoul">서울</option>
                     <option value="Gyeonggi">경기</option>
                     <option value="Incheon">인천</option>
@@ -73,19 +74,19 @@
                   </select><br>            </div>
             <div>
                 <label>생년월일</label><br>
-                <input class="inputBar" type="number" name="userBirthDay" placeholder="6자리 숫자 입력" required /><br>
+                <input class="inputBar" type="number" name="userBirthDay" id="userBirthDay" placeholder="6자리 숫자 입력" required /><br>
             </div>
             <div>
                 <label>전화번호</label> <br>
-                <input class="inputBar" type="number" name="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required /><br>
+                <input class="inputBar" type="number" name="phoneNumber" id="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required /><br>
             </div>
             <div >
                 <label>이력서</label> <br>
-                <input type="file" name="resume" class="inputBar"/><br>
+                <input type="file" name="resume" id="resume" class="inputBar"/><br>
             </div>
             <div>
                 <label>사업자등록증</label><br>
-                <input type="file" name="businessLicense" class="inputBar"/><br>
+                <input type="file" name="businessLicense" id="businessLicense" class="inputBar"/><br>
             </div>
             <br>
             <div><button id="submit" type="submit" value="완료">제출</button></div>
