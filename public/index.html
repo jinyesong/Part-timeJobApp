@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
+    <a href="myPage/myPage.html">마이페이지</a>
+    <a href="signupPage/signup.html">회원가입</a>
+
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -31,6 +35,13 @@
       
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+        db.collection('customer').get().then((snapshot)=>{
+        snapshot.forEach((doc)=>{
+        console.log(doc.data())
+      })
+    });
       </script>
 </body>
 </html>
