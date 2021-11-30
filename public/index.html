@@ -4,13 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="loginPage/login.css">
+    <title>단기·대타 아르바이트</title>
 </head>
 <body>
+  <div class="form">
+    <p id="loginLogo"><b>Login</b></p>
+        <div class="inputContainer">
+            <input class="idbox" type="text" placeholder="ID"><br>
+            <input class="pwbox" type="password" placeholder="PW">
+            <button id="loginBtn" type="submit">Login</button><br>
+            <a id="signupBtn" href="../signupPage/signup.html">sign up</a>
+        </div>
+    </div>
 
-    <a href="myPage/myPage.html">마이페이지</a>
-    <a href="signupPage/signup.html">회원가입</a>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -18,12 +27,8 @@
     <script src="/__/firebase/8.6.5/firebase-storage.js"></script>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
+
         var firebaseConfig = {
           apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
           authDomain: "part-time-job-38ba6.firebaseapp.com",
@@ -42,6 +47,7 @@
         console.log(doc.data())
       })
     });
-      </script>
+    </script>
+    <script src="loginPage/login.js"></script>
 </body>
 </html>
