@@ -29,6 +29,7 @@ body {
   border: none;
   font-size: 20px;
   text-decoration: underline;
+  text-underline-position: under;
 }
 #name {
   color: #f75c4c;
