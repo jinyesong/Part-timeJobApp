@@ -8,4 +8,12 @@ function openSlideMenu(){
     document.getElementById('page').style.marginRight = '0';
   }
 
+  $("#logoutBtn").click(function(){
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("email");
+    location.href = "../index.html";
+  });
+
+/*사이드바 끝*/
+
 $(".homeUserName").html(sessionStorage.getItem("name"));

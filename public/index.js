@@ -13,6 +13,8 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 var hasId = false;
 
+//console.log(db.collection('customer').doc("1"))
+
 $("#loginBtn").click(function(){
     if($(".idbox").val() == "" || $(".pwbox").val() == ""){
         alert("아이디와 비밀번호를 입력해주세요.");
