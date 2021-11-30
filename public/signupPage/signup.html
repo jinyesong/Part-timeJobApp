@@ -16,60 +16,82 @@
             <i class="fas fa-chevron-left"></i>
         </a>
         <div>        </div>
-        <h1>회원가입</h1>
+        <!-- <h1>회원가입</h1> -->
         
     </div>
    
-    <div id="signupForm" style="line-height:170%;">
-        
-        <form name="signup" action="값을 보낼 주소" method="post">
+    
+    <div id="signupForm">
+        <p id="signupLogo"><b>Sign Up</b></p>
+        <div class="inputContainer">
+        <!-- <form name="signup" action="값을 보낼 주소" method="post"> -->
             <div>
                 <label>이름</label><br>
-                <input type="text" name="userName" required /><br>
+                <input class="inputBar" type="text" name="userName" required /><br>
             </div>
             <div>
                 <label>이메일</label><br>
-                <input type="email" name="userId" required />
-                <button onclick="">중복확인</button><br>
+                <input class="inputBar" type="email" name="userId" required />
             </div>
             <div>
                 <label>비밀번호</label><br>
-                <input type="password" name="userPw" required /><br>
+                <input class="inputBar" type="password" name="userPw" required /><br>
             </div>
             <div>
                 <label>비밀번호 확인</label><br>
-                <input type="password" name="userPw2" required /><br>
-
+                <input  class="inputBar" type="password" name="userPw2" required /><br>
             </div>
             <div>
                 <label>성별</label><br>
-                <input type="radio" name="userGender" value="man" checked />남
-                <input type="radio" name="userGender" value="woman" />여<br>
+                <div class="inputBar">
+                    <input type="radio" name="userGender" value="man" checked />남
+                    <input type="radio" name="userGender" value="woman" />여<br>
+                </div>
+                
             </div>
             <div>
-                <label>주소</label><br>
-                <input type="text" name="userAddr" required /><br>
-            </div>
+                <label >주소</label><br>
+                <select name="area" size="1" class="inputBar">
+                    <option value="Seoul">서울</option>
+                    <option value="Gyeonggi">경기</option>
+                    <option value="Incheon">인천</option>
+                    <option value="Gangwon">강원</option>
+                    <option value="Daejeon">대전</option>
+                    <option value="Sejong">세종</option>
+                    <option value="Chungnam">충남</option>
+                    <option value="Chungbuk">충북</option>
+                    <option value="Busan">부산</option>
+                    <option value="Ulsan">울산</option>
+                    <option value="Gyeongnam">경남</option>
+                    <option value="Gyeongbuk">경북</option>
+                    <option value="Daegu">대구</option>
+                    <option value="Gwangju">광주</option>
+                    <option value="Jeonnam">전남</option>
+                    <option value="Jeonbuk">전북</option>
+                    <option value="Jeju">제주</option>
+                    <option value="Nationwide">전국</option>
+                  </select><br>            </div>
             <div>
                 <label>생년월일</label><br>
-                <input type="number" name="userBirthDay" placeholder="6자리 숫자 입력" required /><br>
+                <input class="inputBar" type="number" name="userBirthDay" placeholder="6자리 숫자 입력" required /><br>
             </div>
             <div>
                 <label>전화번호</label> <br>
-                <input type="number" name="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required /><br>
+                <input class="inputBar" type="number" name="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required /><br>
             </div>
-            <div>
+            <div >
                 <label>이력서</label> <br>
-                <input type="file" name="resume" /><br>
+                <input type="file" name="resume" class="inputBar"/><br>
             </div>
             <div>
                 <label>사업자등록증</label><br>
-                <input type="file" name="businessLicense" /><br>
+                <input type="file" name="businessLicense" class="inputBar"/><br>
             </div>
             <br>
-            <div id="submit" style="text-align: center;"><input type="submit" name="submit" value="완료" /></div>
-
-        </form>
+            <div><button id="submit" type="submit" value="완료">제출</button></div>
+        <!-- </form> -->
+        </div>
+    </div>
     <!-- update the version number as needed -->
     <script src="../__/firebase/8.6.5/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
