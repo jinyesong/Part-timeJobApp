@@ -9,6 +9,7 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const storage = firebase.storage();
 const db = firebase.firestore();
   db.collection('customer').get().then((snapshot)=>{
     snapshot.forEach((doc)=>{
@@ -102,19 +103,72 @@ $("#submit").click(function(){
     var phoneNumber = $('#phoneNumber').val();
     var gender = $("input[name='userGender']:checked").val();
     var area = $("#area option:selected").val();
-    var size;
-    db.collection('customer').get().then(snap=>{
-      size = Number(snap.doc.length);
+    var size = db.collection('customer').get().then(snap=>{
+      var count = 0
+      snap.forEach(doc=>{
+        count += 1;
+      });
+      return count;
     });
-    console.log(size);
+    console.log(size[[PromiseResult]]);
     console.log(String(size));
-    db.collection('customer').doc(String(size)).set({name: name, id: id});
+    var resume_url;
+    var businessLicense_url;
     if($('#resume').val()){
-    
+      var file = $('#resume').files[0];
+      var storageRef = storage.ref();
+      var path = storageRef.child(email+'/resume');
+      var work = path.put(file);
+      work.on('state_changed',
+        null,
+        (error) => {
+          console.error('fail:', error);
+        },
+        () => {
+          work.snapshot.ref.getDownloadURL().then((url) => {
+            console.log('upload path', url);
+            resume_url = url;
+          });
+        }
+      );
     }
     if($('#businessLicense').val()){
-
+      var file = $('#businessLicense').files[0];
+      var storageRef = storage.ref();
+      var path = storageRef.child(email+'/businessLicense');
+      var work = path.put(file);
+      work.on('state_changed',
+        null,
+        (error) => {
+          console.error('fail:', error);
+        },
+        () => {
+          work.snapshot.ref.getDownloadURL().then((url) => {
+            console.log('upload path', url);
+            businessLicense = url;
+          });
+        }
+      );
     }
+    var data = {
+      name: name, 
+      email: id, 
+      pasword: pw, 
+      gender:gender,
+      phoneNumber:phoneNumber,
+      area:area,
+      birth:birthday,
+      resume:resume_url,
+      businessLicense:businessLicense_url
+    }
+
+    db.collection('customer').doc('cu1').set(data).then((result)=>{
+      console.log(result.email);
+      //window.location.href = "../index.html";
+    }).catch((err)=>{
+      console.log(err);
+    });
+    
   }else{
     return false;
   }
