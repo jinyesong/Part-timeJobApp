@@ -110,14 +110,14 @@ $("#submit").click(function(){
       });
       return count;
     });
-    console.log(size[[PromiseResult]]);
+    console.log(size);
     console.log(String(size));
     var resume_url;
     var businessLicense_url;
     if($('#resume').val()){
-      var file = $('#resume').files[0];
+      var file = $('#resume')[0].files[0];
       var storageRef = storage.ref();
-      var path = storageRef.child(email+'/resume');
+      var path = storageRef.child(id+'/resume');
       var work = path.put(file);
       work.on('state_changed',
         null,
