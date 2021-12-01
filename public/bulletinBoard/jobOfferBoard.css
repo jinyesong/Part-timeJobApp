@@ -1,24 +1,40 @@
 body {
   text-align: center;
   margin: 0;
+  background-color: #f4f2ec;
+  text-underline-position: under;
 }
 #content {
   margin: 20px;
   flex-direction: column;
 }
 #menubar {
-  border: black solid 1px;
+  border: none;
   height: 30px;
   width: 100%;
   margin: 20px, 0;
 }
-
-#menu_btn {
-  margin: 10px;
+button {
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: 10px #fff;
+  cursor: pointer;
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+#filter {
+  margin-right: 3px;
+}
+#write {
+  margin-left: 3px;
 }
 
 #postList {
-  margin-top: 20px;
+  margin-top: 15px;
   margin-bottom: 20px;
   border: black solid 1px;
   width: 100%;
@@ -57,7 +73,7 @@ body {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #dcebff;
+  background-color: #eae8dc;
   font-size: 30px;
   overflow-x: hidden;
   padding-top: 60px;
