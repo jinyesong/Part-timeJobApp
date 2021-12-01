@@ -25,14 +25,16 @@ function isName(){
   return true;
 }
 
-function isId(){
+async function isId(){
   if($('#userId').val()==""){
     alert("email을 입력해주세요");
     return false;
   }else{
-    db.collection('customer').get().then((snapshot)=>{
+    await db.collection('customer').get().then((snapshot)=>{
       snapshot.forEach((doc)=>{
-        if($('#userId').val() == doc.data()['email']){
+        if($('#userId').val() == doc.data().email){
+          console.log($('#userId').val());
+          console.log(doc.data().email);
           alert("해당 email로 가입된 이력이 있습니다.");
           return false;
         }  
@@ -95,7 +97,7 @@ function isPhoneNumber(){
 }
 
 $("#submit").click(function(){
-  if(isName() && isId() && isPw() && equalPw() && isBirthday() && isPhoneNumber()){
+  if( isName() && isId() && isPw() && equalPw() && isBirthday() && isPhoneNumber()){
     var name = $('#userName').val();
     var id = $('#userId').val();
     var pw = $('#userPw').val();
@@ -112,8 +114,8 @@ $("#submit").click(function(){
     });
     console.log(size);
     console.log(String(size));
-    var resume_url;
-    var businessLicense_url;
+    var resume_url = null;
+    var businessLicense_url = null;
     if($('#resume').val()){
       var file = $('#resume')[0].files[0];
       var storageRef = storage.ref();
@@ -133,9 +135,9 @@ $("#submit").click(function(){
       );
     }
     if($('#businessLicense').val()){
-      var file = $('#businessLicense').files[0];
+      var file = $('#businessLicense')[0].files[0];
       var storageRef = storage.ref();
-      var path = storageRef.child(email+'/businessLicense');
+      var path = storageRef.child(id+'/businessLicense');
       var work = path.put(file);
       work.on('state_changed',
         null,
@@ -162,8 +164,8 @@ $("#submit").click(function(){
       businessLicense:businessLicense_url
     }
 
-    db.collection('customer').doc('cu1').set(data).then((result)=>{
-      console.log(result.email);
+    db.collection('customer').doc(id).set(data).then((result)=>{
+      console.log(result);
       //window.location.href = "../index.html";
     }).catch((err)=>{
       console.log(err);
