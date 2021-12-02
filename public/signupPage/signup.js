@@ -128,97 +128,95 @@ $("#submit").click(function () {
                         return resolve("register posible");
                     });
             });
-
+            
             promise
                 .then(result => {
-                    var data = {
-                        email: id,
-                    }
-                    console.log("저장 시작!");
-                    db
-                        .collection('customer')
-                        .doc(id)
-                        .set(data)
-                        .then((result) => {
-                            console.log("디비 저장!");
-                        })
-                        .catch((err) => {
-                            console.log("저장 실패"+err);
-                            return new Promise((resolve, reject) => {
-                                reject("Database error");
+                    var saveinfo_promise = new Promise(function(resolve, reject){
+                        var data = {
+                            email: id,
+                            name: name,
+                                pasword: pw,
+                                gender: gender,
+                                phoneNumber: phoneNumber,
+                                area: area,
+                                birth: birthday
+        
+                        }
+                        console.log("저장 시작!");
+                        db
+                            .collection('customer')
+                            .doc(id)
+                            .set(data)
+                            .then((result) => {
+                                console.log("디비 저장!");
+                                resolve();
                             })
-                        });
-                })
-                .then(function () {
-                    if ($('#resume').val()) {
-                        var file = $('#resume')[0].files[0];
-                        var storageRef = storage.ref();
-                        var path = storageRef.child(id + '/resume');
-                        var work = path.put(file);
-                        work.on('state_changed', null, (error) => {
-                            console.error('fail:', error);
-                        }, () => {
-                            path
-                                .getDownloadURL()
-                                .then((url) => {
-                                    console.log('upload path', url);
-                                    resume_url = url;
-                                    db
-                                        .collection('customer')
-                                        .doc(id)
-                                        .update({resume: resume_url});
+                            .catch((err) => {
+                                console.log("저장 실패"+err);
+                                reject("Database error");
+                            });
+                    });
+                    saveinfo_promise.then(result=>{
+                        var resume_promise = new Promise((resolve, reject)=> {
+                            if ($('#resume').val()) {
+                                var file = $('#resume')[0].files[0];
+                                var storageRef = storage.ref();
+                                var path = storageRef.child(id + '/resume');
+                                var work = path.put(file);
+                                work.on('state_changed', null, (error) => {
+                                    console.error('fail:', error);
+                                }, () => {
+                                    path
+                                        .getDownloadURL()
+                                        .then((url) => {
+                                            console.log('upload path', url);
+                                            resume_url = url;
+                                            db
+                                                .collection('customer')
+                                                .doc(id)
+                                                .update({resume: resume_url});
+                                                resolve();
+                                        });
                                 });
+                            }
+                            else{
+                                resolve();
+                            }
                         });
-                    }
-                    if ($('#businessLicense').val()) {
-                        var file = $('#businessLicense')[0].files[0];
-                        var storageRef = storage.ref();
-                        var path = storageRef.child(id + '/businessLicense');
-                        var work = path.put(file);
-                        work.on('state_changed', null, (error) => {
-                            console.error('fail:', error);
-                        }, () => {
-                            path
-                                .getDownloadURL()
-                                .then((url) => {
-                                    console.log('upload path', url);
-                                    businessLicense_url = url;
-                                    db
-                                        .collection('customer')
-                                        .doc(id)
-                                        .update({businessLicense: businessLicense_url});
+                        var license_promise = new Promise((resolve, reject)=> {
+                            if ($('#businessLicense').val()) {
+                                var file = $('#businessLicense')[0].files[0];
+                                var storageRef = storage.ref();
+                                var path = storageRef.child(id + '/businessLicense');
+                                var work = path.put(file);
+                                work.on('state_changed', null, (error) => {
+                                    console.error('fail:', error);
+                                }, () => {
+                                    path
+                                        .getDownloadURL()
+                                        .then((url) => {
+                                            console.log('upload path', url);
+                                            businessLicense_url = url;
+                                            db
+                                                .collection('customer')
+                                                .doc(id)
+                                                .update({businessLicense: businessLicense_url});
+                                                resolve();
+                                        });
                                 });
+                            }
+                            else{
+                                resolve();
+                            }
                         });
-                    }
-                })
-                .then(result => {
-                    var data = {
-                        name: name,
-                        pasword: pw,
-                        gender: gender,
-                        phoneNumber: phoneNumber,
-                        area: area,
-                        birth: birthday
-                    }
-                    console.log("저장 시작!");
-                    db
-                        .collection('customer')
-                        .doc(id)
-                        .set(data)
-                        .then((result) => {
-                            console.log("디비 저장!");
+                        Promise.all([resume_promise, license_promise]).then(function(){
                             window.location.href = "../index.html";
-                        })
-                        .catch((err) => {
-                            console.log("저장 실패"+err);
-                            return new Promise((resolve, reject) => {
-                                reject("Database error");
-                            })
                         });
+                    });
                 })
-                .catch(err => {
-                    console.log("1"+err);
-                })
+                .catch(err=>{
+                    console.log(err);
+                });
         })
         .catch(err => {
             console.log("2"+err);
