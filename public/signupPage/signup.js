@@ -108,19 +108,10 @@ $("#submit").click(function () {
     var phoneNumber = $('#phoneNumber').val();
     var gender = $("input[name='userGender']:checked").val();
     var area = $("#area option:selected").val();
-    var size = db
-        .collection('customer')
-        .get()
-        .then(snap => {
-            var count = 0
-            snap.forEach(doc => {
-                count += 1;
-            });
-            return count;
-        });
+
     validateUser()
         .then((res) => {
-          console.log(res + " here!");
+            console.log(res + " here!");
             const promise = new Promise((resolve, reject) => {
                 db
                     .collection('customer')
@@ -140,10 +131,25 @@ $("#submit").click(function () {
 
             promise
                 .then(result => {
-                    console.log(result);
-                    console.log(size);
-                    console.log(String(size));
-
+                    var data = {
+                        email: id,
+                    }
+                    console.log("저장 시작!");
+                    db
+                        .collection('customer')
+                        .doc(id)
+                        .set(data)
+                        .then((result) => {
+                            console.log("디비 저장!");
+                        })
+                        .catch((err) => {
+                            console.log("저장 실패"+err);
+                            return new Promise((resolve, reject) => {
+                                reject("Database error");
+                            })
+                        });
+                })
+                .then(function () {
                     if ($('#resume').val()) {
                         var file = $('#resume')[0].files[0];
                         var storageRef = storage.ref();
@@ -152,13 +158,15 @@ $("#submit").click(function () {
                         work.on('state_changed', null, (error) => {
                             console.error('fail:', error);
                         }, () => {
-                            work
-                                .snapshot
-                                .ref
+                            path
                                 .getDownloadURL()
                                 .then((url) => {
                                     console.log('upload path', url);
                                     resume_url = url;
+                                    db
+                                        .collection('customer')
+                                        .doc(id)
+                                        .update({resume: resume_url});
                                 });
                         });
                     }
@@ -170,29 +178,27 @@ $("#submit").click(function () {
                         work.on('state_changed', null, (error) => {
                             console.error('fail:', error);
                         }, () => {
-                            work
-                                .snapshot
-                                .ref
+                            path
                                 .getDownloadURL()
                                 .then((url) => {
                                     console.log('upload path', url);
-                                    businessLicense = url;
+                                    businessLicense_url = url;
+                                    db
+                                        .collection('customer')
+                                        .doc(id)
+                                        .update({businessLicense: businessLicense_url});
                                 });
                         });
                     }
-
                 })
-                .then(function () {
+                .then(result => {
                     var data = {
                         name: name,
-                        email: id,
                         pasword: pw,
                         gender: gender,
                         phoneNumber: phoneNumber,
                         area: area,
-                        birth: birthday,
-                        resume: resume_url,
-                        businessLicense: businessLicense_url
+                        birth: birthday
                     }
                     console.log("저장 시작!");
                     db
@@ -204,14 +210,17 @@ $("#submit").click(function () {
                             window.location.href = "../index.html";
                         })
                         .catch((err) => {
-                          console.log(err);
+                            console.log("저장 실패"+err);
+                            return new Promise((resolve, reject) => {
+                                reject("Database error");
+                            })
                         });
                 })
                 .catch(err => {
-                  console.log(err);
-                });
+                    console.log("1"+err);
+                })
         })
         .catch(err => {
-          console.log(err);
+            console.log("2"+err);
         });
 });
