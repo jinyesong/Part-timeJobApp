@@ -1,0 +1,130 @@
+/* 사이드바 */
+.nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #dcebff;
+  font-size: 30px;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0;
+}
+.slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #0e3746;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#menuIcon {
+  color: #fff;
+}
+.nav a {
+  display: block;
+  padding: 20px 30px;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav .close {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-right: 50px;
+  font-size: 30px;
+}
+.slide a {
+  font-size: 32px;
+  height: 50px;
+}
+#page {
+  transition: margin-right 0.7s;
+  overflow: hidden;
+  width: 100%;
+}
+
+h1 {
+  margin: 0;
+  color: #ffffff;
+  height: 50px;
+  margin-left: 15px;
+  font-size: 27px;
+  margin-top: 5px;
+}
+
+/* 사이드바 끝*/
+
+body {
+  text-align: center;
+  margin: 0;
+  background-color: #f4f2ec;
+  text-underline-position: under;
+}
+
+#content {
+  margin: 20px;
+  flex-direction: column;
+}
+
+#userProfile {
+  height: 100px;
+  width: 100%;
+  margin: 20px, 0;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+#userPhoto {
+  width: 130px;
+  height: 102px;
+  margin-right: 0;
+  float: left;
+}
+
+#modifyUserInfoBtn {
+  border-radius: 3px;
+  margin-left: 38px;
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  width: 96px;
+  text-align: center;
+  text-decoration: none;
+  padding: 1px;
+}
+
+.filebox {
+  float: right;
+  width: 190px;
+  height: 102px;
+  float: right;
+  text-align: left;
+}
+.filebox label {
+  display: inline-block;
+  padding: 1px 2px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 25px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.filebox input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
