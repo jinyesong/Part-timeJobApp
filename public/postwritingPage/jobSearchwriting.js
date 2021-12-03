@@ -36,16 +36,34 @@ function isContent() {
         return false;
     }
 }
+function isWorkStart(){
+    if($("#workStart").val()){
+        return true;
+    }
+    else{
+        alert("근무 시작일을 선택하세요");
+        return false;
+    }
+}
+function isWorkEnd(){
+    if($("#workEnd").val()){
+        return true;
+    }
+    else{
+        alert("근무 마감일을 선택하세요");
+        return false;
+    }
+}
 $("#saveBtn").click(function () {
-    if (isTitle() && isContent()) {
+    if (isTitle() && isContent() && isWorkStart() && isWorkEnd()) {
         var title = $("#titlebox").val();
         var content = $("#contentbox").val();
         var gender = $("input[name='gender']:checked").val();
         var area = $("#area option:selected").val();
-        var period = $("#period option:selected").val();
-        var area = $("#area option:selected").val();
         var pay = $("#pay").val();
         var writer = sessionStorage.getItem("email");
+        var workEnd = $("#workEnd").val();
+        var workStart = $("#workStart").val();
         var data = {
             title: title,
             content: content,
@@ -53,7 +71,9 @@ $("#saveBtn").click(function () {
             area: area,
             period: period,
             pay: pay,
-            writer: writer
+            writer: writer,
+            workStart: workStart,
+            workEnd: workEnd
         }
         var promise = new Promise((resolve, reject)=>{
             db
