@@ -27,4 +27,10 @@ function openSlideMenu(){
     document.getElementById('page').style.marginRight = '0';
   }
 
+  $("#logoutBtn").click(function(){
+    sessionStorage.removeItem("name");
+    sessionStorage.removeItem("email");
+    location.href = "../index.html";
+  });
+
   $(".homeUserName").html(sessionStorage.getItem("name"));
