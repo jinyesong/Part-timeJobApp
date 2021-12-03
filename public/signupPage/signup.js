@@ -128,19 +128,19 @@ $("#submit").click(function () {
                         return resolve("register posible");
                     });
             });
-            
+
             promise
                 .then(result => {
-                    var saveinfo_promise = new Promise(function(resolve, reject){
+                    var saveinfo_promise = new Promise(function (resolve, reject) {
                         var data = {
                             email: id,
                             name: name,
-                                pasword: pw,
-                                gender: gender,
-                                phoneNumber: phoneNumber,
-                                area: area,
-                                birth: birthday
-        
+                            password: pw,
+                            gender: gender,
+                            phoneNumber: phoneNumber,
+                            area: area,
+                            birth: birthday
+
                         }
                         console.log("저장 시작!");
                         db
@@ -152,12 +152,12 @@ $("#submit").click(function () {
                                 resolve();
                             })
                             .catch((err) => {
-                                console.log("저장 실패"+err);
+                                console.log("저장 실패" + err);
                                 reject("Database error");
                             });
                     });
-                    saveinfo_promise.then(result=>{
-                        var resume_promise = new Promise((resolve, reject)=> {
+                    saveinfo_promise.then(result => {
+                        var resume_promise = new Promise((resolve, reject) => {
                             if ($('#resume').val()) {
                                 var file = $('#resume')[0].files[0];
                                 var storageRef = storage.ref();
@@ -175,15 +175,14 @@ $("#submit").click(function () {
                                                 .collection('customer')
                                                 .doc(id)
                                                 .update({resume: resume_url});
-                                                resolve();
+                                            resolve();
                                         });
                                 });
-                            }
-                            else{
+                            } else {
                                 resolve();
                             }
                         });
-                        var license_promise = new Promise((resolve, reject)=> {
+                        var license_promise = new Promise((resolve, reject) => {
                             if ($('#businessLicense').val()) {
                                 var file = $('#businessLicense')[0].files[0];
                                 var storageRef = storage.ref();
@@ -201,24 +200,25 @@ $("#submit").click(function () {
                                                 .collection('customer')
                                                 .doc(id)
                                                 .update({businessLicense: businessLicense_url});
-                                                resolve();
+                                            resolve();
                                         });
                                 });
-                            }
-                            else{
+                            } else {
                                 resolve();
                             }
                         });
-                        Promise.all([resume_promise, license_promise]).then(function(){
-                            window.location.href = "../index.html";
-                        });
+                        Promise
+                            .all([resume_promise, license_promise])
+                            .then(function () {
+                                window.location.href = "../index.html";
+                            });
                     });
                 })
-                .catch(err=>{
+                .catch(err => {
                     console.log(err);
                 });
         })
         .catch(err => {
-            console.log("2"+err);
+            console.log("2" + err);
         });
 });
