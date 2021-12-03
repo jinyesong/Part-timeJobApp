@@ -54,7 +54,7 @@ const db = firebase.firestore();
     snapshot.forEach((doc)=>{
     //   console.log(doc.data().postEnd)
         var title = doc.data().title;
-        var writer = doc.data().writer;
+        var writer = doc.data().writerName;
         var postEnd = doc.data().postEnd;
 
         var Div = document.createElement("div");
