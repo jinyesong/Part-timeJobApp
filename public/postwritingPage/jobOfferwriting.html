@@ -69,6 +69,14 @@
       <option value="Jeju">제주</option>
       <option value="Nationwide">전국</option>
     </select><br>
+    <div>
+      마감전 시급인상
+      <input type="radio" class="payboost" name="payboost" value="false" id="false" checked>미사용
+      <input type="radio" class="payboost" name="payboost" value="true" id="true">사용<br>
+      인상율
+      <input type="text" id="increaseRate" name="increaseRate" disabled><br>
+      적용 일 : 마감 D-<input type="text" id="deadline" name="deadline" disabled>
+    </div>
 
   </div>
 </body>
@@ -84,6 +92,6 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
   </script>
 <script src="postwriting.js"></script>
-<script src="jobSearchwriting.js"></script>
+<script src="jobOfferwriting.js"></script>
 
 </html>

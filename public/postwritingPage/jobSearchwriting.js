@@ -64,6 +64,8 @@ $("#saveBtn").click(function () {
         var writer = sessionStorage.getItem("email");
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
+        var writerEmail = sessionStorage.getItem("email");
+        var writerName = sessionStorage.getItem("name");
         var data = {
             title: title,
             content: content,
@@ -73,7 +75,9 @@ $("#saveBtn").click(function () {
             pay: pay,
             writer: writer,
             workStart: workStart,
-            workEnd: workEnd
+            workEnd: workEnd,
+            writerEmail: writerEmail,
+            writerName: writerName
         }
         var promise = new Promise((resolve, reject)=>{
             db

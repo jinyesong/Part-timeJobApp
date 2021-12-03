@@ -63,6 +63,36 @@ function isPostEnd(){
         return false;
     }
 }
+function isIncreaseRate(){
+    if($("#increaseRate").val() == ""){
+        alert("인상율을 입력하세요");
+        return false;
+    }
+    else{
+        if($.isNumeric($("#increaseRate").val())){
+            return true;
+        }
+        else{
+            alert("숫자만 입력하세요");
+            return false;
+        }
+    }
+}
+function isDeadline(){
+    if($("#deadline").val() == ""){
+        alert("디데이를 입력하세요");
+        return false;
+    }
+    else{
+        if($.isNumeric($("#deadline").val())){
+            return true;
+        }
+        else{
+            alert("숫자만 입력하세요");
+            return false;
+        }
+    }
+}
 $("#saveBtn").click(function () {
     if (isTitle() && isContent() && isWorkStart() && isWorkEnd() && isPostEnd()) {
         var title = $("#titlebox").val();
@@ -74,35 +104,94 @@ $("#saveBtn").click(function () {
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
         var postEnd = $("#postEnd").val();
-        var writer = sessionStorage.getItem("email");
-        var data = {
-            title: title,
-            content: content,
-            gender: gender,
-            area: area,
-            period: period,
-            pay: pay,
-            writer: writer,
-            workStart: workStart,
-            workEnd: workEnd,
-            postEnd: postEnd
+        var writerEmail = sessionStorage.getItem("email");
+        var writerName = sessionStorage.getItem("name");
+        if($(".payboost:checked").val() == "false"){
+            var data = {
+                title: title,
+                content: content,
+                gender: gender,
+                area: area,
+                period: period,
+                pay: pay,
+                writer: writer,
+                workStart: workStart,
+                workEnd: workEnd,
+                postEnd: postEnd,
+                writerEmail: writerEmail,
+                writerName: writerName
+            }
+            var promise = new Promise((resolve, reject)=>{
+                db
+                                .collection('jobOfferPost')
+                                .add(data)
+                                .then((result) => {
+                                    console.log("디비 저장!");
+                                        resolve()
+                                })
+                                .catch((err) => {
+                                    console.log("저장 실패" + err);
+                                        reject()
+                                });
+            });
+            promise.then(function(){
+                window.location.href="../bulletinBoard/jobOfferBoard.html";
+            });
         }
-        var promise = new Promise((resolve, reject)=>{
-            db
-                            .collection('jobOfferPost')
-                            .add(data)
-                            .then((result) => {
-                                console.log("디비 저장!");
-                                    resolve()
-                            })
-                            .catch((err) => {
-                                console.log("저장 실패" + err);
-                                    reject()
-                            });
-        });
-        promise.then(function(){
-            window.location.href="../bulletinBoard/jobOfferBoard.html";
-        });
+        else if($(".payboost:checked").val() == "true"){
+            if(isDeadline() && isIncreaseRate()){
+                var increaseRate = $("#increaseRate").val();
+                var deadline = $("#deadline").val();
+                var data = {
+                    title: title,
+                    content: content,
+                    gender: gender,
+                    area: area,
+                    period: period,
+                    pay: pay,
+                    writer: writer,
+                    workStart: workStart,
+                    workEnd: workEnd,
+                    postEnd: postEnd,
+                    writerEmail: writerEmail,
+                    writerName: writerName,
+                    increaseRate: increaseRate,
+                    deadline: deadline
+                }
+                var promise = new Promise((resolve, reject)=>{
+                    db
+                                    .collection('jobOfferPost')
+                                    .add(data)
+                                    .then((result) => {
+                                        console.log("디비 저장!");
+                                            resolve()
+                                    })
+                                    .catch((err) => {
+                                        console.log("저장 실패" + err);
+                                            reject()
+                                    });
+                });
+                promise.then(function(){
+                    window.location.href="../bulletinBoard/jobOfferBoard.html";
+                });
+            }
+            
+        }
+        
         
     }
 });
+
+$(".payboost").on('click',function(){
+    var payboost = $(".payboost:checked").val();
+        if(payboost == "true"){
+            $("#increaseRate").attr("disabled", false);
+            $("#deadline").attr("disabled", false);
+        }
+        else if(payboost == "false"){
+            $("#increaseRate").attr("disabled", true);
+            $("#deadline").attr("disabled", true);
+        }
+});
+
+
