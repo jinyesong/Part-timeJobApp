@@ -9,30 +9,40 @@
     <title>구인게시글</title>
 </head>
 <body>
-    <a href="#" onclick="openSlideMenu()">
-        <i class="fas fa-bars" id="menuIcon"></i> 
-    </a>
-    <h2>구인게시판</h2>
-    <div id="menu" class="nav">
-        <a href="#" class="close" onclick="closeSlideMenu()">
-            <span class="material-icons">close</span>
-        </a>
-        <a href="#"><label class="homeUserName"></label>님</a>
-        <a href="../myPage/myPage.html">마이페이지</a>
-        <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
-        <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
-        <br>
-        <a id="logoutBtn">Logout</a>
-        <a href="#"><i class="far fa-question-circle"></i></a>
+    <div id="page">
+        <span class="slide">
+            <div></div>
+            <h2>구인게시판</h2>
+            <a href="#" onclick="openSlideMenu()">
+                <i class="fas fa-bars" id="menuIcon"></i> 
+            </a>
+        </span>
+
+        <div id="menu" class="nav">
+            <a href="#" class="close" onclick="closeSlideMenu()">
+                <span class="material-icons">close</span>
+            </a>
+            <a href="#"><label class="homeUserName"></label>님</a>
+            <a href="../myPage/myPage.html">마이페이지</a>
+            <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+            <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+            <br>
+            <a id="logoutBtn">Logout</a>
+            <a href="#"><i class="far fa-question-circle"></i></a>
+        </div>
     </div>
-    <div>
-        [<label>   나는야 제목    </label>] [채팅] [지도] <br>
-        <div> 여기는 본문</div>
-        <button>지원하기</button>
+
+    <div id="postContainer">
+        <label>   나는야 제목    </label> <i class="fas fa-comments"></i> <i class="fas fa-map-marker-alt"></i> <br>
+        <div id="postContent"> 여기는 본문</div>
+        <div>여기는 다른 정보들 불러올거야</div>
+        <button id="applyBtn">지원하기</button>
+        <div id="btnContainer">
+            <button>수정</button>
+            <button>삭제</button>
+            <button>목록</button>
+        </div>
     </div>
-    <button>수정</button>
-    <button>삭제</button>
-    <button>목록</button>
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->

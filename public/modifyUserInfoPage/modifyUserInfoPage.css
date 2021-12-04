@@ -63,13 +63,13 @@ h1 {
 /* 사이드바 끝*/
 
 body {
-  text-align: center;
   margin: 0;
   background-color: #f4f2ec;
   text-underline-position: under;
 }
 
 #content {
+  text-align: center;
   margin: 20px;
   flex-direction: column;
 }
@@ -87,18 +87,22 @@ body {
   margin-right: 0;
   float: left;
 }
+#userInfobox {
+  border: 1px black solid;
+  width: 318px;
+  height: 340px;
+  float: left;
+}
+#userInfobox label {
+  text-align: right;
+}
+#userInfobox div {
+  margin-bottom: 5px;
+}
 
-#modifyUserInfoBtn {
-  border-radius: 3px;
-  margin-left: 38px;
-  background-color: #be2623;
-  color: #f4f2ec;
-  border: none;
-  cursor: pointer;
-  width: 96px;
-  text-align: center;
-  text-decoration: none;
-  padding: 1px;
+.inputBar {
+  width: 180px;
+  margin-left: 20px;
 }
 
 .filebox {

@@ -59,6 +59,7 @@ const db = firebase.firestore();
 
         var Div = document.createElement("div");
         Div.setAttribute("class", "post");
+        Div.setAttribute("id", doc.id);
         var Label = document.createElement("label");
         Label.setAttribute("class", "postTitle");
         var Text = document.createTextNode(title);

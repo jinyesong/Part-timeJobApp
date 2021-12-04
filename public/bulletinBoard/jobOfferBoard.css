@@ -73,7 +73,7 @@ button {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #eae8dc;
+  background-color: #e0dedc;
   font-size: 30px;
   overflow-x: hidden;
   padding-top: 60px;
@@ -126,7 +126,7 @@ h2 {
   padding-top: 10px;
 }
 
-.post{
+.post {
   border: black solid 1px;
   width: 100%;
   margin-bottom: 5px;
