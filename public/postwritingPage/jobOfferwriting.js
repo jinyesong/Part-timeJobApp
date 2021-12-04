@@ -93,7 +93,7 @@ function isDeadline(){
         }
     }
 }
-$("#saveBtn").click(function () {
+$("#saveBtn").click(function() {
     if (isTitle() && isContent() && isWorkStart() && isWorkEnd() && isPostEnd()) {
         var title = $("#titlebox").val();
         var content = $("#contentbox").val();
@@ -112,7 +112,6 @@ $("#saveBtn").click(function () {
                 gender: gender,
                 area: area,
                 pay: pay,
-                writer: writer,
                 workStart: workStart,
                 workEnd: workEnd,
                 postEnd: postEnd,
@@ -146,7 +145,6 @@ $("#saveBtn").click(function () {
                     gender: gender,
                     area: area,
                     pay: pay,
-                    writer: writer,
                     workStart: workStart,
                     workEnd: workEnd,
                     postEnd: postEnd,
