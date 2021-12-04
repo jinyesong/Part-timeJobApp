@@ -69,6 +69,7 @@ body {
 }
 
 #content {
+  text-align: center;
   margin: 20px;
   flex-direction: column;
 }
