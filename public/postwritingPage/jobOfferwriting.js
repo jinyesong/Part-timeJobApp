@@ -93,7 +93,7 @@ function isDeadline(){
         }
     }
 }
-$("#saveBtn").click(function () {
+$("#saveBtn").click(function() {
     if (isTitle() && isContent() && isWorkStart() && isWorkEnd() && isPostEnd()) {
         var title = $("#titlebox").val();
         var content = $("#contentbox").val();
