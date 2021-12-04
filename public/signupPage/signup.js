@@ -111,7 +111,6 @@ $("#submit").click(function () {
 
     validateUser()
         .then((res) => {
-            console.log(res + " here!");
             const promise = new Promise((resolve, reject) => {
                 db
                     .collection('customer')
