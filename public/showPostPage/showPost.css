@@ -1,87 +1,164 @@
+body {
+  text-align: center;
+  margin: 0;
+  background-color: #f4f2ec;
+  text-underline-position: under;
+}
 /* 사이드바 */
 .nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: #eae8dc;
-    font-size: 30px;
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0;
-  }
-  .slide {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #0e3746;
-    height: 50px;
-    padding-left: 25px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  #menuIcon {
-    color: #fff;
-  }
-  .nav a {
-    display: block;
-    padding: 20px 30px;
-    font-size: 25px;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .nav .close {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    margin-right: 50px;
-    font-size: 30px;
-  }
-  .slide a {
-    font-size: 32px;
-    height: 50px;
-  }
-  #page {
-    transition: margin-right 0.7s;
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  h2 {
-    margin: 0;
-    color: #ffffff;
-    height: 50px;
-    margin-left: 15px;
-    padding-top: 10px;
-  }
-  
-  .post{
-    border: black solid 1px;
-    width: 100%;
-    margin-bottom: 5px;
-  }
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #dcebff;
+  font-size: 30px;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0;
+}
+.slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #0e3746;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#menuIcon {
+  color: #f4f2ec;
+}
+.nav a {
+  display: block;
+  padding: 20px 30px;
+  font-size: 25px;
+  text-decoration: none;
+  color: black;
+}
 
-  /* 게시글 조회 */
-  #postContent{
-      border: black 1px solid;
-      width: 100%;
-  }
-  #postContainer{
-      text-align: center;
-  }
-  #applyBtn{
-      width: 80%;
-  }
-  #btnContainer{
-      width: 80%;
-      margin-top: 15px;
-  }
-  #btnContainer button{
-      margin-left: 5px;
-      margin-right: 5px;
-      width: 60px;
-  }
+.nav .close {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  margin-right: 50px;
+  font-size: 30px;
+}
+.slide a {
+  font-size: 32px;
+  height: 50px;
+}
+#page {
+  transition: margin-right 0.7s;
+  overflow: hidden;
+  width: 100%;
+}
+
+h2 {
+  margin: 0;
+  color: #f4f2ec;
+  height: 50px;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+/*사이드바 끝*/
+
+.post {
+  border: black solid 1px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+#content {
+  margin: 20px;
+  flex-direction: column;
+  border: black solid 1px;
+}
+/* 게시글 조회 */
+#postTitle {
+  /* border: red 1px solid; */
+  width: 90%;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+#postTitle label {
+  float: left;
+  width: 70%;
+  height: 100%;
+  text-align: left;
+}
+#postTitle svg {
+  float: right;
+  width: 12%;
+  height: 100%;
+  margin-left: 5px;
+}
+
+#postContent {
+  width: 90%;
+  height: 250px;
+  margin-bottom: 30px;
+  font-size: 15px;
+  border: 1px solid black;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: start;
+}
+#postContainer {
+  text-align: center;
+}
+#applyBtn {
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 5px;
+}
+#offerBtn {
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 5px;
+}
+#btnContainer {
+  width: 80%;
+  margin-top: 15px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+#btnContainer button {
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 60px;
+  background-color: #0e3746;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+#postOtherInfo {
+  width: 90%;
+  height: 50px;
+  border: red solid 1px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 7px;
+}
