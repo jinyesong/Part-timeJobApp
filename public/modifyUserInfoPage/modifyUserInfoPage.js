@@ -51,6 +51,10 @@ $(document).ready(function(){
   });
 });
 
+$("#submit").click(function(){
+  
+});
+
   /* 사이드바 */
 function openSlideMenu(){
   document.getElementById('menu').style.width = '260px';
