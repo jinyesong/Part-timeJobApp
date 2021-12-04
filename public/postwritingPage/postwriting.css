@@ -84,10 +84,10 @@ select {
   margin-left: 2px;
 }
 #payboostbox {
-  width: 296px;
+  width: 280px;
   margin-top: 10px;
   padding: 3px;
-  border: 1px black solid;
+  background-color: rgb(233, 230, 230);
 }
 /* 사이드바 */
 .nav {

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="postwriting.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>구직게시글 작성</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="postwriting.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+  <title>구직게시글 작성</title>
 </head>
+
 <body>
   <div id="page">
     <span class="slide">
       <div></div>
-      <h1>구직게시판</h1>
+      <h2>구직게시판</h2>
       <a href="#" onclick="openSlideMenu()">
-        <i class="fas fa-bars"></i>
+        <i class="fas fa-bars" id="menuIcon"></i>
       </a>
     </span>
 
@@ -23,64 +26,73 @@
       <a href="#" class="close" onclick="closeSlideMenu()">
         <span class="material-icons">close</span>
       </a>
-      <a href="#">000님</a>
+      <a href="#"><label class="homeUserName"></label>님</a>
       <a href="../myPage/myPage.html">마이페이지</a>
       <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
       <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
       <br>
-      <a href="#">Logout</a>
+      <a id="logoutBtn">Logout</a>
       <a href="#"><i class="far fa-question-circle"></i></a>
     </div>
   </div>
 
+
+
+  <div id="content">
     <div class="writingContainer">
-      <label>게시글</label>
-      <button id="saveBtn">저장</button><br>
+      <label id=postLabel><b>구직게시글</b></label>
+
       <input id="titlebox" type="text" placeholder="제목"><br>
       <input id="contentbox" type="text" placeholder="본문"><br>
-      성별       
-      <input type="radio" name="gender" value="both"  checked> 상관없음
-      <input type="radio" name="gender" value="man"> 남 
-      <input type="radio" name="gender" value="woman"> 여<br>
-      지역 <select name="area" id="area" size="1">
-        <option value="서울">서울</option>
-        <option value="경기">경기</option>
-        <option value="인천">인천</option>
-        <option value="강원">강원</option>
-        <option value="대전">대전</option>
-        <option value="세종">세종</option>
-        <option value="충남">충남</option>
-        <option value="충북">충북</option>
-        <option value="부산">부산</option>
-        <option value="울산">울산</option>
-        <option value="경남">경남</option>
-        <option value="경북">경북</option>
-        <option value="대구">대구</option>
-        <option value="광주">광주</option>
-        <option value="전남">전남</option>
-        <option value="전북">전북</option>
-        <option value="제주">제주</option>
-        <option value="전국">전국</option>
-      </select><br>
-      선호시작일<input type="date" id="workStart"><br>
-      선호마감일<input type="date" id="workEnd"><br>
-      시급 <input type="text" id="pay" value="최저시급"><br>
-      
+
+      <div id="infobox">
+        <label>성별</label>
+        <input type="radio" name="gender" value="both" checked class=Genderinput> <label class=GenderinputLabel>상관없음</label>
+        <input type="radio" name="gender" value="man" class=Genderinput> <label class=GenderinputLabel>남</label>
+        <input type="radio" name="gender" value="woman" class=Genderinput> <label class=GenderinputLabel>여</label><br>
+
+       
+        
+        <label>지역</label> <select name="area" id="area" size="1">
+          <option value="서울">서울</option>
+          <option value="경기">경기</option>
+          <option value="인천">인천</option>
+          <option value="강원">강원</option>
+          <option value="대전">대전</option>
+          <option value="세종">세종</option>
+          <option value="충남">충남</option>
+          <option value="충북">충북</option>
+          <option value="부산">부산</option>
+          <option value="울산">울산</option>
+          <option value="경남">경남</option>
+          <option value="경북">경북</option>
+          <option value="대구">대구</option>
+          <option value="광주">광주</option>
+          <option value="전남">전남</option>
+          <option value="전북">전북</option>
+          <option value="제주">제주</option>
+          <option value="전국">전국</option>
+        </select><br>
+        <label>선호시작일</label><input type="date" id="workStart"><br>
+        <label>선호마감일</label><input type="date" id="workEnd"><br>
+      <label>시급</label> <input type="text" id="pay" value="최저시급"> <label id=payLabel>원</label><br>
+        
+      </div>
+      <button id="saveBtn">저장</button><br>
     </div>
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.slim.js"
-  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
-  crossorigin="anonymous"></script>
-  <!-- update the version number as needed -->
-  <script src="../__/firebase/8.6.5/firebase-app.js"></script>
-  <!-- include only the Firebase features as you need -->
-  <script src="../__/firebase/8.6.5/firebase-firestore.js"></script>
-  <script src="../__/firebase/8.6.5/firebase-storage.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+  integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<!-- update the version number as needed -->
+<script src="../__/firebase/8.6.5/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script src="../__/firebase/8.6.5/firebase-firestore.js"></script>
+<script src="../__/firebase/8.6.5/firebase-storage.js"></script>
 
-  <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-  </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+</script>
 <script src="postwriting.js"></script>
-<script src="jobSearchwriting.js"></script>
+<script src="jobOfferwriting.js"></script>
+
 </html>
