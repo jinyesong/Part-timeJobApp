@@ -15,7 +15,9 @@
 <body>
   <div id="page">
     <span class="slide">
-      <div></div>
+      <span id="header">
+        <a href="javascript:history.back();" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+    </span>
       <h2>구직게시판</h2>
       <a href="#" onclick="openSlideMenu()">
         <i class="fas fa-bars" id="menuIcon"></i>
@@ -93,6 +95,6 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 </script>
 <script src="postwriting.js"></script>
-<script src="jobOfferwriting.js"></script>
+<script src="jobSearchwriting.js"></script>
 
 </html>

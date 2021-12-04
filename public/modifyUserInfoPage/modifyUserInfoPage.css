@@ -23,6 +23,20 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+}
+
+#backIcon {
+  color: #f4f2ec;
+  font-size: smaller;
+}
 #menuIcon {
   color: #fff;
 }

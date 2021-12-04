@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="modifyUserInfoPage.css">
     <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="modifyUserInfoPage.css">
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>회원정보변경</title>
 </head>
@@ -15,7 +15,9 @@
 <body>
     <div id="page">
         <span class="slide">
-            <div></div>
+            <span id="header">
+                <a href="../myPage/myPage.html" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+            </span>
             <h1>회원정보변경</h1>
             <a href="#" onclick="openSlideMenu()">
                 <i class="fas fa-bars" id="menuIcon"></i>
@@ -27,7 +29,7 @@
                 <span class="material-icons">close</span>
             </a>
             <a href="#"><label class="homeUserName"></label>님</a>
-            <a href="myPage.html">마이페이지</a>
+            <a href="../myPage/myPage.html">마이페이지</a>
             <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
             <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
             <br>

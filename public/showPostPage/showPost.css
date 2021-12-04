@@ -4,6 +4,24 @@ body {
   background-color: #f4f2ec;
   text-underline-position: under;
 }
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+}
+#header svg{
+  color: #f4f2ec;
+}
+#backIcon {
+  color: #f4f2ec;
+  font-size: smaller;
+}
+
 /* 사이드바 */
 .nav {
   height: 100%;
