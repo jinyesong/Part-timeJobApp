@@ -82,3 +82,16 @@ const db = firebase.firestore();
         document.getElementById("postList").appendChild(Div);
     })
   });
+
+//게시글 클릭 이벤트
+var targetId;
+$("#postList").click(function(event) {
+  if(event.target.tagName == "DIV"){
+    targetId = event.target.id;
+  }
+  else{
+    targetId = event.target.parentElement.id;
+  }
+  sessionStorage.setItem("postId", targetId);
+  location.href = "../showPostPage/showJobOffer.html";
+});
