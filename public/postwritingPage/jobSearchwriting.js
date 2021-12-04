@@ -61,7 +61,6 @@ $("#saveBtn").click(function () {
         var gender = $("input[name='gender']:checked").val();
         var area = $("#area option:selected").val();
         var pay = $("#pay").val();
-        var writer = sessionStorage.getItem("email");
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
         var writerEmail = sessionStorage.getItem("email");
@@ -72,7 +71,6 @@ $("#saveBtn").click(function () {
             gender: gender,
             area: area,
             pay: pay,
-            writer: writer,
             workStart: workStart,
             workEnd: workEnd,
             writerEmail: writerEmail,

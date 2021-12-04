@@ -1,105 +1,104 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="myPage.css">
-    <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
-    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="./myPage.js"></script>
-    <title>마이페이지</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet">
+        <link rel="stylesheet" href="myPage.css">
+        <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <title>마이페이지</title>
+    </head>
 
-<body>
-    <div id="page">
-        <span class="slide">
-            <div></div>
-            <h1>마이페이지</h1>
-            <a href="#" onclick="openSlideMenu()">
-                <i class="fas fa-bars" id="menuIcon"></i>
-            </a>
-        </span>
+    <body>
+        <div id="page">
+            <span class="slide">
+                <div></div>
+                <h1>마이페이지</h1>
+                <a href="#" onclick="openSlideMenu()">
+                    <i class="fas fa-bars" id="menuIcon"></i>
+                </a>
+            </span>
 
-        <div id="menu" class="nav">
-            <a href="#" class="close" onclick="closeSlideMenu()">
-                <span class="material-icons">close</span>
-            </a>
-            <a href="#"><label class="homeUserName"></label>님</a>
-            <a href="myPage.html">마이페이지</a>
-            <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
-            <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
-            <br>
-            <a id="logoutBtn" href="#">Logout</a>
-            <a href="#"><i class="far fa-question-circle"></i></a>
-        </div>
-    </div>
-
-    <div id="content">
-        <div id="userProfile">
-            <div id="userPhoto">
-
-            </div>
-            <div id="userInfo">
-                <div id="userEmail">
-                    <label><b>이메일</b></label>
-                    <label>aaa@naver.com</label>
-                </div>
-                
-                <div id="userName">
-                    <label><b>이름</b></label>
-                    <label>000</label>
-                </div>
-                
-                <div id="userBirthDate">
-                    <label><b>생년월일</b></label>
-                    <label>00.00.00</label>
-                </div>
-                
-                <a id="modifyUserInfoBtn" href="../modifyUserInfoPage/modifyUserInfoPage.html">회원정보변경</a>
+            <div id="menu" class="nav">
+                <a href="#" class="close" onclick="closeSlideMenu()">
+                    <span class="material-icons">close</span>
+                </a>
+                <a href="#">
+                    <label class="homeUserName"></label>님</a>
+                <a href="myPage.html">마이페이지</a>
+                <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+                <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+                <br>
+                <a id="logoutBtn" href="#">Logout</a>
+                <a href="#">
+                    <i class="far fa-question-circle"></i>
+                </a>
             </div>
         </div>
 
+        <div id="content">
+            <div id="userProfile">
+                <div id="userPhoto"></div>
+                <div id="userInfo">
+                    <div id="userEmail">
+                        <label>
+                            <b>이메일</b>
+                        </label>
+                        <label>aaa@naver.com</label>
+                    </div>
 
-        <div id="writePostListBox" class="box">
-            <p class="label">작성한 게시글</p>
-            <div id="writePostList">
-                <div id="writePost" class="object">
+                    <div id="userName">
+                        <label>
+                            <b>이름</b>
+                        </label>
+                        <label>000</label>
+                    </div>
 
+                    <div id="userBirthDate">
+                        <label>
+                            <b>생년월일</b>
+                        </label>
+                        <label>00.00.00</label>
+                    </div>
+
+                    <a id="modifyUserInfoBtn" href="../modifyUserInfoPage/modifyUserInfoPage.html">회원정보변경</a>
+                </div>
+            </div>
+
+            <div id="writePostListBox" class="box">
+                <p class="label">작성한 게시글</p>
+                <div id="writePostList">
+                    <div id="writePost" class="object"></div>
+                </div>
+            </div>
+            <div id="applyPostListBox" class="box">
+                <p class="label">지원한 게시글</p>
+                <div id="applyPostList">
+                    <div id="writePost" class="object"></div>
+                </div>
+            </div>
+            <div id="applicantListBox" class="box">
+                <p class="label">지원자 목록</p>
+                <div id="applicantList">
+                    <div id="applicant" class="object"></div>
                 </div>
             </div>
         </div>
-        <div id="applyPostListBox" class="box">
-            <p class="label">지원한 게시글</p>
-            <div id="applyPostList">
-                <div id="writePost" class="object">
 
-                </div>
-            </div>
-        </div>
-        <div id="applicantListBox" class="box">
-            <p class="label">지원자 목록</p>
-            <div id="applicantList">
-                <div id="applicant" class="object">
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- update the version number as needed -->
-    <script src="/__/firebase/8.6.5/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script src="/__/firebase/8.6.5/firebase-firestore.js"></script>
-    <script src="/__/firebase/8.6.5/firebase-storage.js"></script>
-
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
-    </script>
-</body>
+        <!-- update the version number as needed -->
+        <script src="../__/firebase/8.6.5/firebase-app.js"></script>
+        <!-- include only the Firebase features as you need -->
+        <script src="../__/firebase/8.6.5/firebase-firestore.js"></script>
+        <script src="../__/firebase/8.6.5/firebase-storage.js"></script>
+        <script type="module">
+            import {initializeApp} from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+        </script>
+        <script src="./myPage.js"></script>
+    </body>
 
 </html>

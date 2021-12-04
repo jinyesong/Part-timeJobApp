@@ -16,7 +16,26 @@ const db = firebase.firestore();
     })
   });
 
-
+$(document).ready(function(){
+  var id = sessionStorage.getItem("email");
+  db.collection('customer').doc(id).get().then((doc)=>{
+    console.log(doc.data().data());
+    var name = doc.data().name;
+    var birth = doc.data().birth;
+    var phoneNumber = doc.data().phoneNumber;
+    var gender = doc.data().gender;
+    console.log(name, birth, phoneNumber);
+    $("#userName").val(name);
+    $("#userBirthday").val(birth);
+    $("#phoneNumber").val(phoneNumber);
+    if(getnder == "man"){
+      $("input:radio[name=userGender][value='man']").attr('checked', true);
+    }
+    else if(gender == "woman"){
+      $("input:radio[name=userGender][value='woman']").attr('checked', true);
+    }
+    });
+});
 
   /* 사이드바 */
 function openSlideMenu(){
