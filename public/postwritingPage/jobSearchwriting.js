@@ -71,7 +71,6 @@ $("#saveBtn").click(function () {
             content: content,
             gender: gender,
             area: area,
-            period: period,
             pay: pay,
             writer: writer,
             workStart: workStart,

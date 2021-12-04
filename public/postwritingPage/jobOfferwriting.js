@@ -99,7 +99,6 @@ $("#saveBtn").click(function () {
         var content = $("#contentbox").val();
         var gender = $("input[name='gender']:checked").val();
         var area = $("#area option:selected").val();
-        var area = $("#area option:selected").val();
         var pay = $("#pay").val();
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
@@ -112,7 +111,6 @@ $("#saveBtn").click(function () {
                 content: content,
                 gender: gender,
                 area: area,
-                period: period,
                 pay: pay,
                 writer: writer,
                 workStart: workStart,
@@ -147,7 +145,6 @@ $("#saveBtn").click(function () {
                     content: content,
                     gender: gender,
                     area: area,
-                    period: period,
                     pay: pay,
                     writer: writer,
                     workStart: workStart,
