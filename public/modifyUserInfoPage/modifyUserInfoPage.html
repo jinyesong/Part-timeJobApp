@@ -38,27 +38,27 @@
 
     <div id="content">
         <div id="userProfile">
-            <div id="userPhoto">
-                <img src="Sample_User_Icon.png" height="102px">
+            <div id="userPhotobox">
+                <img src="Sample_User_Icon.png" id="userPhoto" height="102px">
             </div>
             <div class="filebox">
                 <input class="upload-name" value="첨부파일" placeholder="첨부파일">
-                <label for="file">파일찾기</label>
-                <input type="file" id="file">
+                <label for="profile">파일찾기</label>
+                <input type="file" id="profile">
             </div>
         </div>
 
         <div id="userInfobox">
-            <div id="userName" class="userInfo">
+            <div id="userNamebox" class="userInfo">
                 <label>이름</label>
-                <input class="inputBar" type="text" name="userName" required />
+                <input class="inputBar" type="text" name="userName" id="userName" required />
             </div>
-            <div id="userGender" class="userInfo">
+            <div id="userGenderbox" class="userInfo">
                 <label>성별</label>
                 <input type="radio" name="userGender" value="man" checked />남
                 <input type="radio" name="userGender" value="woman" />여
             </div>
-            <div id="userAddr" class="userInfo">
+            <div id="userAddrbox" class="userInfo">
                 <label>주소</label>
                 <select name="area" id="area" size="1">
                     <option value="서울">서울</option>
@@ -82,20 +82,22 @@
                 </select>
             </div>
             <div>
-                <div id="userBirthDate" class="userInfo">
+                <div id="userBirthDatebox" class="userInfo">
                     <label>생년월일</label>
-                    <input class="inputBar" type="number" name="userBirthDay" placeholder="6자리 숫자 입력" required />
+                    <input class="inputBar" type="number" name="userBirthDay" id="userBirthDay" required />
                 </div>
-                <div id="userPhoneNumber" class="userInfo">
+                <div id="userPhoneNumberbox" class="userInfo">
                     <label>전화번호</label>
-                    <input class="inputBar" type="number" name="phoneNumber" placeholder="-을 제외한 11자리 숫자 입력" required />
+                    <input class="inputBar" type="number" name="phoneNumber" id="phoneNumber" required />
                 </div>
-                <div id="userResume" class="userInfo">
+                <div id="userResumebox" class="userInfo">
                     <label>이력서</label>
+                    <a href="" id="prev_resume" target="_blank">이전 이력서</a>
                     <input type="file" name="resume" id="resume" class="inputBar" />
                 </div>
-                <div id="userBusinessLicense" class="userInfo">
+                <div id="userBusinessLicensebox" class="userInfo">
                     <label>사업자등록증</label>
+                    <a href="" id="prev_businessLicense" target="_blank">이전 사업자등록증</a>
                     <input type="file" name="businessLicense" id="businessLicense" class="inputBar" />
                 </div>
             </div>
