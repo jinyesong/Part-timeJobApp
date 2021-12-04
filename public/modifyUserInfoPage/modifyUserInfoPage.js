@@ -18,23 +18,37 @@ const db = firebase.firestore();
 
 $(document).ready(function(){
   var id = sessionStorage.getItem("email");
+  console.log(id);
   db.collection('customer').doc(id).get().then((doc)=>{
-    console.log(doc.data().data());
+    console.log(doc.data());
     var name = doc.data().name;
     var birth = doc.data().birth;
     var phoneNumber = doc.data().phoneNumber;
     var gender = doc.data().gender;
+    var area = doc.data().area;
     console.log(name, birth, phoneNumber);
     $("#userName").val(name);
-    $("#userBirthday").val(birth);
+    $("#userBirthDay").val(birth);
     $("#phoneNumber").val(phoneNumber);
-    if(getnder == "man"){
+    $("#area").val(area).prop("selected", true);
+    if(gender == "man"){
       $("input:radio[name=userGender][value='man']").attr('checked', true);
     }
     else if(gender == "woman"){
       $("input:radio[name=userGender][value='woman']").attr('checked', true);
     }
-    });
+    if(typeof doc.data().resume != "undefined"){
+      $("#prev_resume").attr("href",doc.data().resume);
+    }else{
+      $("#prev_resume").attr("href", false);
+    }
+    if(typeof doc.data().buisinessLicense != "undefined"){
+      $("#prev_buisinessLicense").attr("href",doc.data().buisinessLicense);
+    }else{
+      console.log("없음");
+      $("#prev_buisinessLicense").attr("href", false);
+    }
+  });
 });
 
   /* 사이드바 */
