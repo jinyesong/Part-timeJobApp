@@ -26,7 +26,7 @@ body {
   color: #f4f2ec;
   margin-top: 15px;
 }
-#titlebox {
+#postTitle {
   width: 90%;
   margin-top: 10px;
 
@@ -34,7 +34,7 @@ body {
   margin: 0px;
   margin-bottom: 10px;
 }
-#contentbox {
+#postContent {
   width: 90%;
   height: 250px;
 

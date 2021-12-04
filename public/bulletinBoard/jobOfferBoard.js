@@ -31,6 +31,7 @@ function openSlideMenu(){
     sessionStorage.removeItem("name");
     sessionStorage.removeItem("email");
     location.href = "../index.html";
+    sessionStorage.removeItem("postId");
   });
 
 // 사이드바 끝
