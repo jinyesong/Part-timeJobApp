@@ -103,9 +103,10 @@ $("#saveBtn").click(function() {
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
         var postEnd = $("#postEnd").val();
+        var payboost = $(".payboost:checked").val();
         var writerEmail = sessionStorage.getItem("email");
         var writerName = sessionStorage.getItem("name");
-        if($(".payboost:checked").val() == "false"){
+        if(payboost == "false"){
             var data = {
                 title: title,
                 content: content,
@@ -115,6 +116,7 @@ $("#saveBtn").click(function() {
                 workStart: workStart,
                 workEnd: workEnd,
                 postEnd: postEnd,
+                payboost: payboost,
                 writerEmail: writerEmail,
                 writerName: writerName
             }
@@ -135,7 +137,7 @@ $("#saveBtn").click(function() {
                 window.location.href="../bulletinBoard/jobOfferBoard.html";
             });
         }
-        else if($(".payboost:checked").val() == "true"){
+        else if(payboost == "true"){
             if(isDeadline() && isIncreaseRate()){
                 var increaseRate = $("#increaseRate").val();
                 var deadline = $("#deadline").val();
@@ -148,6 +150,7 @@ $("#saveBtn").click(function() {
                     workStart: workStart,
                     workEnd: workEnd,
                     postEnd: postEnd,
+                    payboost: payboost,
                     writerEmail: writerEmail,
                     writerName: writerName,
                     increaseRate: increaseRate,
