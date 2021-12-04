@@ -11,6 +11,7 @@ function openSlideMenu(){
   $("#logoutBtn").click(function(){
     sessionStorage.removeItem("name");
     sessionStorage.removeItem("email");
+    sessionStorage.removeItem("postId");
     location.href = "../index.html";
   });
 
@@ -19,7 +20,7 @@ function openSlideMenu(){
 
 // 게시글 내용 출력
 var postId = sessionStorage.getItem("postId");
-sessionStorage.removeItem("postId");
+//sessionStorage.removeItem("postId");
 
 var firebaseConfig = {
   apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
@@ -45,14 +46,21 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     var gender = doc.data().gender;
     var payBoost = doc.data().payBoost;
 
+    $("#postTitle").html(title);
+    $("#postContent").html(content);
+    $("#postOtherInfo").html("작성자: "+writer+"<br>근무일: "+workStart+" ~ "+workEnd+"<br>모집 마감일: "+postEnd+"<br>근무지역: "+area+"<br>시급: "+pay+"<br>선호성별: "+gender);
+
     if(writer == sessionStorage.getItem("name")){
-      // document.getElementById("modifyBtn").setAttribute("disabled", "false");
       $("#modifyBtn").attr("disabled", false);
       $("#removeBtn").attr("disabled", false);
+      $("#modifyBtn").css("color", "white");
+      $("#removeBtn").css("color", "white");
     }
     else{
       $("#modifyBtn").attr("disabled", true);
       $("#removeBtn").attr("disabled", true);
+      $("#modifyBtn").css("color", "gray");
+      $("#removeBtn").css("color", "gray");
     }
 
     if(payBoost = true){
@@ -64,4 +72,14 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
 
 $("#backToListBtn").click(function(){
   location.href = "../bulletinBoard/jobOfferBoard.html";
+});
+
+$("#removeBtn").click(function(){
+  var deleteConfirm = confirm("게시글을 삭제하시겠습니까?");
+  if(deleteConfirm == true){
+    db.collection('jobOfferPost').doc(postId).delete().then(()=>{
+      alert("게시글이 삭제되었습니다");
+      location.href = "../bulletinBoard/jobOfferBoard.html";
+    })
+  }
 });
