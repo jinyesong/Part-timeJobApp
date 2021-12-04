@@ -113,6 +113,7 @@ body {
   border: 1px red solid;
   height: 20px;
   width: 100%;
+  text-align: left;
 }
 
 #userName p {

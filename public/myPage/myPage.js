@@ -34,6 +34,9 @@ $(document).ready(function () {
           $("#name").text(name);
           $("#birthday").text(birth);
           $("#email").text(id);
+          if(typeof doc.data().profile != "undefined"){
+            $("#photo").attr("src", doc.data().profile);
+          }
       });
 });
 db.collection('jobOfferPost').get().then((snapshot)=>{
@@ -41,7 +44,17 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
     var writer_id = doc.data().writerEmail;
     if(id == writer_id){
       var title = doc.data().title;
-      var post = `<div id='${doc.id}' class='object writePost'>제목: ${title}</div>`
+      var post = `<div id='${doc.id}' class='object writePost jobOfferPost'><b>구인</b> ${title}</div>`
+      $("#writePostList").append(post);
+    } 
+  })
+});
+db.collection('jobSearchPost').get().then((snapshot)=>{
+  snapshot.forEach((doc)=>{
+    var writer_id = doc.data().writerEmail;
+    if(id == writer_id){
+      var title = doc.data().title;
+      var post = `<div id='${doc.id}' class='object writePost jobSearchPost'><b>구직</b> ${title}</div>`
       $("#writePostList").append(post);
     } 
   })
@@ -50,7 +63,6 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
 //게시글 클릭 이벤트
 var targetId;
 $("#writePostList").click(function(event) {
-  console.log("click!!");
   if(event.target.tagName == "DIV"){
     targetId = event.target.id;
   }
@@ -58,7 +70,12 @@ $("#writePostList").click(function(event) {
     targetId = event.target.parentElement.id;
   }
   sessionStorage.setItem("postId", targetId);
-  location.href = "../showPostPage/showJobOffer.html";
+  if(event.target.classList.contains("jobOfferPost")){
+    location.href = "../showPostPage/showJobOffer.html";
+  }
+  else if(event.target.classList.contains("jobSearchPost")){
+    location.href = "../showPostPage/showJobSearch.html";
+  }
 });
 
   /* 사이드바 */
