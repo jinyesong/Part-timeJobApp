@@ -15,31 +15,33 @@
 <body>
   <div id="page">
     <span class="slide">
-      <div></div>
-      <h1>구인게시판</h1>
-      <a href="#" onclick="openSlideMenu()">
-        <i class="fas fa-bars"></i>
-      </a>
+        <div></div>
+        <h2>구인게시판</h2>
+        <a href="#" onclick="openSlideMenu()">
+            <i class="fas fa-bars" id="menuIcon"></i> 
+        </a>
     </span>
 
     <div id="menu" class="nav">
-      <a href="#" class="close" onclick="closeSlideMenu()">
-        <span class="material-icons">close</span>
-      </a>
-      <a href="#">000님</a>
-      <a href="../myPage/myPage.html">마이페이지</a>
-      <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
-      <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
-      <br>
-      <a href="#">Logout</a>
-      <a href="#"><i class="far fa-question-circle"></i></a>
+        <a href="#" class="close" onclick="closeSlideMenu()">
+            <span class="material-icons">close</span>
+        </a>
+        <a href="#"><label class="homeUserName"></label>님</a>
+        <a href="../myPage/myPage.html">마이페이지</a>
+        <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+        <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+        <br>
+        <a id="logoutBtn">Logout</a>
+        <a href="#"><i class="far fa-question-circle"></i></a>
     </div>
-  </div>
+</div>
 
 
+
+<div id="content">
   <div class="writingContainer">
-    <label>게시글</label>
-    <button id="saveBtn">저장</button><br>
+    <label id=postLabel><b>구인게시글</b></label>
+    
     <input id="titlebox" type="text" placeholder="제목"><br>
     <input id="contentbox" type="text" placeholder="본문"><br>
     성별 <input type="radio" name="gender" value="both"  checked> 상관없음
@@ -77,7 +79,7 @@
       <input type="text" id="increaseRate" name="increaseRate" disabled><br>
       적용 일 : 마감 D-<input type="text" id="deadline" name="deadline" disabled>
     </div>
-
+    <button id="saveBtn">저장</button><br>
   </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
