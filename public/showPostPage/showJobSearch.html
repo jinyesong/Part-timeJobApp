@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="showPost.css">
     <title>구직게시글</title>
 </head>
+
 <body>
     <div id="page">
         <span class="slide">
             <div></div>
             <h2>구직게시판</h2>
             <a href="#" onclick="openSlideMenu()">
-                <i class="fas fa-bars" id="menuIcon"></i> 
+                <i class="fas fa-bars" id="menuIcon"></i>
             </a>
         </span>
 
@@ -32,17 +34,26 @@
         </div>
     </div>
 
-    <div id="postContainer">
-        <label>   나는야 제목    </label> <i class="fas fa-comments"></i> <br>
-        <div id="postContent"> 여기는 본문</div>
-        <div>여기는 다른 정보들 불러올거야</div>
-        <button id="applyBtn">근로제의하기</button>
+    <div id="content">
+        <div id="postContainer">
+            <div id=postTitle>
+                <label><b> 나는야 제목 </b></label>
+                <i class="fas fa-comments"></i>
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div id="postContent"> 여기는 본문</div>
+            <div id="postOtherInfo">여기는 다른 정보들 불러올거야</div>
+            <button id="offerBtn">근로제의하기</button>
+        </div>
         <div id="btnContainer">
             <button>수정</button>
             <button>삭제</button>
-            <button>목록</button>
+            <button type="button" onclick="location.href='../bulletinBoard/jobSearchBoard.html'">목록</button>
         </div>
     </div>
+
+
+
 
     <!-- update the version number as needed -->
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
@@ -55,7 +66,8 @@
     </script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script src="showJobSearch.js"></script>
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="showJobOffer.js"></script>
 </body>
+
 </html>
