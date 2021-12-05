@@ -105,12 +105,14 @@ $("#applyBtn").click(function(){
       if(typeof doc.data().applicantList == "undefined"){
         db.collection('jobOfferPost').doc(postId).update({applicantList: [sessionStorage.getItem("email")]}).then((result)=>{
           alert("지원되었습니다");
+          location.href = "./showJobOffer.html";
         });
       }else{
         const arr = doc.data().applicantList;
         arr.push(sessionStorage.getItem("email"));
         db.collection('jobOfferPost').doc(postId).update({applicantList: arr}).then((result)=>{
           alert("지원되었습니다");
+          location.href = "./showJobOffer.html";
         });
       }
     });
