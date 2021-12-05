@@ -30,18 +30,39 @@ body {
   width: 100%;
   margin: 20px, 0;
 }
-button {
+.menu_btn {
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: 10px #fff;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+#sort_btn {
   background-color: #be2623;
   color: #f4f2ec;
   border: 10px #fff;
   cursor: pointer;
   width: 90px;
-  height: 30px;
-  text-align: center;
+  padding: 7px 3px 6px 6px;
   margin-bottom: 10px;
-  font-size: 15px;
+
+  font-size: 14.5px;
   border-radius: 6px;
 }
+#sort_btn select {
+  margin-left: 4px;
+  width: 80px;
+  background-color: #be2623;
+  color: #f4f2ec;
+  border: #a3966d 1px solid;
+  border-radius: 2px;
+}
+
 #filter {
   margin-right: 3px;
 }

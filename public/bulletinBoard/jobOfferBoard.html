@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,16 +10,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>구인게시판</title>
 </head>
+
 <body>
 
     <div id="page">
         <span class="slide">
             <span id="header">
-                <a href="javascript:history.back();" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+                <a href="javascript:history.back();" class="backBtn"><i id="backIcon"
+                        class="fas fa-chevron-left"></i></a>
             </span>
             <h2>구인게시판</h2>
             <a href="#" onclick="openSlideMenu()">
-                <i class="fas fa-bars" id="menuIcon"></i> 
+                <i class="fas fa-bars" id="menuIcon"></i>
             </a>
         </span>
 
@@ -35,15 +38,22 @@
             <a href="#"><i class="far fa-question-circle"></i></a>
         </div>
     </div>
-    
-    
+
+
     <div id="content">
         <div id="menubar">
             <button class="menu_btn" id="filter">필터</button>
-            <button class="menu_btn" id="sort">정렬</button>
+            <span>
+                <select id="sort_btn" name="sort">
+                    <option disabled selected>정렬</option>
+                    <option value="latestOrder" class="optionC">최신순</option>
+                    <option value="dueDayOrder" class="optionC">마감일순</option>
+                    <option value="payOrder" class="optionC">급여순</option>
+                </select>
+            </span>
             <button class="menu_btn" id="write">글쓰기</button>
         </div>
-        
+
         <div id="postList">
         </div>
     </div>
@@ -52,38 +62,39 @@
         <div class="modal_content">
             <h3>FILTER</h3>
             <div>
-                성별<input type="radio" name="gender" id="no_gender" value="both" checked> 상관없음 
+                성별<input type="radio" name="gender" id="no_gender" value="both" checked> 상관없음
                 <input type="radio" name="gender" value="man"> 남
                 <input type="radio" name="gender" value="woman"> 여 <br>
-            지역 <select name="area" id="area" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                <option name="area" value="No" id="no_area">해당없음</option>
-                <option name="area" value="서울">서울</option>
-                <option name="area" value="경기">경기</option>
-                <option name="area" value="인천">인천</option>
-                <option name="area" value="강원">강원</option>
-                <option name="area" value="대전">대전</option>
-                <option name="area" value="세종">세종</option>
-                <option name="area" value="충남">충남</option>
-                <option name="area" value="충북">충북</option>
-                <option name="area" value="부산">부산</option>
-                <option name="area" value="울산">울산</option>
-                <option name="area" value="경남">경남</option>
-                <option name="area" value="경북">경북</option>
-                <option name="area" value="대구">대구</option>
-                <option name="area" value="광주">광주</option>
-                <option name="area" value="전남">전남</option>
-                <option name="area" value="전북">전북</option>
-                <option name="area" value="제주">제주</option>
-                <option name="area" value="전국">전국</option>
-            </select><br>
-             기간 <select name="period" id="period">
-                <option value="no" id="no_period">해당없음</option>
-                <option value="day">하루</option>
-        <option value="week">일주일 이내</option>
-        <option value="month">한달 이내</option>
-        <option value="monthOver">한달 이상</option>
-      </select><br>
-      시급 <input type="text" value="8720" id="pay">원<br>
+                지역 <select name="area" id="area" onfocus='this.size=5;' onblur='this.size=1;'
+                    onchange='this.size=1; this.blur();'>
+                    <option name="area" value="No" id="no_area">해당없음</option>
+                    <option name="area" value="서울">서울</option>
+                    <option name="area" value="경기">경기</option>
+                    <option name="area" value="인천">인천</option>
+                    <option name="area" value="강원">강원</option>
+                    <option name="area" value="대전">대전</option>
+                    <option name="area" value="세종">세종</option>
+                    <option name="area" value="충남">충남</option>
+                    <option name="area" value="충북">충북</option>
+                    <option name="area" value="부산">부산</option>
+                    <option name="area" value="울산">울산</option>
+                    <option name="area" value="경남">경남</option>
+                    <option name="area" value="경북">경북</option>
+                    <option name="area" value="대구">대구</option>
+                    <option name="area" value="광주">광주</option>
+                    <option name="area" value="전남">전남</option>
+                    <option name="area" value="전북">전북</option>
+                    <option name="area" value="제주">제주</option>
+                    <option name="area" value="전국">전국</option>
+                </select><br>
+                기간 <select name="period" id="period">
+                    <option value="no" id="no_period">해당없음</option>
+                    <option value="day">하루</option>
+                    <option value="week">일주일 이내</option>
+                    <option value="month">한달 이내</option>
+                    <option value="monthOver">한달 이상</option>
+                </select><br>
+                시급 <input type="text" value="8720" id="pay">원<br>
             </div>
             <button id="confirm">확인</button>
             <button id="reset">초기화</button>
@@ -101,7 +112,8 @@
     </script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="./jobOfferBoard.js"></script>
 </body>
+
 </html>
