@@ -14,7 +14,7 @@ body {
   padding-right: 20px;
   padding-bottom: 0px;
 }
-#header svg{
+#header svg {
   color: #f4f2ec;
 }
 #backIcon {
@@ -96,41 +96,43 @@ h2 {
 }
 /* 게시글 조회 */
 #postTitleContainer {
-  /* border: red 1px solid; */
   width: 90%;
-  height: 30px;
+  height: auto;
   margin-left: auto;
   margin-right: auto;
   font-size: 17px;
   margin-top: 10px;
   margin-bottom: 5px;
+  overflow: hidden;
 }
-#postTitle{
+#postTitle {
   float: left;
   width: 70%;
-  height: 100%;
+  height: auto;
   text-align: left;
 }
 #postTitleContainer svg {
   float: right;
   width: 12%;
-  height: 100%;
+  height: 30px;
   margin-left: 5px;
 }
 
 #postContent {
   width: 90%;
   height: 250px;
-  margin-bottom: 30px;
   font-size: 15px;
   border: 1px solid black;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
   text-align: start;
+  overflow: scroll;
 }
 #postContainer {
   text-align: center;
+  flex-direction: column;
+  position: relative;
 }
 #applyBtn {
   background-color: #be2623;
@@ -175,8 +177,9 @@ h2 {
 #postOtherInfo {
   width: 90%;
   height: auto;
-  border: red solid 1px;
+
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 7px;
+  margin-bottom: 10px;
+  text-align: left;
 }
