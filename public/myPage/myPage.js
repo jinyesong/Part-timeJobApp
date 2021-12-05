@@ -18,7 +18,6 @@ const db = firebase.firestore();
   });
 var id = sessionStorage.getItem("email");
 
-$(document).ready(function () {
   db
       .collection('customer')
       .doc(id)
@@ -38,7 +37,7 @@ $(document).ready(function () {
             $("#photo").attr("src", doc.data().profile);
           }
       });
-});
+      
 db.collection('jobOfferPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
     var writer_id = doc.data().writerEmail;
