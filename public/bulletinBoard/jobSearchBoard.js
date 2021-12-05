@@ -72,3 +72,45 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
       document.getElementById("postList").appendChild(Div);
   })
 });
+
+// 필터링
+$("#confirm").click(function(){
+  var gender = $("input:radio[name='gender']:checked").val();
+  var area = $("#area option:selected").val();
+  var period = $("#period option:selected").val();
+  var periodList = {"no": 0 , "day":1, "week":2,"month":3, "monthOver":4}
+  var pay = $("#pay").val();
+  db.collection('jobSearchPost')
+    .where('gender', "==", gender)
+    .get().then((snapshot)=>{
+      $("#postList").children().remove();
+      snapshot.forEach((doc)=>{
+        var title = doc.data().title;
+        var writer = doc.data().writerName;
+        var postEnd = doc.data().postEnd;
+        var workStart = doc.data().workStart;
+        var workEnd = doc.data().workEnd;
+        var workStartArr = workStart.split("-");
+        var workEndArr = workEnd.split("-");
+        var strDate = new Date(workStartArr[0], workStartArr[1], workStartArr[2]);
+        var endDate = new Date(workEndArr[0], workEndArr[1], workEndArr[2]);
+        var time = endDate.getTime() -strDate.getTime();
+        var day = time/(1000*60*60*24);
+        if((periodList[period] == 0) | (periodList[period] == 1 && day <= 1) | (periodList[period] == 2 && day > 1 && day <=7) |
+        (periodList[period] == 3 && day > 7 && day <=30) | (periodList[period] == 4 && day > 30)){
+          if((area == "No") | area == doc.data().area){
+            console.log(doc.data().pay);
+            if(Number(pay) <= Number(doc.data().pay)){
+              var post = `<div class='post' id=${doc.id}>
+        <label class='postTitle'>${title}</label><br>
+        <label class='postWriter'>${writer}</label><br>
+        <label class='postEnd'>${postEnd}</label><br>
+        </div>`
+        $('#postList').append(post);
+            } 
+          }
+        }
+      });
+      
+  });
+});

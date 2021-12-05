@@ -50,9 +50,9 @@
         <div class="modal_content">
             <h3>FILTER</h3>
             <div>
-                성별<input type="radio" name="gender" id="no_gender" checked> 해당없음 
-                <input type="radio" name="gender"> 남
-                <input type="radio" name="gender"> 여 <br>
+                성별<input type="radio" name="gender" id="no_gender" value="both" checked> 해당없음 
+                <input type="radio" name="gender" value="man"> 남
+                <input type="radio" name="gender" value="woman"> 여 <br>
             지역 <select name="area" id="area" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                 <option name="area" value="No" id="no_area">해당없음</option>
                 <option name="area" value="Seoul">서울</option>
@@ -75,13 +75,13 @@
                 <option name="area" value="Nationwide">전국</option>
             </select><br>
              기간 <select name="period" id="period">
-                <option value="No" id="no_period">해당없음</option>
+                <option value="no" id="no_period">해당없음</option>
                 <option value="day">하루</option>
         <option value="week">일주일</option>
         <option value="month">한달</option>
         <option value="monthOver">한달 이상</option>
       </select><br>
-      시급 <input type="text" value="최저시급" id="pay"><br>
+      시급 <input type="text" value="8720" id="pay"><br>
             </div>
             <button id="confirm">확인</button>
             <button id="reset">초기화</button>
