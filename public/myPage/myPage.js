@@ -45,6 +45,14 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object writePost jobOfferPost'><b>구인</b> ${title}</div>`
       $("#writePostList").append(post);
+      if(doc.data().applicantList){
+        for(i in doc.data().applicantList){
+          var applicant = doc.data().applicantList[i];
+          var applyerpost = `<div id='${doc.id}' class='object applicant jobOfferPost'><b>${applicant}</b> ${title}</div>`
+          $("#writePostList").append(applyerpost);
+        }
+        
+      }
     } 
   })
 });

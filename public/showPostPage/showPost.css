@@ -143,6 +143,18 @@ h2 {
   font-size: 17px;
   padding: 5px;
 }
+#applyCancelBtn{
+  background-color: #f2b531;
+  color: #f4f2ec;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 17px;
+  padding: 5px;
+}
 #offerBtn {
   background-color: #be2623;
   color: #f4f2ec;
