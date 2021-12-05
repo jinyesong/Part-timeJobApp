@@ -54,12 +54,23 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
       $("#removeBtn").attr("disabled", false);
       $("#modifyBtn").css("color", "white");
       $("#removeBtn").css("color", "white");
+      $("#applyBtn").attr("disabled", true);
+      $("#applyBtn").css("background-color", "gray");
     }
     else{
       $("#modifyBtn").attr("disabled", true);
       $("#removeBtn").attr("disabled", true);
       $("#modifyBtn").css("color", "gray");
       $("#removeBtn").css("color", "gray");
+      $("#applyBtn").attr("disabled", false);
+      $("#applyBtn").css("background-color", "red");
+    }
+    
+    if(doc.data().applicantList){
+      if(doc.data().applicantList.includes(sessionStorage.getItem("email"))){
+        $("#applyBtn").attr("disabled", true);
+        $("#applyBtn").css("background-color", "gray");
+      }
     }
 
     if(payBoost = true){
@@ -85,4 +96,26 @@ $("#removeBtn").click(function(){
 
 $("#modifyBtn").click(function(){
   location.href = "../modifyPostPage/modifyJobOfferPostPage.html";
+});
+
+//지원하기 버튼 클릭
+$("#applyBtn").click(function(){
+  if(confirm("지원하시겠습니까?") == true){
+    db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
+      if(typeof doc.data().applicantList == "undefined"){
+        db.collection('jobOfferPost').doc(postId).update({applicantList: [sessionStorage.getItem("email")]}).then((result)=>{
+          alert("지원되었습니다");
+        });
+      }else{
+        const arr = doc.data().applicantList;
+        arr.push(sessionStorage.getItem("email"));
+        db.collection('jobOfferPost').doc(postId).update({applicantList: arr}).then((result)=>{
+          alert("지원되었습니다");
+        });
+      }
+    });
+    
+  }else{
+    return false;
+  }
 });
