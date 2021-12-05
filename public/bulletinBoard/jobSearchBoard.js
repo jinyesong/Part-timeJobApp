@@ -73,6 +73,19 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
   })
 });
 
+//게시글 클릭 이벤트
+var targetId;
+$("#postList").click(function(event) {
+  if(event.target.tagName == "DIV"){
+    targetId = event.target.id;
+  }
+  else{
+    targetId = event.target.parentElement.id;
+  }
+  sessionStorage.setItem("postId", targetId);
+  location.href = "../showPostPage/showJobSearch.html";
+});
+
 // 필터링
 $("#confirm").click(function(){
   var gender = $("input:radio[name='gender']:checked").val();
