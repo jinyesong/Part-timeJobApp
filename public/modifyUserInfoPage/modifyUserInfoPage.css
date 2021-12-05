@@ -101,7 +101,7 @@ body {
   margin-right: 0;
   float: left;
 }
-#userInfobox {
+/* #userInfobox {
   border: 1px black solid;
   width: 318px;
   height: 340px;
@@ -112,30 +112,41 @@ body {
 }
 #userInfobox div {
   margin-bottom: 5px;
-}
+} */
 
 .inputBar {
   width: 180px;
   margin-left: 20px;
 }
-
+/**첨부파일**/
 .filebox {
   float: right;
   width: 190px;
   height: 102px;
-  float: right;
   text-align: left;
 }
 .filebox label {
   display: inline-block;
-  padding: 1px 2px;
-  color: #fff;
-  vertical-align: middle;
-  background-color: #999999;
+  padding: 1px 5px 2px 5px;
+  border-radius: 2px;
+  background-color: #dcdcdc;
   cursor: pointer;
-  height: 25px;
-  margin-left: 10px;
-  margin-top: 10px;
+  height: 18px;
+  margin-top: 8px;
+  font-size: 13px;
+  border: 1px #aaa solid;
+}
+/* named upload */
+.filebox .upload-name {
+  display: inline-block;
+  height: 20px;
+  font-size: 14px;
+  padding: 1px 1px;
+  vertical-align: middle;
+  background-color: #fff;
+  border: 1px solid dimgray;
+
+  margin-top: 30px;
 }
 
 .filebox input[type="file"] {
@@ -145,4 +156,66 @@ body {
   padding: 0;
   overflow: hidden;
   border: 0;
+}
+/**첨부파일끝**/
+
+#userInfobox {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 15px;
+}
+#userInfobox label {
+  margin-right: 5px;
+}
+
+.userInfo {
+  margin-bottom: 13px;
+}
+
+.userInfo a {
+  text-decoration: none;
+  font-size: 13px;
+  width: 60px;
+  background-color: #0e3746;
+  color: #f4f2ec;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 2px 4px 4px 3px;
+}
+
+.inputBar {
+  margin-left: 5px;
+  margin-top: 6px;
+}
+
+#userName {
+  width: 60px;
+}
+select {
+  margin-left: 5px;
+}
+#userBirthDay {
+  width: 100px;
+}
+#phoneNumber {
+  width: 100px;
+}
+
+#submit {
+  width: 50px;
+  height: 25px;
+  font-size: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #be2623;
+  border: none;
+  border-radius: 4px;
+  color: #f4f2ec;
+  margin-top: 5px;
+}
+
+#submitBox {
+  text-align: center;
 }
