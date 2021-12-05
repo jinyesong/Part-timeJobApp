@@ -51,12 +51,13 @@
   width: 100%;
 }
 
-h1 {
+h2 {
   margin: 0;
-  color: #ffffff;
+  color: #f4f2ec;
   height: 50px;
   margin-left: 15px;
-  font-size: 30px;
+  margin-top: 7px;
+  font-size: 27px;
 }
 
 /* 사이드바 끝*/
@@ -73,72 +74,40 @@ body {
   flex-direction: column;
 }
 
-#userProfile {
-  height: 100px;
-  width: 100%;
+#userPhoto {
+  margin-top: 25px;
   margin: 20px, 0;
   flex-direction: row;
   margin-bottom: 20px;
 }
-#userPhoto {
-  width: 130px;
-  height: 102px;
-  margin-right: 0;
-  float: left;
+#userPhoto img {
+  width: 150px;
+  height: 150px;
 }
-#userInfo {
-  width: 190px;
-  height: 102px;
-  float: right;
+
+#userInfobox {
+  width: 80%;
+
+  margin-left: auto;
+  margin-right: auto;
   text-align: left;
+  font-size: 15px;
 }
-#userInfo p {
-  margin: 0;
-  padding: 0;
-}
-
-.box {
-  height: 100px;
-  width: 100%;
-  margin: 20px, 0;
-  margin-bottom: 20px;
+#userInfobox b {
+  margin-right: 10px;
 }
 
-.label {
-  text-align: left;
-  margin-top: 0;
-  margin-bottom: 5px;
-}
-.object {
-  border: 1px red solid;
-  height: 20px;
-  width: 100%;
-}
-
-#userName p {
-  float: right;
-}
-
-#userEmail p {
-  float: right;
-}
-
-#userBirthDate p {
-  float: right;
-}
-#userBirthDate {
+.userInfo {
   margin-bottom: 10px;
 }
 
-#modifyUserInfoBtn {
-  border-radius: 3px;
-  margin-left: 38px;
-  background-color: #be2623;
-  color: #f4f2ec;
-  border: none;
-  cursor: pointer;
-  width: 96px;
-  text-align: center;
+.userInfo a {
   text-decoration: none;
-  padding: 1px;
+  font-size: 13px;
+  width: 60px;
+  background-color: #0e3746;
+  color: #f4f2ec;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 2px 4px 4px 3px;
 }

@@ -20,7 +20,6 @@ function openSlideMenu(){
 
 // 게시글 내용 출력
 var postId = sessionStorage.getItem("postId");
-//sessionStorage.removeItem("postId");
 
 var firebaseConfig = {
   apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
@@ -44,7 +43,7 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     var area = doc.data().area;
     var pay = doc.data().pay;
     var gender = doc.data().gender;
-    var payBoost = doc.data().payBoost;
+    var payBoost = doc.data().payboost;
 
     $("#postTitle").html(title);
     $("#postContent").html(content);
@@ -82,4 +81,8 @@ $("#removeBtn").click(function(){
       location.href = "../bulletinBoard/jobOfferBoard.html";
     })
   }
+});
+
+$("#modifyBtn").click(function(){
+  location.href = "../modifyPostPage/modifyJobOfferPostPage.html";
 });
