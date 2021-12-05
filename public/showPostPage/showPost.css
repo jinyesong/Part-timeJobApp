@@ -95,7 +95,7 @@ h2 {
   border: black solid 1px;
 }
 /* 게시글 조회 */
-#postTitle {
+#postTitleContainer {
   /* border: red 1px solid; */
   width: 90%;
   height: 30px;
@@ -105,13 +105,13 @@ h2 {
   margin-top: 10px;
   margin-bottom: 5px;
 }
-#postTitle label {
+#postTitle{
   float: left;
   width: 70%;
   height: 100%;
   text-align: left;
 }
-#postTitle svg {
+#postTitleContainer svg {
   float: right;
   width: 12%;
   height: 100%;
