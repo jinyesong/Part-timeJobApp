@@ -102,6 +102,45 @@ body {
   width: 70%;
 }
 
+.modal_content h3 {
+  background-color: #fefefe;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  width: 70%;
+}
+#modal_info {
+  text-align: left;
+  margin-bottom: 10px;
+}
+#modal_info #pay {
+  width: 60px;
+}
+#modal_info b {
+  margin-right: 5px;
+}
+.genderInfo {
+  margin-left: -6px;
+}
+#womanLabel {
+  margin-left: -1px;
+}
+
+.modal_content button {
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 60px;
+  background-color: #0e3746;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
 /* 사이드바 */
 .nav {
   height: 100%;
