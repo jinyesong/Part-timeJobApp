@@ -49,7 +49,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
         for(i in doc.data().applicantList){
           var applicant = doc.data().applicantList[i];
           var applyerpost = `<div id='${doc.id}' class='object applicant jobOfferPost'><b>${applicant}</b> ${title}</div>`
-          $("#writePostList").append(applyerpost);
+          $("#applicantList").append(applyerpost);
         }
         
       }
