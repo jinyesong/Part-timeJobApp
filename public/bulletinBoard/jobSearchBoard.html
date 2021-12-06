@@ -43,9 +43,7 @@
             <button class="menu_btn" id="filter">필터</button>
             <span>
                 <select id="sort_btn" name="sort">
-                    <option disabled selected>정렬</option>
-                    <option value="latestOrder" class="optionC">최신순</option>
-                    <option value="dueDayOrder" class="optionC">마감일순</option>
+                    <option value="latestOrder" class="optionC" selected>최신순</option>
                     <option value="payOrder" class="optionC">급여순</option>
                 </select>
             </span>
@@ -60,30 +58,29 @@
         <div class="modal_content">
             <h3>FILTER</h3>
             <div id="modal_info">
-                <b>성별</b><input type="radio" name="gender" id="no_gender" value="both" checked> <label class="genderInfo">상관없음</label>
-                <input type="radio" name="gender" value="man"> <label class="genderInfo">남</label>
-                <input type="radio" name="gender" value="woman"><label id="womanLabel">여</label> <br>
+                <b>성별</b><input type="radio" name="gender" id="no_gender" value="상관없음" checked> <label class="genderInfo">상관없음</label>
+                <input type="radio" name="gender" value="남"> <label class="genderInfo">남</label>
+                <input type="radio" name="gender" value="여"><label id="womanLabel">여</label> <br>
                 <b>지역</b> <select name="area" id="area" onfocus='this.size=5;' onblur='this.size=1;'
                     onchange='this.size=1; this.blur();'>
-                    <option name="area" value="No" id="no_area">해당없음</option>
-                    <option name="area" value="Seoul">서울</option>
-                    <option name="area" value="Gyeonggi">경기</option>
-                    <option name="area" value="Incheon">인천</option>
-                    <option name="area" value="Gangwon">강원</option>
-                    <option name="area" value="Daejeon">대전</option>
-                    <option name="area" value="Sejong">세종</option>
-                    <option name="area" value="Chungnam">충남</option>
-                    <option name="area" value="Chungbuk">충북</option>
-                    <option name="area" value="Busan">부산</option>
-                    <option name="area" value="Ulsan">울산</option>
-                    <option name="area" value="Gyeongnam">경남</option>
-                    <option name="area" value="Gyeongbuk">경북</option>
-                    <option name="area" value="Daegu">대구</option>
-                    <option name="area" value="Gwangju">광주</option>
-                    <option name="area" value="Jeonnam">전남</option>
-                    <option name="area" value="Jeonbuk">전북</option>
-                    <option name="area" value="Jeju">제주</option>
-                    <option name="area" value="Nationwide">전국</option>
+                    <option name="area" value="No" id="no_area">해당없음</option>    
+                <option name="area" value="서울">서울</option>
+                    <option name="area" value="경기">경기</option>
+                    <option name="area" value="인천">인천</option>
+                    <option name="area" value="강원">강원</option>
+                    <option name="area" value="대전">대전</option>
+                    <option name="area" value="세종">세종</option>
+                    <option name="area" value="충남">충남</option>
+                    <option name="area" value="충북">충북</option>
+                    <option name="area" value="부산">부산</option>
+                    <option name="area" value="울산">울산</option>
+                    <option name="area" value="경남">경남</option>
+                    <option name="area" value="경북">경북</option>
+                    <option name="area" value="대구">대구</option>
+                    <option name="area" value="광주">광주</option>
+                    <option name="area" value="전남">전남</option>
+                    <option name="area" value="전북">전북</option>
+                    <option name="area" value="제주">제주</option>
                 </select><br>
                 <b>기간</b> <select name="period" id="period">
                     <option value="no" id="no_period">해당없음</option>

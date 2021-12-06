@@ -82,7 +82,6 @@ $("#postList").click(function(event) {
 });
 
 // 필터링정렬 함수
-
 function sortAndFilter(){
   var gender = $("input:radio[name='gender']:checked").val();
   var area = $("#area option:selected").val();
