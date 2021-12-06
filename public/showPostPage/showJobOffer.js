@@ -146,6 +146,7 @@ $("#modifyBtn").click(function () {
 $(document).ready(function () {
     // 지원 취소 버튼 클릭
     $(document).on('click', "#applyCancelBtn", function () {
+        console.log("cancel btn");
         if (confirm("지원을 취소하시겠습니까?") == true) {
             db
                 .collection('jobOfferPost')
@@ -171,8 +172,8 @@ $(document).ready(function () {
         }
     });
 
-    //지원하기 버튼 클릭
-    $("#applyBtn").click(function () {
+    $(document).on('click', "#applyBtn", function(){
+        console.log('apply')
         if (confirm("지원하시겠습니까?") == true) {
             db
                 .collection('jobOfferPost')
