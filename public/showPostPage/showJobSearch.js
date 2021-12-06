@@ -61,6 +61,28 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
     }
 });
 
+//댓글 출력
+db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
+  var arr = doc.data().offerPostList;
+  if(typeof arr != "undefined"){
+    for(var i=0; i<arr.length; i++){
+      db.collection("jobOfferPost").doc(arr[i]).get().then((doc)=>{
+        Div = document.createElement("div");
+        Div.setAttribute("class", "offerComment");
+        Div.setAttribute("id", doc.id);
+        Label = document.createElement("label");
+        Label.setAttribute("class", "offerCommentTitle");
+        title = doc.data().title;
+        writer = doc.data().writerName;
+        var Text = document.createTextNode(title + " | " + writer);
+        Label.appendChild(Text);
+        Div.appendChild(Label);
+        document.getElementById("offerCommentContainer").appendChild(Div);
+      });
+    }
+  }
+});
+
 $("#backToListBtn").click(function(){
   location.href = "../bulletinBoard/jobSearchBoard.html";
 });
@@ -90,46 +112,17 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
     var writerEmail = doc.data().writerEmail;
     if(writerEmail == sessionStorage.getItem("email")){
       var title = doc.data().title;
-
-      var Div = document.createElement("div");
-      Div.setAttribute("class", "offerPost");
-      Div.setAttribute("id", doc.id);
-      var Label = document.createElement("label");
-      Label.setAttribute("class", "offerPostTitle");
-      var Text = document.createTextNode(title);
-      Label.appendChild(Text);
-      Div.appendChild(Label);
-      document.getElementById("offerPostTitleList").appendChild(Div);
+      var offerPost = `<div class='offerPost'><input type='radio' name='offerPost' id='${doc.id}'><label class='offerPostTitle' for='${doc.id}'>${title}</label></div>`;
+      $("#offerPostTitleList").append(offerPost);
     }
   })
 });
 
-//근로제의 - 작성한 구인 게시글 목록 클릭 이벤트
-//여러개 클릭하면 안됨 -> css를 하나만 색바뀌게 하거나, 여러개 클릭햇을 때 다르게 세션 저장하는 방법 근데 둘다 모르겠음 -> 부모의 자식 클래스 인덱스 알수있으려나?
-//그래서 일단 하나만 클릭한다고 가정, 여러개 클릭하면 색 여러개 바뀌는 상태
-
-$("#offerPostTitleList").click(function(event) {
-  var offerTargetId;
-  if(event.target.tagName == "DIV"){
-    offerTargetId = event.target.id;
-    event.target.style.background = "gray";
-    event.target.style.color = "white";
-  }
-  else{
-    offerTargetId = event.target.parentElement.id;
-    event.target.parentElement.style.background = "gray";
-    event.target.parentElement.style.color = "white";
-  }
-  sessionStorage.setItem("offerPostId", offerTargetId);
-});
+//선택한 게시글 배경색 바뀌게 하고싶다 근데 못하겠음 눈물 굉굉
 
 //근로제의 - 게시글을 선택하고 확인 버튼 눌렀을 때
 $("#offerOKBtn").click(function() {
-  var offerPostId = sessionStorage.getItem("offerPostId");
-  var title;
-  var writer;
-  document.getElementById(offerPostId).style.background = "#fefefe";
-  document.getElementById(offerPostId).style.color = "black";
+  var offerPostId = $("input[name=offerPost]:checked").attr("id");
   document.getElementById("offerModal").style.display="none";
 
   Div = document.createElement("div");
@@ -144,13 +137,23 @@ $("#offerOKBtn").click(function() {
     var Text = document.createTextNode(title + " | " + writer);
     Label.appendChild(Text);
   });
-
   Div.appendChild(Label);
-  document.getElementById("offerCommentContainer").appendChild(Div);
 
 //데이터베이스 저장하기 + 이제 게시글 조회할 때마다 댓글도 같이 띄워지게 해야함
-
-  sessionStorage.removeItem("offerPostId");
+  db.collection('jobSearchPost').doc(postId).get().then((doc) => {
+    if (typeof doc.data().offerPostList == "undefined") {
+      var arr = [offerPostId];
+      db.collection('jobSearchPost').doc(postId).update({offerPostList: arr}).then((result) => {
+        document.getElementById("offerCommentContainer").appendChild(Div);
+      });
+    } else {
+      var arr = doc.data().offerPostList;
+      arr.push(offerPostId);
+      db.collection('jobSearchPost').doc(postId).update({offerPostList: arr}).then((result) => {
+        document.getElementById("offerCommentContainer").appendChild(Div);
+      });
+    }
+  });
 });
 
 //근로제의 - 취소버튼 눌렀을 때
