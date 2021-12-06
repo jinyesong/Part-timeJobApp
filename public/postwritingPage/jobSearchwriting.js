@@ -60,11 +60,12 @@ $("#saveBtn").click(function () {
         var content = $("#contentbox").val();
         var gender = $("input[name='gender']:checked").val();
         var area = $("#area option:selected").val();
-        var pay = $("#pay").val();
+        var pay = Number($("#pay").val());
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
         var writerEmail = sessionStorage.getItem("email");
         var writerName = sessionStorage.getItem("name");
+        var timestamp = new Date().getTime();
         var data = {
             title: title,
             content: content,
@@ -74,7 +75,8 @@ $("#saveBtn").click(function () {
             workStart: workStart,
             workEnd: workEnd,
             writerEmail: writerEmail,
-            writerName: writerName
+            writerName: writerName,
+            timestamp: timestamp
         }
         var promise = new Promise((resolve, reject)=>{
             db
