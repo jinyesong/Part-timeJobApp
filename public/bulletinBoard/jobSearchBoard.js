@@ -93,7 +93,7 @@ function sortAndFilter(){
       snapshot.forEach((doc)=>{
         var title = doc.data().title;
         var writer = doc.data().writerName;
-        var postPay = doc.data().pay();
+        var postPay = doc.data().pay;
         var workStart = doc.data().workStart;
         var workEnd = doc.data().workEnd;
         var workStartArr = workStart.split("-");
