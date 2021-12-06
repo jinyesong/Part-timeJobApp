@@ -11,12 +11,41 @@ var firebaseConfig = {
   const storage = firebase.storage();
   const db = firebase.firestore();
   
-    db.collection('customer').get().then((snapshot)=>{
-      snapshot.forEach((doc)=>{
-        console.log(doc.data())
-      })
-    });
-  
+  // user 정보 불러오기
+  var user_id = sessionStorage.getItem("user");
+  db
+      .collection('customer')
+      .doc(user_id)
+      .get()
+      .then((doc) => {
+          var name = doc
+              .data()
+              .name;
+          var birth = doc
+              .data()
+              .birth;
+          var phoneNumber = doc.data().phoneNumber;
+          var gender = doc.data().gender;
+          $("#name").text(name);
+          $("#birthday").text(birth);
+          $("#email").text(user_id);
+          $("#phoneNumber").text(phoneNumber);
+          $("#gender").text(gender);
+          if(doc.data().profile){
+            $("#photo").attr("src", doc.data().profile);
+          }
+          if (doc.data().resume) {
+            $("#prev_resume").attr("href", doc.data().resume);
+        } else {
+            $("#prev_resume").remove();
+        }
+        if (doc.data().buisinessLicense) {
+            $("#prev_businessLicense").attr("href", doc.data().buisinessLicense);
+        } else {
+            $("#prev_businessLicense").remove();
+        }
+
+      });
   
   
     /* 사이드바 */

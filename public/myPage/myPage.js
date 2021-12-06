@@ -114,6 +114,19 @@ $("#applyPostList").click(function(event) {
   }
 });
 
+$("#applicantList").click(function(event) {
+  console.log(event.target.tagName);
+  if(event.target.tagName == "DIV"){
+    targetId = event.target.id;
+  }
+  else if(event.target.tagName == "B"){
+    var target_id = event.target.id;
+    console.log(target_id);
+    sessionStorage.setItem("user", target_id);
+    location.href = "../userProfilePage/userProfilePage.html";
+  }
+});
+
   /* 사이드바 */
 function openSlideMenu(){
   document.getElementById('menu').style.width = '260px';

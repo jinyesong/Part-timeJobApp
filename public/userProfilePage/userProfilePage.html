@@ -15,7 +15,9 @@
 <body>
     <div id="page">
         <span class="slide">
-            <div></div>
+            <span id="header">
+                <a href="javascript:history.back();" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+            </span>
             <h2>프로필</h2>
             <a href="#" onclick="openSlideMenu()">
                 <i class="fas fa-bars" id="menuIcon"></i>
@@ -28,7 +30,7 @@
             </a>
             <a href="#">
                 <label class="homeUserName"></label>님</a>
-            <a href="myPage.html">마이페이지</a>
+            <a href="../myPage/myPage.html">마이페이지</a>
             <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
             <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
             <br>
@@ -41,7 +43,7 @@
 
     <div id="content">
         <div id="userPhoto">
-            <img src="Sample_User_Icon.png" height="102px">
+            <img src="Sample_User_Icon.png" id="photo" height="102px">
         </div>
         <div id="userInfobox">
             <div id="userNamebox" class="userInfo">
