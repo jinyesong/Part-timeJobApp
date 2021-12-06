@@ -99,13 +99,15 @@ $("#saveBtn").click(function() {
         var content = $("#contentbox").val();
         var gender = $("input[name='gender']:checked").val();
         var area = $("#area option:selected").val();
-        var pay = $("#pay").val();
+        var pay = Number($("#pay").val());
         var workEnd = $("#workEnd").val();
         var workStart = $("#workStart").val();
         var postEnd = $("#postEnd").val();
         var payboost = $(".payboost:checked").val();
         var writerEmail = sessionStorage.getItem("email");
         var writerName = sessionStorage.getItem("name");
+        var timestamp = new Date().getTime();
+        console.log(timestamp);
         if(payboost == "false"){
             var data = {
                 title: title,
@@ -118,7 +120,8 @@ $("#saveBtn").click(function() {
                 postEnd: postEnd,
                 payboost: payboost,
                 writerEmail: writerEmail,
-                writerName: writerName
+                writerName: writerName,
+                timestamp: timestamp
             }
             var promise = new Promise((resolve, reject)=>{
                 db
@@ -154,7 +157,8 @@ $("#saveBtn").click(function() {
                     writerEmail: writerEmail,
                     writerName: writerName,
                     increaseRate: increaseRate,
-                    deadline: deadline
+                    deadline: deadline,
+                    timestamp: timestamp
                 }
                 var promise = new Promise((resolve, reject)=>{
                     db
