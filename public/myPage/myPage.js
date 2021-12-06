@@ -37,7 +37,8 @@ var id = sessionStorage.getItem("email");
             $("#photo").attr("src", doc.data().profile);
           }
       });
-      
+
+// 작성한 게시글 불러오기
 db.collection('jobOfferPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
     var writer_id = doc.data().writerEmail;
@@ -45,17 +46,20 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object writePost jobOfferPost'><b>구인</b> ${title}</div>`
       $("#writePostList").append(post);
-      if(doc.data().applicantList){
+      if(doc.data().applicantList){ // 지원자 목록
         for(i in doc.data().applicantList){
           var applicant = doc.data().applicantList[i];
-          var applyerpost = `<div id='${doc.id}' class='object applicant jobOfferPost'><b>${applicant}</b> ${title}</div>`
+          db.collection('customer').doc(applicant).get().then((doc)=>{
+            var applyerpost = `<div id='${doc.id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>`
           $("#applicantList").append(applyerpost);
+          });
         }
         
       }
     } 
   })
 });
+
 db.collection('jobSearchPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
     var writer_id = doc.data().writerEmail;
@@ -67,9 +71,34 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
   })
 });
 
+// 지원한 게시글 불러오기
+db.collection('jobOfferPost').where("applicantList", "array-contains", id).get().then((snapshot)=>{
+  snapshot.forEach((doc)=>{
+    var title = doc.data().title;
+  var post = `<div id='${doc.id}' class='object applyPost jobOfferPost'><b>구인</b> ${title}</div>`
+      $("#applyPostList").append(post);
+  });
+});
+
 //게시글 클릭 이벤트
 var targetId;
 $("#writePostList").click(function(event) {
+  if(event.target.tagName == "DIV"){
+    targetId = event.target.id;
+  }
+  else{
+    targetId = event.target.parentElement.id;
+  }
+  sessionStorage.setItem("postId", targetId);
+  if(event.target.classList.contains("jobOfferPost")){
+    location.href = "../showPostPage/showJobOffer.html";
+  }
+  else if(event.target.classList.contains("jobSearchPost")){
+    location.href = "../showPostPage/showJobSearch.html";
+  }
+});
+
+$("#applyPostList").click(function(event) {
   if(event.target.tagName == "DIV"){
     targetId = event.target.id;
   }
