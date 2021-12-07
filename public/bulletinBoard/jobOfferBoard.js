@@ -134,12 +134,11 @@ function sortAndFilter(){
             console.log(postPay);
             if(Number(pay) <= Number(postPay)){
               var post = `<div class='post' id=${doc.id}>
-              <label class='postTitle'>${title}</label>
-              <div id='second'>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postEnd'><b>마감일</b> ${postEnd}</label>
+        </div>`
         $('#postList').append(post);
             } 
           }
@@ -173,12 +172,11 @@ function sortAndFilter(){
             console.log(postPay);
             if(Number(pay) <= Number(postPay)){
               var post = `<div class='post' id=${doc.id}>
-              <label class='postTitle'>${title}</label>
-              <div id='second'>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postEnd'><b>마감일</b> ${postEnd}</label>
+        </div>`
         $('#postList').append(post);
             } 
           }
@@ -211,13 +209,12 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post =`<div class='post' id=${doc.id}>
-              <label class='postTitle'>${title}</label>
-              <div id='second'>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
+              var post = `<div class='post' id=${doc.id}>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postEnd'><b>마감일</b> ${postEnd}</label>
+        </div>`
         $('#postList').append(post);
             } 
           }
