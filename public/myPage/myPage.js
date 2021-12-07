@@ -153,3 +153,17 @@ $("#logoutBtn").click(function(){
 $(".homeUserName").html(sessionStorage.getItem("name"));
 
 /*사이드바 끝*/
+
+/* 별점평가 모달창 */
+document.getElementById("starScoreBtn").onclick = function(){
+  document.getElementById("starScoreModal").style.display="block";
+}
+
+document.getElementById("confirm").onclick = function(){
+  document.getElementById("starScoreModal").style.display="none";
+}
+
+document.getElementById("cancel").onclick = function(){
+  document.getElementById("starScoreModal").style.display="none";
+}
+/* 별점평가 모달창 끝*/

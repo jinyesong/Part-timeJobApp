@@ -84,22 +84,31 @@
         </div>
         <div id="applicantListBox" class="box">
             <p class="label">지원자 목록</p>
-            <div id="applicantList" class="list">
-                <!-- <div>
-                    <div id="doc.id" class="object applicant">
-                        게시글
-                    </div>
-                    <div id="applicantBtn">
-                        <button id="profilBtn" class="Btn">프로필보기</button>
-                        <button id="hiringBtn" class="Btn">채용하기</button>
-                        <button id="starScoreBtn" class="Btn">별점평가하기</button>
-                    </div>
-                </div> -->
-            </div>
-
+            <div id="applicantList" class="list"></div>
         </div>
     </div>
+
+    <div id="starScoreModal">
+        <div class="modal_content">
+            <form name="myform" id="myform" method="post" action="./save">
+                <fieldset>
+                    <legend><b>근로자 별점을 평가해주세요</b></legend><br>
+                    <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
+                    <input type="radio" name="rating" value="4" id="rate2"><label for="rate2">⭐</label>
+                    <input type="radio" name="rating" value="3" id="rate3"><label for="rate3">⭐</label>
+                    <input type="radio" name="rating" value="2" id="rate4"><label for="rate4">⭐</label>
+                    <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
+                </fieldset>
+            </form>
+            <button id="confirm">확인</button>
+            <button id="reset">초기화</button>
+            <button id="cancel">취소</button>
+        </div>
+        <div class="modal_layer"></div>
     </div>
+
+
+
     <!-- update the version number as needed -->
     <script src="../__/firebase/8.6.5/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->

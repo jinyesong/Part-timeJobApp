@@ -173,3 +173,72 @@ body {
   scroll-behavior: smooth;
   border: none;
 }
+#applicantList {
+  height: 130px;
+}
+
+/*별점평가 모달창*/
+
+#starScoreModal {
+  display: block; /*Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 250px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal_content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 70%;
+}
+form {
+  margin-bottom: 10px;
+}
+
+.modal_content button {
+  margin-left: 3px;
+  margin-right: 3px;
+  width: 60px;
+  background-color: #0e3746;
+  color: #f4f2ec;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+#myform fieldset {
+  display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+  direction: rtl; /* 이모지 순서 반전 */
+  border: 0; /* 필드셋 테두리 제거 */
+}
+#myform fieldset legend {
+  text-align: left;
+}
+#myform input[type="radio"] {
+  display: none; /* 라디오박스 감춤 */
+}
+#myform label {
+  font-size: 15px; /* 이모지 크기 */
+  color: transparent; /* 기존 이모지 컬러 제거 */
+  text-shadow: 0 0 0 gray; /* 새 이모지 색상 부여 */
+}
+#myform label:hover {
+  text-shadow: 0 0 0 orangered; /* 마우스 호버 */
+}
+#myform label:hover ~ label {
+  text-shadow: 0 0 0 orangered; /* 마우스 호버 뒤에오는 이모지들 */
+}
+#myform input[type="radio"]:checked ~ label {
+  text-shadow: 0 0 0 orangered; /* 마우스 클릭 체크 */
+}
+/*별점평가 모달창 끝*/
