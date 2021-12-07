@@ -45,8 +45,8 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     var gender = doc.data().gender;
     var payBoost = doc.data().payboost;
 
-    $("#postTitle").val(title);
-    $("#postContent").val(content);
+    $("#titlebox").val(title);
+    $("#contentbox").val(content);
     //$("#postOtherInfo").html("작성자: "+writer+"<br>근무일: "+workStart+" ~ "+workEnd+"<br>모집 마감일: "+postEnd+"<br>근무지역: "+area+"<br>시급: "+pay+"<br>선호성별: "+gender);
 
     if (gender == "남") {
@@ -63,8 +63,11 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     $("#postEnd").val(postEnd);
     $("#pay").val(pay);
     $("#area").val(area);
+
     if(payBoost == "true"){
         $("input:radio[name=payboost][value='true']").attr('checked', "true");
+        $("#increaseRate").attr("disabled", false);
+        $("#deadline").attr("disabled", false);
         var increaseRate = doc.data().increaseRate;
         var deadline = doc.data().deadline;
         $("#increaseRate").val(increaseRate);
@@ -72,9 +75,182 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     }
     else{
         $("input:radio[name=payboost][value='false']").attr('checked', "false");
+        $("#increaseRate").attr("disabled", true);
+          $("#deadline").attr("disabled", true);
     }
 });
 
-$("#backToListBtn").click(function(){
-  location.href = "../bulletinBoard/jobOfferBoard.html";
+function isTitle() {
+  if ($("#titlebox").val()) {
+      return true;
+  } else {
+      alert("제목을 입력해주세요");
+      return false;
+  }
+}
+function isContent() {
+  if ($("#contentbox").val()) {
+      return true;
+  } else {
+      alert("본문을 입력해주세요");
+      return false;
+  }
+}
+function isWorkStart(){
+  if($("#workStart").val()){
+      return true;
+  }
+  else{
+      alert("근무 시작일을 선택하세요");
+      return false;
+  }
+}
+function isWorkEnd(){
+  if($("#workEnd").val()){
+      return true;
+  }
+  else{
+      alert("근무 마감일을 선택하세요");
+      return false;
+  }
+}
+function isPostEnd(){
+  if($("#postEnd").val()){
+      return true;
+  }
+  else{
+      alert("게시 마감일을 선택하세요");
+      return false;
+  }
+}
+function isIncreaseRate(){
+  if($("#increaseRate").val() == ""){
+      alert("인상율을 입력하세요");
+      return false;
+  }
+  else{
+      if($.isNumeric($("#increaseRate").val())){
+          return true;
+      }
+      else{
+          alert("숫자만 입력하세요");
+          return false;
+      }
+  }
+}
+function isDeadline(){
+  if($("#deadline").val() == ""){
+      alert("디데이를 입력하세요");
+      return false;
+  }
+  else{
+      if($.isNumeric($("#deadline").val())){
+          return true;
+      }
+      else{
+          alert("숫자만 입력하세요");
+          return false;
+      }
+  }
+}
+$("#saveBtn").click(function() {
+  if (isTitle() && isContent() && isWorkStart() && isWorkEnd() && isPostEnd()) {
+      var title = $("#titlebox").val();
+      var content = $("#contentbox").val();
+      var gender = $("input[name='userGender']:checked").val();
+      var area = $("#area option:selected").val();
+      var pay = Number($("#pay").val());
+      var workEnd = $("#workEnd").val();
+      var workStart = $("#workStart").val();
+      var postEnd = $("#postEnd").val();
+      var payboost = $(".payboost:checked").val();
+      var writerEmail = sessionStorage.getItem("email");
+      var writerName = sessionStorage.getItem("name");
+      if(payboost == "false"){
+          var data = {
+              title: title,
+              content: content,
+              gender: gender,
+              area: area,
+              pay: pay,
+              workStart: workStart,
+              workEnd: workEnd,
+              postEnd: postEnd,
+              payboost: payboost,
+              writerEmail: writerEmail,
+              writerName: writerName,
+          }
+          var promise = new Promise((resolve, reject)=>{
+              db
+                              .collection('jobOfferPost')
+                              .doc(postId)
+                              .update(data)
+                              .then((result) => {
+                                  console.log("디비 저장!");
+                                      resolve()
+                              })
+                              .catch((err) => {
+                                  console.log("저장 실패" + err);
+                                      reject()
+                              });
+          });
+          promise.then(function(){
+              window.location.href="../showPostPage/showJobOffer.html";
+          });
+      }
+      else if(payboost == "true"){
+          if(isDeadline() && isIncreaseRate()){
+              var increaseRate = $("#increaseRate").val();
+              var deadline = $("#deadline").val();
+              var data = {
+                  title: title,
+                  content: content,
+                  gender: gender,
+                  area: area,
+                  pay: pay,
+                  workStart: workStart,
+                  workEnd: workEnd,
+                  postEnd: postEnd,
+                  payboost: payboost,
+                  writerEmail: writerEmail,
+                  writerName: writerName,
+                  increaseRate: increaseRate,
+                  deadline: deadline,
+              }
+              var promise = new Promise((resolve, reject)=>{
+                  db
+                                  .collection('jobOfferPost')
+                                  .doc(postId)
+                                  .update(data)
+                                  .then((result) => {
+                                      console.log("디비 저장!");
+                                          resolve()
+                                  })
+                                  .catch((err) => {
+                                      console.log("저장 실패" + err);
+                                          reject()
+                                  });
+              });
+              promise.then(function(){
+                window.location.href="../showPostPage/showJobOffer.html";
+              });
+          }
+          
+      }
+      
+      
+  }
+});
+
+
+$(".payboost").on('click',function(){
+  var payboost = $(".payboost:checked").val();
+      if(payboost == "true"){
+          $("#increaseRate").attr("disabled", false);
+          $("#deadline").attr("disabled", false);
+      }
+      else if(payboost == "false"){
+          $("#increaseRate").attr("disabled", true);
+          $("#deadline").attr("disabled", true);
+      }
 });

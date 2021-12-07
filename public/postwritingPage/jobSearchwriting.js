@@ -114,6 +114,7 @@ function openSlideMenu(){
     sessionStorage.removeItem("email");
     location.href = "../index.html";
     sessionStorage.removeItem("postId");
+    sessionStorage.removeItem("user");
   });
 
 // 사이드바 끝

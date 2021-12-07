@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../postwritingPage/postwriting.css">
+  <link rel="stylesheet" href="modifyPostPage.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
@@ -15,7 +15,9 @@
 <body>
   <div id="page">
     <span class="slide">
-      <div></div>
+      <span id="header">
+        <a href="javascript:history.back();" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+    </span>
       <h2>구직게시판</h2>
       <a href="#" onclick="openSlideMenu()">
         <i class="fas fa-bars" id="menuIcon"></i>
@@ -43,7 +45,7 @@
       <label id=postLabel><b>구직게시글</b></label>
 
       <input id="titlebox" type="text" placeholder="제목"><br>
-      <input id="contentbox" type="text" placeholder="본문"><br>
+      <textarea name="contentbox" id="contentbox" cols="30" rows="10" placeholder="본문"></textarea><br>
 
       <div id="infobox">
         <label>성별</label>

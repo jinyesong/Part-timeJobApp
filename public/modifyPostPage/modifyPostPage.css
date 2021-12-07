@@ -3,6 +3,23 @@ body {
   background-color: #f4f2ec;
   text-underline-position: under;
 }
+
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+}
+
+#backIcon {
+  color: #f4f2ec;
+  font-size: smaller;
+}
+
+
 #content {
   margin: 20px;
   flex-direction: column;
@@ -26,7 +43,7 @@ body {
   color: #f4f2ec;
   margin-top: 15px;
 }
-#postTitle {
+#titlebox {
   width: 90%;
   margin-top: 10px;
 
@@ -34,7 +51,7 @@ body {
   margin: 0px;
   margin-bottom: 10px;
 }
-#postContent {
+#contentbox {
   width: 90%;
   height: 250px;
 

@@ -58,6 +58,79 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
     $("#area").val(area);
 });
 
-$("#backToListBtn").click(function(){
-  location.href = "../bulletinBoard/jobOfferBoard.html";
+function isTitle() {
+  if ($("#titlebox").val()) {
+      return true;
+  } else {
+      alert("제목을 입력해주세요");
+      return false;
+  }
+}
+function isContent() {
+  if ($("#contentbox").val()) {
+      return true;
+  } else {
+      alert("본문을 입력해주세요");
+      return false;
+  }
+}
+function isWorkStart(){
+  if($("#workStart").val()){
+      return true;
+  }
+  else{
+      alert("근무 시작일을 선택하세요");
+      return false;
+  }
+}
+function isWorkEnd(){
+  if($("#workEnd").val()){
+      return true;
+  }
+  else{
+      alert("근무 마감일을 선택하세요");
+      return false;
+  }
+}
+$("#saveBtn").click(function () {
+  if (isTitle() && isContent() && isWorkStart() && isWorkEnd()) {
+      var title = $("#titlebox").val();
+      var content = $("#contentbox").val();
+      var gender = $("input[name='userGender']:checked").val();
+      var area = $("#area option:selected").val();
+      var pay = Number($("#pay").val());
+      var workEnd = $("#workEnd").val();
+      var workStart = $("#workStart").val();
+      var writerEmail = sessionStorage.getItem("email");
+      var writerName = sessionStorage.getItem("name");
+      var data = {
+          title: title,
+          content: content,
+          gender: gender,
+          area: area,
+          pay: pay,
+          workStart: workStart,
+          workEnd: workEnd,
+          writerEmail: writerEmail,
+          writerName: writerName,
+      }
+      var promise = new Promise((resolve, reject)=>{
+          db
+                          .collection('jobSearchPost')
+                          .doc(sessionStorage.getItem("postId"))
+                          .update(data)
+                          .then((result) => {
+                              console.log("디비 저장!");
+                                  resolve()
+                          })
+                          .catch((err) => {
+                              console.log("저장 실패" + err);
+                                  reject()
+                          });
+      });
+      promise.then(function(){
+          window.location.href="../showPostPage/showJobSearch.html";
+      });
+      
+  }
 });

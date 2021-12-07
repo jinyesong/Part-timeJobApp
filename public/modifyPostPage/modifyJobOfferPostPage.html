@@ -15,7 +15,9 @@
 <body>
   <div id="page">
     <span class="slide">
-      <div></div>
+      <span id="header">
+        <a href="javascript:history.back();" class="backBtn"><i id="backIcon" class="fas fa-chevron-left"></i></a>
+    </span>
       <h2>구인게시판</h2>
       <a href="#" onclick="openSlideMenu()">
         <i class="fas fa-bars" id="menuIcon"></i>
@@ -42,8 +44,8 @@
     <div class="writingContainer">
       <label id=postLabel><b>구인게시글</b></label>
 
-      <input id="postTitle" type="text" ><br>
-      <input id="postContent" type="text"><br>
+      <input id="titlebox" type="text" ><br>
+      <textarea name="contentbox" id="contentbox" cols="30" rows="10"></textarea><br>
 
       <div id="infobox">
         <label>성별</label>
@@ -101,6 +103,5 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 </script>
 <script src="modifyJobOfferPostPage.js"></script>
-<script src="modifyPostPage.js"></script>
 
 </html>
