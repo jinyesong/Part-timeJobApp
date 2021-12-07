@@ -42,6 +42,7 @@ var id = sessionStorage.getItem("email");
 db.collection('jobOfferPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
     var writer_id = doc.data().writerEmail;
+    var post_id = doc.id;
     if(id == writer_id){
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object writePost jobOfferPost'><b>구인</b> ${title}</div>`
@@ -51,7 +52,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
           var applicant = doc.data().applicantList[i];
           db.collection('customer').doc(applicant).get().then((doc)=>{
             var applyerpost = `<div>
-            <div id='${doc.id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
+            <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
             <div id="applicantBtn">
                         <button id="profilBtn" class="Btn">프로필보기</button>
                         <button id="hiringBtn" class="Btn">채용하기</button>
@@ -125,12 +126,15 @@ $("#applicantList").click(function(event) {
   console.log(event.target.tagName);
   if(event.target.tagName == "DIV"){
     targetId = event.target.id;
+    console.log(target_id);
+    sessionStorage.setItem("postId", targetId);
+    //location.href = "../showPostPage/showJobOffer.html";
   }
   else if(event.target.tagName == "B"){
     var target_id = event.target.id;
     console.log(target_id);
     sessionStorage.setItem("user", target_id);
-    location.href = "../userProfilePage/userProfilePage.html";
+    //location.href = "../userProfilePage/userProfilePage.html";
   }
 });
 

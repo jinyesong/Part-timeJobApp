@@ -24,6 +24,7 @@ $("#logoutBtn").click(function () {
     sessionStorage.removeItem("name");
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("postId");
+    sessionStorage.removeItem("user");
     location.href = "../index.html";
 });
 
