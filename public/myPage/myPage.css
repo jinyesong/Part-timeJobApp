@@ -124,16 +124,12 @@ body {
   width: 322px;
   display: grid;
   grid-template-columns: auto auto auto;
-
-  cursor: pointer;
-
   text-decoration: none;
   margin-bottom: 5px;
 }
 .Btn {
   background-color: khaki;
   border: 1px solid #999;
-  cursor: pointer;
   margin: 0;
   text-decoration: none;
 }
@@ -180,7 +176,7 @@ body {
 /*별점평가 모달창*/
 
 #starScoreModal {
-  display: block; /*Hidden by default */
+  display: none; /*Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 250px; /* Location of the box */
