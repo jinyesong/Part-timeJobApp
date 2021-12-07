@@ -67,12 +67,26 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
   if(typeof arr != "undefined"){
     for(var i=0; i<arr.length; i++){
       db.collection("jobOfferPost").doc(arr[i]).get().then((doc)=>{
-        title = doc.data().title;
-        writer = doc.data().writerName;
-        var commentDiv = `<div id="${doc.id}" class="offerComment">
-          <label class="offerCommentTitle">${title} | ${writer}</label>
-        </div>`;
-        $("#offerCommentContainer").append(commentDiv);
+        var offerPostId = doc.id;
+        var title = doc.data().title;
+        var writer = doc.data().writerName;
+        var writerEmail = doc.data().writerEmail;
+        db.collection("customer").doc(writerEmail).get().then((doc)=>{
+          var commentDiv;
+          if(typeof doc.data().profile == "undefined"){
+            commentDiv = `<div id="${offerPostId}" class="offerComment">
+            <img src="../myPage/Sample_User_Icon.png" id=${doc.id} height="30px">
+            <label class="offerCommentTitle">${title} | ${writer}</label>
+            </div>`;
+          }
+          else{
+            commentDiv = `<div id="${offerPostId}" class="offerComment">
+            <img src=${doc.data().profile} id=${doc.id} height="30px">
+            <label class="offerCommentTitle">${title} | ${writer}</label>
+            </div>`;
+          }
+          $("#offerCommentContainer").append(commentDiv);
+        });
       });
     }
   }
@@ -118,6 +132,18 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
 //근로제의 - 게시글을 선택하고 확인 버튼 눌렀을 때
 $("#offerOKBtn").click(function() {
   var offerPostId = $("input[name=offerPost]:checked").attr("id");
+  db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
+    var arr = doc.data().offerPostList;
+    if(typeof arr != "undefined"){
+      for(var i=0; i<arr.length; i++){
+        if(arr[i] == offerPostId){
+          alert("이미 근로제의한 게시글입니다.");
+          return false; //이거 왜 안먹히지
+        }
+      }
+    }
+  });
+
   document.getElementById("offerModal").style.display="none";
 
   Div = document.createElement("div");
@@ -127,12 +153,27 @@ $("#offerOKBtn").click(function() {
   Label.setAttribute("class", "offerCommentTitle");
 
   db.collection('jobOfferPost').doc(offerPostId).get().then((doc)=>{ 
-    title = doc.data().title;
-    writer = doc.data().writerName;
-    var Text = document.createTextNode(title + " | " + writer);
-    Label.appendChild(Text);
+    var offerPostId = doc.id;
+    var title = doc.data().title;
+    var writer = doc.data().writerName;
+    var writerEmail = doc.data().writerEmail;
+    db.collection("customer").doc(writerEmail).get().then((doc)=>{
+      var commentDiv;
+      if(typeof doc.data().profile == "undefined"){
+        commentDiv = `<div id="${offerPostId}" class="offerComment">
+        <img src="../myPage/Sample_User_Icon.png" id=${doc.id} height="30px">
+        <label class="offerCommentTitle">${title} | ${writer}</label>
+        </div>`;
+      }
+      else{
+        commentDiv = `<div id="${offerPostId}" class="offerComment">
+        <img src=${doc.data().profile} id=${doc.id} height="30px">
+        <label class="offerCommentTitle">${title} | ${writer}</label>
+        </div>`;
+      }
+      $("#offerCommentContainer").append(commentDiv);
+    });
   });
-  Div.appendChild(Label);
 
 //데이터베이스 저장하기 + 이제 게시글 조회할 때마다 댓글도 같이 띄워지게 해야함
   db.collection('jobSearchPost').doc(postId).get().then((doc) => {
@@ -164,13 +205,16 @@ $("#offerCancelBtn").click(function() {
 
 //근로제의 댓글 눌렀을 때
 $("#offerCommentContainer").click(function(event) {
-  var commentTargetId;
   if(event.target.tagName == "DIV"){
-    commentTargetId = event.target.id;
+    sessionStorage.setItem("postId", event.target.id);
+    location.href = "../showPostPage/showJobOffer.html";
+  }
+  else if(event.target.tagName == "IMG"){
+    sessionStorage.setItem("user", event.target.id);
+    location.href = "../userProfilePage/userProfilePage.html";
   }
   else{
-    commentTargetId = event.target.parentElement.id;
+    sessionStorage.setItem("postId", event.target.parentElement.id);
+    location.href = "../showPostPage/showJobOffer.html";
   }
-  sessionStorage.setItem("postId", commentTargetId);
-  location.href = "../showPostPage/showJobOffer.html";
 });
