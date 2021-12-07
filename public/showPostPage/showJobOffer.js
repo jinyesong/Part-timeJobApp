@@ -84,7 +84,7 @@ db
         $("#postContent").html(content);
         $("#postOtherInfo").html(
             "작성자: " + writer + "<br>근무일: " + workStart + " ~ " + workEnd + "<br>모집 마감일: " +
-            postEnd + "<br>근무지역: " + area + "<br>시급: " + pay + "<br>선호성별: " + gender
+            postEnd + "<br>근무지역: " + area + "<br>시급: " + pay +"원"+ "<br>선호성별: " + gender
         );
 
         //마감전 시급인상 띄우기
@@ -97,8 +97,8 @@ db
           var postEndDate = new Date(postEnd);
           var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
           if((boostStartDate < today) || (boostStartDate == today)){
-            $("#payboostInfo").html("모집마감 D-"+ new Date(postEndDate-today).getDate() + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate))));
-            $("#payboostInfo").css("color", "red");
+            $("#payboostInfo").html("모집마감 D-"+ new Date(postEndDate-today).getDate() + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
+            $("#payboostInfo").css("font-weight", "bold");
           }
         }
 

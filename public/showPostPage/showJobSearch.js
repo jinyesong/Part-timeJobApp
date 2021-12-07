@@ -45,7 +45,7 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
 
     $("#postTitle").html(title);
     $("#postContent").html(content);
-    $("#postOtherInfo").html("작성자: "+writer+"<br>선호근무일: "+workStart+" ~ "+workEnd+"<br>선호근무지역: "+area+"<br>희망시급: "+pay+"<br>성별: "+gender);
+    $("#postOtherInfo").html("작성자: "+writer+"<br>선호근무일: "+workStart+" ~ "+workEnd+"<br>선호근무지역: "+area+"<br>희망시급: "+pay+"원<br>성별: "+gender);
 
     if(writer == sessionStorage.getItem("name")){
       $("#modifyBtn").attr("disabled", false);
