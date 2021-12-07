@@ -145,7 +145,7 @@ h2 {
   font-size: 17px;
   padding: 5px;
 }
-#applyCancelBtn{
+#applyCancelBtn {
   background-color: #f2b531;
   color: #f4f2ec;
   font-weight: bold;
@@ -189,7 +189,16 @@ h2 {
 #postOtherInfo {
   width: 90%;
   height: auto;
-
+  font-size: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-align: left;
+}
+#payboostInfo {
+  width: 90%;
+  height: auto;
+  font-size: 14px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 10px;
@@ -218,7 +227,8 @@ h2 {
   border: 1px solid #888;
   width: 70%;
 }
-.offerPost, .offerComment{
+.offerPost,
+.offerComment {
   border: black solid 1px;
   width: 90%;
   margin-bottom: 5px;
