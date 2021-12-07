@@ -230,8 +230,12 @@ h2 {
 .offerPost,
 .offerComment {
   border: black solid 1px;
-  width: 90%;
+  width: 320px;
   margin-bottom: 5px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#offerCommentContainer {
+  text-align: left;
 }
