@@ -64,6 +64,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
             <div id="applicantBtn">
                         <button id="profileBtn" class="Btn">프로필보기</button>
                         <button id="hiringBtn" class="Btn">채용하기</button>
+                        <button id="chattingBtn" class="Btn">채팅하기</button>
                         <button id="starScoreBtn" class="Btn">별점평가하기</button>
                     </div>
                     </div>`
@@ -150,15 +151,14 @@ $("#applicantList").click(function(event) {
 });
 
 /* 별점평가 모달창 */
-
 $("#confirm").on('click', function(){
-  document.getElementById("starScoreModal").style.display="none";
+  $("#starScoreModal").css("display","none");
 });
 $("#cancel").on('click', function(){
-  document.getElementById("starScoreModal").style.display="none";
+  $("#starScoreModal").css("display","none");
 });
-
 /* 별점평가 모달창 끝*/
+
 
   /* 사이드바 */
 function openSlideMenu(){
