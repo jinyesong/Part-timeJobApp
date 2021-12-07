@@ -55,13 +55,17 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
       var writer = doc.data().writerName;
       var pay = doc.data().pay;
       var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${pay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
   })
 });
+
+
+
+
 
 //게시글 클릭 이벤트
 var targetId;
@@ -109,9 +113,9 @@ function sortAndFilter(){
             console.log(postPay);
             if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${postPay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
             } 
@@ -145,9 +149,9 @@ function sortAndFilter(){
             console.log(postPay);
             if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${postPay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
             } 
