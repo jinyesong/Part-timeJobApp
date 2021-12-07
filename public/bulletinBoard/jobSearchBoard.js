@@ -53,14 +53,19 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
       var title = doc.data().title;
       var writer = doc.data().writerName;
+      var pay = doc.data().pay;
       var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${pay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
   })
 });
+
+
+
+
 
 //게시글 클릭 이벤트
 var targetId;
@@ -106,11 +111,11 @@ function sortAndFilter(){
         (periodList[period] == 3 && day > 7 && day <=30) | (periodList[period] == 4 && day > 30)){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
-            if(Number(pay) <= Number(postPay)){
+            if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${postPay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
             } 
@@ -144,9 +149,9 @@ function sortAndFilter(){
             console.log(postPay);
             if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${postPay}</label><br>
+        <label class='postTitle'>${title}</label>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
             } 

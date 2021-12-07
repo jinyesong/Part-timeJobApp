@@ -62,7 +62,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
             var applyerpost = `<div>
             <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
             <div id="applicantBtn">
-                        <button id="profilBtn" class="Btn">프로필보기</button>
+                        <button id="profileBtn" class="Btn">프로필보기</button>
                         <button id="hiringBtn" class="Btn">채용하기</button>
                         <button id="starScoreBtn" class="Btn">별점평가하기</button>
                     </div>
@@ -130,16 +130,35 @@ $("#applyPostList").click(function(event) {
   }
 });
 
-// $("#applicantList").click(function(event) {
-//   if(event.target.tagName == "DIV"){
-//     targetId = event.target.id;
-//   }
-//   else if(event.target.tagName == "B"){
-//     var target_id = event.target.id;
-//     sessionStorage.setItem("user", target_id);
-//     location.href = "../userProfilePage/userProfilePage.html";
-//   }
-// });
+$("#applicantList").click(function(event) {
+  console.log(event.target.tagName, event.target.id);
+
+  if($(event.target).hasClass("applicant")){
+    targetId = event.target.id;
+    console.log(targetId);
+    sessionStorage.setItem("postId", targetId);
+    location.href = "../showPostPage/showJobOffer.html";
+  }
+  else if(event.target.id == "profileBtn"){
+    var id = $(event.target).parent().prev().children().first().attr("id");
+    sessionStorage.setItem("user", id);
+    location.href = "../userProfilePage/userProfilePage.html";
+  }
+  else if(event.target.id == "starScoreBtn"){
+    $("#starScoreModal").css("display","block");
+  }
+});
+
+/* 별점평가 모달창 */
+
+$("#confirm").on('click', function(){
+  document.getElementById("starScoreModal").style.display="none";
+});
+$("#cancel").on('click', function(){
+  document.getElementById("starScoreModal").style.display="none";
+});
+
+/* 별점평가 모달창 끝*/
 
   /* 사이드바 */
 function openSlideMenu(){
@@ -160,19 +179,3 @@ $("#logoutBtn").click(function(){
 $(".homeUserName").html(sessionStorage.getItem("name"));
 
 /*사이드바 끝*/
-
-/* 별점평가 모달창 */
-
-// $("#starScoreBtn").click(function(event){
-//   console.log(event.target.id);
-//   document.getElementById("starScoreModal").style.display="block";
-// });
-
-// document.getElementById("confirm").onclick = function(){
-//   document.getElementById("starScoreModal").style.display="none";
-// }
-
-// document.getElementById("cancel").onclick = function(){
-//   document.getElementById("starScoreModal").style.display="none";
-// }
-/* 별점평가 모달창 끝*/
