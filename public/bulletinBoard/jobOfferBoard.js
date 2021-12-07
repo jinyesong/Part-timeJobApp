@@ -94,8 +94,12 @@ $("#postList").click(function(event) {
   if(event.target.tagName == "DIV"){
     targetId = event.target.id;
   }
-  else{
+  else if(event.target.tagName == "LABEL"){
     targetId = event.target.parentElement.id;
+  }
+  else if(event.target.tagName == "B"){
+    targetId = event.target.parentElement.parentElement.id;
+
   }
   sessionStorage.setItem("postId", targetId);
   location.href = "../showPostPage/showJobOffer.html";
