@@ -58,6 +58,22 @@ const db = firebase.firestore();
         var writer = doc.data().writerName;
         var postEnd = doc.data().postEnd;
         var pay = doc.data().pay;
+
+        //마감전 시급인상 적용시 div테두리 바뀜 + 시급 인상되어 표시
+        var payboost = doc.data().payboost;
+        var increaseRate = doc.data().increaseRate;
+        var deadline = doc.data().deadline;
+        var postEnd = doc.data().postEnd;
+
+        var today = new Date();
+        var postEndDate = new Date(postEnd);
+        var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
+        var payboosted = false;
+        if(payboost == "true" && (boostStartDate < today) || (boostStartDate == today)){
+          payboosted = true;
+          pay = pay+pay*(0.01*increaseRate);
+        }
+
         var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
@@ -66,23 +82,8 @@ const db = firebase.firestore();
         </div>`
         $('#postList').append(post);
 
-        //마감전 시급인상 적용시 div배경색 바뀜
-        var payboost = doc.data().payboost;
-        // var increaseRate = doc.data().increaseRate;
-        var deadline = doc.data().deadline;
-        var postEnd = doc.data().postEnd;
-
-        if(payboost == "true"){
-          var today = new Date();
-          // var year = today.getFullYear();
-          // var month = ('0' + (today.getMonth() + 1)).slice(-2);
-          // var day = ('0' + today.getDate()).slice(-2);
-          // var dateString = year + '-' + month  + '-' + day;
-          var postEndDate = new Date(postEnd);
-          var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
-          if((boostStartDate < today) || (boostStartDate == today)){
-            document.getElementById(doc.id).style.border = "2px solid red";
-          }
+        if(payboosted){
+          document.getElementById(doc.id).style.border = "2px solid red";
         }
     })
   });

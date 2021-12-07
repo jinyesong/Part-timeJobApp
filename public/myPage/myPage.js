@@ -179,4 +179,3 @@ $("#logoutBtn").click(function(){
 $(".homeUserName").html(sessionStorage.getItem("name"));
 
 /*사이드바 끝*/
-
