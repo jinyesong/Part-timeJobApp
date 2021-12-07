@@ -49,14 +49,14 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     $("#postContent").val(content);
     //$("#postOtherInfo").html("작성자: "+writer+"<br>근무일: "+workStart+" ~ "+workEnd+"<br>모집 마감일: "+postEnd+"<br>근무지역: "+area+"<br>시급: "+pay+"<br>선호성별: "+gender);
 
-    if (gender == "man") {
-        $("input:radio[name=userGender][value='man']").attr('checked', true);
+    if (gender == "남") {
+        $("input:radio[name=userGender][value='남']").attr('checked', true);
     } 
-    else if (gender == "woman") {
-        $("input:radio[name=userGender][value='woman']").attr('checked', true);
+    else if (gender == "여") {
+        $("input:radio[name=userGender][value='여']").attr('checked', true);
     }
     else{ //both
-        $("input:radio[name=userGender][value='both']").attr('checked', true);
+        $("input:radio[name=userGender][value='상관없음']").attr('checked', true);
     }
     $("#workStart").val(workStart);
     $("#workEnd").val(workEnd);
@@ -65,6 +65,10 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     $("#area").val(area);
     if(payBoost == "true"){
         $("input:radio[name=payboost][value='true']").attr('checked', "true");
+        var increaseRate = doc.data().increaseRate;
+        var deadline = doc.data().deadline;
+        $("#increaseRate").val(increaseRate);
+        $("#deadline").val(deadline);
     }
     else{
         $("input:radio[name=payboost][value='false']").attr('checked', "false");
