@@ -53,6 +53,7 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
       var title = doc.data().title;
       var writer = doc.data().writerName;
+      var pay = doc.data().pay;
       var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label><br>
         <label class='postWriter'>${writer}</label><br>
@@ -106,7 +107,7 @@ function sortAndFilter(){
         (periodList[period] == 3 && day > 7 && day <=30) | (periodList[period] == 4 && day > 30)){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
-            if(Number(pay) <= Number(postPay)){
+            if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label><br>
         <label class='postWriter'>${writer}</label><br>
