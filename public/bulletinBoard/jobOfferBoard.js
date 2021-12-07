@@ -60,12 +60,30 @@ const db = firebase.firestore();
         var pay = doc.data().pay;
         var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
-        <div id='second'>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
         <label class='postPay'><b>시급</b> ${pay}원</label>
-        <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
+        <label class='postEnd'><b>마감일</b> ${postEnd}</label>
         </div>`
         $('#postList').append(post);
+
+        //마감전 시급인상 적용시 div배경색 바뀜
+        var payboost = doc.data().payboost;
+        // var increaseRate = doc.data().increaseRate;
+        var deadline = doc.data().deadline;
+        var postEnd = doc.data().postEnd;
+
+        if(payboost == "true"){
+          var today = new Date();
+          // var year = today.getFullYear();
+          // var month = ('0' + (today.getMonth() + 1)).slice(-2);
+          // var day = ('0' + today.getDate()).slice(-2);
+          // var dateString = year + '-' + month  + '-' + day;
+          var postEndDate = new Date(postEnd);
+          var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
+          if((boostStartDate < today) || (boostStartDate == today)){
+            document.getElementById(doc.id).style.background = "red";
+          }
+        }
     })
   });
 

@@ -87,6 +87,21 @@ db
             postEnd + "<br>근무지역: " + area + "<br>시급: " + pay + "<br>선호성별: " + gender
         );
 
+        //마감전 시급인상 띄우기
+        var payboost = doc.data().payboost;
+        var increaseRate = doc.data().increaseRate;
+        var deadline = doc.data().deadline;
+
+        if(payboost == "true"){
+          var today = new Date();
+          var postEndDate = new Date(postEnd);
+          var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
+          if((boostStartDate < today) || (boostStartDate == today)){
+            $("#payboostInfo").html("모집마감 D-"+ new Date(postEndDate-today).getDate() + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate))));
+            $("#payboostInfo").css("color", "red");
+          }
+        }
+
         if (writer == sessionStorage.getItem("name")) {
             $("#modifyBtn").attr("disabled", false);
             $("#removeBtn").attr("disabled", false);
@@ -118,7 +133,6 @@ db
             var deadline = doc
                 .data()
                 .deadline;
-
         }
     });
 
