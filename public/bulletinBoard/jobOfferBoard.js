@@ -109,6 +109,8 @@ function sortAndFilter(){
   var pay = Number($("#pay").val());
   var sort = $("#sort_btn option:selected").val();
   console.log(sort);
+  console.log("필터pay", typeof pay);
+  console.log("값", pay);
   if(sort == "latestOrderr"){
     db.collection('jobOfferPost')
     .where('gender', "==", gender)
@@ -137,7 +139,7 @@ function sortAndFilter(){
               <label class='postTitle'>${title}</label>
               <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
+              <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
               </div>`
         $('#postList').append(post);
@@ -171,12 +173,12 @@ function sortAndFilter(){
         (periodList[period] == 3 && day > 7 && day <=30) | (periodList[period] == 4 && day > 30)){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
-            if(Number(pay) <= Number(postPay)){
+            if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
               <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
+              <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
               </div>`
         $('#postList').append(post);
@@ -215,7 +217,7 @@ function sortAndFilter(){
               <label class='postTitle'>${title}</label>
               <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${pay}원</label>
+              <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
               </div>`
         $('#postList').append(post);
