@@ -81,7 +81,7 @@ const db = firebase.firestore();
           var postEndDate = new Date(postEnd);
           var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
           if((boostStartDate < today) || (boostStartDate == today)){
-            document.getElementById(doc.id).style.background = "red";
+            document.getElementById(doc.id).style.border = "2px solid red";
           }
         }
     })

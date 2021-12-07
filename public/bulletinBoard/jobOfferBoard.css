@@ -82,7 +82,7 @@ body {
   display: block;
   font-weight: bold;
   padding: 3px;
-  /* margin-bottom: 2px; */
+  margin-bottom: 2px;
   width: 315px;
   white-space: nowrap;
   overflow: hidden;
@@ -92,22 +92,36 @@ body {
 
 .postWriter {
   font-size: 13px;
-  padding: 2px;
+  display: inline-block;
+
+  width: 95px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.second {
-  font-size: 14px;
+/* .second {
   text-align: right;
   width: 320px;
   height: 30px;
   display: inline-block;
-}
+} */
 .postPay {
-  padding: 2px;
+  width: 85px;
+  display: inline-block;
+
   font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .postEnd {
-  padding: 2px;
+  width: 117px;
+  display: inline-block;
+
   font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*필터 모달창*/
