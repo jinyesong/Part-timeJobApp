@@ -78,6 +78,38 @@ body {
   height: 450px; */
 }
 
+.postTitle {
+  display: block;
+  font-weight: bold;
+  padding: 3px;
+  /* margin-bottom: 2px; */
+  width: 315px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+.postWriter {
+  font-size: 13px;
+  padding: 2px;
+}
+.second {
+  font-size: 14px;
+  text-align: right;
+  width: 320px;
+  height: 30px;
+  display: inline-block;
+}
+.postPay {
+  padding: 2px;
+  font-size: 13px;
+}
+.postEnd {
+  padding: 2px;
+  font-size: 13px;
+}
+
 /*필터 모달창*/
 #modal {
   display: none; /* Hidden by default */
@@ -203,7 +235,8 @@ h2 {
 }
 
 .post {
-  border: black solid 1px;
+  border: #999 solid 1px;
   width: 100%;
   margin-bottom: 5px;
+  background-color: #fff;
 }

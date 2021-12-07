@@ -110,10 +110,32 @@ body {
   margin-bottom: 5px;
 }
 .object {
-  border: 1px black solid;
+  border: 1px #999 solid;
   height: 20px;
   width: 320px;
   text-align: left;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #fff;
+}
+#applicantBtn {
+  width: 322px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+
+  cursor: pointer;
+
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+.Btn {
+  background-color: khaki;
+  border: 1px solid #999;
+  cursor: pointer;
+  margin: 0;
+  text-decoration: none;
 }
 
 #userName p {

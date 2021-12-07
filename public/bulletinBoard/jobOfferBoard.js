@@ -59,10 +59,11 @@ const db = firebase.firestore();
         var postEnd = doc.data().postEnd;
         var pay = doc.data().pay;
         var post = `<div class='post' id=${doc.id}>
-        <label class='postTitle'>${title}</label><br>
-        <label class='postWriter'>${writer}</label><br>
-        <label class='postPay'>${pay}</label><br>
-        <label class='postEnd'>${postEnd}</label><br>
+        <label class='postTitle'>${title}</label>
+        <div id='second'>
+        <label class='postWriter'><b>작성자</b> ${writer}</label>
+        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
         </div>`
         $('#postList').append(post);
     })

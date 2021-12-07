@@ -50,7 +50,14 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
         for(i in doc.data().applicantList){
           var applicant = doc.data().applicantList[i];
           db.collection('customer').doc(applicant).get().then((doc)=>{
-            var applyerpost = `<div id='${doc.id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>`
+            var applyerpost = `<div>
+            <div id='${doc.id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
+            <div id="applicantBtn">
+                        <button id="profilBtn" class="Btn">프로필보기</button>
+                        <button id="hiringBtn" class="Btn">채용하기</button>
+                        <button id="starScoreBtn" class="Btn">별점평가하기</button>
+                    </div>
+                    </div>`
           $("#applicantList").append(applyerpost);
           });
         }
