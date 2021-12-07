@@ -67,17 +67,12 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
   if(typeof arr != "undefined"){
     for(var i=0; i<arr.length; i++){
       db.collection("jobOfferPost").doc(arr[i]).get().then((doc)=>{
-        Div = document.createElement("div");
-        Div.setAttribute("class", "offerComment");
-        Div.setAttribute("id", doc.id);
-        Label = document.createElement("label");
-        Label.setAttribute("class", "offerCommentTitle");
         title = doc.data().title;
         writer = doc.data().writerName;
-        var Text = document.createTextNode(title + " | " + writer);
-        Label.appendChild(Text);
-        Div.appendChild(Label);
-        document.getElementById("offerCommentContainer").appendChild(Div);
+        var commentDiv = `<div id="${doc.id}" class="offerComment">
+          <label class="offerCommentTitle">${title} | ${writer}</label>
+        </div>`;
+        $("#offerCommentContainer").append(commentDiv);
       });
     }
   }

@@ -94,10 +94,11 @@ db
 
         if(payboost == "true"){
           var today = new Date();
-          var postEndDate = new Date(postEnd);
-          var boostStartDate = new Date(postEndDate.setDate(postEndDate.getDate() - deadline));
-          if((boostStartDate < today) || (boostStartDate == today)){
-            $("#payboostInfo").html("모집마감 D-"+ new Date(postEndDate-today).getDate() + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
+          var postEndDate = new Date(postEnd+" 23:59:59");
+          var boostStartDate = new Date(new Date(postEnd+" 23:59:59").setDate(postEndDate.getDate() - deadline));
+          if((boostStartDate.valueOf() < today.valueOf()) || (boostStartDate.valueOf() === today.valueOf())){
+            var dDay = postEndDate.getDate()-today.getDate();
+            $("#payboostInfo").html("모집마감 D-"+ dDay + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
             $("#payboostInfo").css("font-weight", "bold");
           }
         }
