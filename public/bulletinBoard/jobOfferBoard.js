@@ -137,7 +137,6 @@ function sortAndFilter(){
             if(Number(pay) <= Number(postPay)){
               var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
-              <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
@@ -176,7 +175,6 @@ function sortAndFilter(){
             if(pay <= postPay){
               var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
-              <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
@@ -215,7 +213,6 @@ function sortAndFilter(){
             if(pay <= postPay){
               var post =`<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
-              <div id='second'>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
               <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
