@@ -76,13 +76,16 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
           if(typeof doc.data().profile == "undefined"){
             commentDiv = `<div id="${offerPostId}" class="offerComment">
             <img src="../myPage/Sample_User_Icon.png" id=${doc.id} height="30px">
-            <label class="offerCommentTitle">${title} | ${writer}</label>
+            <label class="offerCommentTitle">${title}</label> 
+            <label class="offerCommentApplicant"><b>지원자</b> ${writer}</label>
             </div>`;
           }
+
           else{
             commentDiv = `<div id="${offerPostId}" class="offerComment">
             <img src=${doc.data().profile} id=${doc.id} height="30px">
-            <label class="offerCommentTitle">${title} | ${writer}</label>
+            <label class="offerCommentTitle">${title}</label> 
+            <label class="offerCommentApplicant"><b>지원자</b> ${writer}</label>
             </div>`;
           }
           $("#offerCommentContainer").append(commentDiv);
