@@ -72,6 +72,7 @@ $("#submit").click(function () {
   var phoneNumber = $('#phoneNumber').val();
   var gender = $("input[name='userGender']:checked").val();
   var area = $("#area option:selected").val();
+  sessionStorage.setItem("name", name);
 
   var saveinfo_promise = new Promise(function (resolve, reject) {
     var data = {
