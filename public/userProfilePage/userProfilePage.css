@@ -1,4 +1,3 @@
-
 #header {
   display: flex;
   flex-direction: row;
@@ -101,6 +100,9 @@ body {
 #userPhoto img {
   width: 150px;
   height: 150px;
+  object-fit: fill;
+  border-radius: 20px;
+  border: 1px solid #999;
 }
 
 #userInfobox {

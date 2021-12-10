@@ -81,16 +81,29 @@ body {
   margin-bottom: 20px;
 }
 #userPhoto {
-  width: 130px;
+  width: 102px;
   height: 102px;
   margin-right: 0;
   float: left;
+  object-fit: fill;
+  overflow: hidden;
+  border-radius: 20px;
+  border: solid 1px #999;
 }
+
+#photo {
+  width: 102px;
+  height: 102px;
+  object-fit: fill;
+  border-radius: 20px;
+}
+
 #userInfo {
-  width: 190px;
+  width: 200px;
   height: 102px;
   float: right;
   text-align: left;
+  margin-left: 10px;
 }
 #userInfo p {
   margin: 0;
@@ -98,7 +111,7 @@ body {
 }
 
 .box {
-  height: 100px;
+  height: 130px;
   width: 322px;
   margin: 20px, 0;
   margin-bottom: 20px;
@@ -119,6 +132,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   background-color: #fff;
+  margin-bottom: 4px;
 }
 #applicantBtn {
   width: 322px;
@@ -164,7 +178,7 @@ body {
 
 .list {
   width: 100%;
-  height: 84px;
+  height: 110px;
   overflow-y: scroll;
   scroll-behavior: smooth;
   border: none;

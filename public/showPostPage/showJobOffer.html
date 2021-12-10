@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/375bd97da9.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="showPost.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be6fd56ca5db38f406cc19e8250db1dc&libraries=services,clusterer,drawing"></script>
     <title>구인게시글</title>
 </head>
 
@@ -42,7 +43,7 @@
             <div id="postTitleContainer">
                 <label><b id=postTitle></b></label>
                 <i class="fas fa-comments"></i>
-                <i class="fas fa-map-marker-alt"></i>
+                <label id="mapBtn"><i class="fas fa-map-marker-alt"></i></label>
             </div>
             <div id="postContent"></div>
             <div id="postOtherInfo"></div>
@@ -56,7 +57,13 @@
         </div>
     </div>
 
-
+    <div id="mapModal">
+        <div class="modal_content">
+                <label id="mapCloseBtn"><span class="material-icons">close</span></label>
+            <h3>근로 장소 조회</h3>
+            <div id="map" style="width:250px; height:250px;"></div>
+        </div>
+    </div>
 
 
     <!-- update the version number as needed -->
