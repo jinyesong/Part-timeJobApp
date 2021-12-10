@@ -53,6 +53,9 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
   db.collection('jobOfferPost').orderBy('timestamp', 'desc').get().then((snapshot)=>{
     snapshot.forEach((doc)=>{
+      if(doc.data().worker){
+        return;
+      }
     //   console.log(doc.data().postEnd)
         var title = doc.data().title;
         var writer = doc.data().writerName;
@@ -120,6 +123,9 @@ function sortAndFilter(){
     db.collection('jobOfferPost')
     .orderBy('timestamp', 'desc')
     .get().then((snapshot)=>{
+      if(doc.data().worker){
+        return;
+      }
       $("#postList").children().remove();
       snapshot.forEach((doc)=>{
         var title = doc.data().title;
@@ -180,6 +186,9 @@ function sortAndFilter(){
     .get().then((snapshot)=>{
       $("#postList").children().remove();
       snapshot.forEach((doc)=>{
+        if(doc.data().worker){
+          return;
+        }
         var title = doc.data().title;
         var writer = doc.data().writerName;
         var postEnd = doc.data().postEnd;
@@ -235,6 +244,9 @@ function sortAndFilter(){
     db.collection('jobOfferPost')
     .orderBy('pay', 'desc')
     .get().then((snapshot)=>{
+      if(doc.data().worker){
+        return;
+      }
       $("#postList").children().remove();
       snapshot.forEach((doc)=>{
         var title = doc.data().title;

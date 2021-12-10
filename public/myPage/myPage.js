@@ -6,6 +6,7 @@
 //           var dateString = year + '-' + month  + '-' + day;
 //           console.log(dateString);
 
+
 var firebaseConfig = {
   apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
   authDomain: "part-time-job-38ba6.firebaseapp.com",
@@ -19,11 +20,6 @@ firebase.initializeApp(firebaseConfig);
 const storage = firebase.storage();
 const db = firebase.firestore();
 
-  db.collection('customer').get().then((snapshot)=>{
-    snapshot.forEach((doc)=>{
-      console.log(doc.data())
-    })
-  });
 var id = sessionStorage.getItem("email");
 
   db
@@ -56,22 +52,38 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
       var post = `<div id='${doc.id}' class='object writePost jobOfferPost'><b>구인</b> ${title}</div>`
       $("#writePostList").append(post);
       if(doc.data().applicantList){ // 지원자 목록
-        for(i in doc.data().applicantList){
-          var applicant = doc.data().applicantList[i];
-          db.collection('customer').doc(applicant).get().then((doc)=>{
-            var applyerpost = `<div>
+        if(doc.data().worker){
+          db.collection('customer').doc(doc.data().worker).get().then((doc)=>{
+            
+              var applyerpost = `<div>
             <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
             <div id="applicantBtn">
                         <button id="profileBtn" class="Btn">프로필보기</button>
-                        <button id="hiringBtn" class="Btn">채용하기</button>
+                        <button id="hiringCancelBtn" class="Btn">채용취소</button>
                         <button id="chattingBtn" class="Btn">채팅하기</button>
                         <button id="starScoreBtn" class="Btn">별점평가하기</button>
                     </div>
                     </div>`
           $("#applicantList").append(applyerpost);
           });
+        }else{
+          for(i in doc.data().applicantList){
+            var applicant = doc.data().applicantList[i];
+            db.collection('customer').doc(applicant).get().then((doc)=>{
+              
+                var applyerpost = `<div>
+              <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
+              <div id="applicantBtn">
+                          <button id="profileBtn" class="Btn">프로필보기</button>
+                          <button id="hiringBtn" class="Btn">채용하기</button>
+                          <button id="chattingBtn" class="Btn">채팅하기</button>
+                          <button id="starScoreBtn" class="Btn">별점평가하기</button>
+                      </div>
+                      </div>`
+            $("#applicantList").append(applyerpost);
+            });
+          }
         }
-        
       }
     } 
   })
@@ -147,6 +159,45 @@ $("#applicantList").click(function(event) {
   }
   else if(event.target.id == "starScoreBtn"){
     $("#starScoreModal").css("display","block");
+  }
+  else if(event.target.id == "hiringBtn"){
+    var workerid = $(event.target).parent().prev().children().first().attr("id");
+    var postId = $(event.target).parent().prev().attr("id");
+    if (confirm("채용을 확정하시겠습니까?") == true) {
+      $("#hiringBtn").attr("id", "hiringCancelBtn");
+      $("#hiringCancelBtn").text("채용취소");
+      db
+          .collection('jobOfferPost')
+          .doc(postId)
+          .update({worker:workerid})
+          .then((result)=>{
+            alert("채용되었습니다");
+            location.href = "myPage.html";
+          });
+    }
+    else {
+      return false;
+    }
+  }
+  else if(event.target.id == "hiringCancelBtn"){
+    var workerid = $(event.target).parent().prev().children().first().attr("id");
+    var postId = $(event.target).parent().prev().attr("id");
+    $("#hiringBtn").attr("id", "hiringCancelBtn");
+    if (confirm("채용을 취소하시겠습니까?") == true) {
+      $("#hiringCancelBtn").attr("id", "hiringBtn");
+      $("#hiringBtn").text("채용확정");
+      db
+          .collection('jobOfferPost')
+          .doc(postId)
+          .update({worker: firebase.firestore.FieldValue.delete()})
+          .then(()=>{
+            alert("채용이 취소되었습니다");
+            location.href = "myPage.html";
+          });
+    }
+    else {
+      return false;
+    }
   }
 });
 
