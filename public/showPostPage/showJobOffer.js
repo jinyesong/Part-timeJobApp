@@ -204,6 +204,7 @@ $(document).ready(function () {
                                 applicantList: [sessionStorage.getItem("email")]
                             })
                             .then((result) => {
+                                
                                 alert("지원되었습니다");
                                 location.href = "./showJobOffer.html";
                             });
