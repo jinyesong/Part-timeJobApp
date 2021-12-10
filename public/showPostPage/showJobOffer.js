@@ -118,13 +118,13 @@ db
                     $("#applyCancelBtn").text("지원 취소");
                 }
             } else {
-                $("#modifyBtn").attr("disabled", true);
-                $("#removeBtn").attr("disabled", true);
-                $("#modifyBtn").css("color", "gray");
-                $("#removeBtn").css("color", "gray");
                 $("#applyBtn").attr("disabled", false);
                 $("#applyBtn").css("background-color", "red");
             }
+            $("#modifyBtn").attr("disabled", true);
+            $("#removeBtn").attr("disabled", true);
+            $("#modifyBtn").css("color", "gray");
+            $("#removeBtn").css("color", "gray");
         }
 
         if (payBoost = true) {
