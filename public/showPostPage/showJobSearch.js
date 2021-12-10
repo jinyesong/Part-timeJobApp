@@ -47,18 +47,21 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
     $("#postContent").html(content);
     $("#postOtherInfo").html("작성자: "+writer+"<br>선호근무일: "+workStart+" ~ "+workEnd+"<br>선호근무지역: "+area+"<br>희망시급: "+pay+"원<br>성별: "+gender);
 
-    if(writer == sessionStorage.getItem("name")){
+    if (writer == sessionStorage.getItem("name")) {
       $("#modifyBtn").attr("disabled", false);
       $("#removeBtn").attr("disabled", false);
       $("#modifyBtn").css("color", "white");
       $("#removeBtn").css("color", "white");
-    }
-    else{
+      $("#offerBtn").attr("disabled", true);
+      $("#offerBtn").css("background-color", "gray");
+  } else {
+      $("#offerBtn").attr("disabled", false);
+      $("#offerBtn").css("background-color", "red");
       $("#modifyBtn").attr("disabled", true);
       $("#removeBtn").attr("disabled", true);
       $("#modifyBtn").css("color", "gray");
       $("#removeBtn").css("color", "gray");
-    }
+  }
 });
 
 //댓글 출력
@@ -82,7 +85,6 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
             </div>
             </div>`;
           }
-
           else{
             commentDiv = `<div id="${offerPostId}" class="offerComment">
             <img src=${doc.data().profile} id=${doc.id} class="offerProfile">
@@ -168,14 +170,20 @@ $("#offerOKBtn").click(function() {
       var commentDiv;
       if(typeof doc.data().profile == "undefined"){
         commentDiv = `<div id="${offerPostId}" class="offerComment">
-        <img src="../myPage/Sample_User_Icon.png" id=${doc.id} height="30px">
-        <label class="offerCommentTitle">${title} | ${writer}</label>
+        <img src="../myPage/Sample_User_Icon.png" id=${doc.id} class="offerProfile">
+        <div class="offerCommentWord">
+        <label class="offerCommentTitle">${title}</label> 
+        <label class="offerCommentApplicant"><b>근로제의자</b> ${writer}</label>
+        </div>
         </div>`;
       }
       else{
         commentDiv = `<div id="${offerPostId}" class="offerComment">
-        <img src=${doc.data().profile} id=${doc.id} height="30px">
-        <label class="offerCommentTitle">${title} | ${writer}</label>
+        <img src=${doc.data().profile} id=${doc.id} class="offerProfile">
+        <div class="offerCommentWord">
+        <label class="offerCommentTitle">${title}</label> 
+        <label class="offerCommentApplicant"><b>근로제의자</b> ${writer}</label>
+        </div>
         </div>`;
       }
       $("#offerCommentContainer").append(commentDiv);
