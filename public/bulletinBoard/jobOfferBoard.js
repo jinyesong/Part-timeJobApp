@@ -116,9 +116,8 @@ function sortAndFilter(){
   console.log(sort);
   console.log("필터pay", typeof pay);
   console.log("값", pay);
-  if(sort == "latestOrderr"){
+  if(sort == "latestOrder"){
     db.collection('jobOfferPost')
-    .where('gender', "==", gender)
     .orderBy('timestamp', 'desc')
     .get().then((snapshot)=>{
       $("#postList").children().remove();
@@ -126,7 +125,7 @@ function sortAndFilter(){
         var title = doc.data().title;
         var writer = doc.data().writerName;
         var postEnd = doc.data().postEnd;
-        var postPay = doc.data().pay();
+        var postPay = doc.data().pay;
         var workStart = doc.data().workStart;
         var workEnd = doc.data().workEnd;
         var workStartArr = workStart.split("-");
@@ -140,7 +139,8 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post = `<div class='post' id=${doc.id}>
+              if(gender == "no" | gender == doc.data().gender){
+                var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
@@ -165,6 +165,7 @@ function sortAndFilter(){
             document.getElementById(doc.id).style.border = "2px solid red";
           }
         }
+              }
             } 
           }
         }
@@ -175,7 +176,6 @@ function sortAndFilter(){
   }
   else if(sort== "dueDayOrder"){
     db.collection('jobOfferPost')
-    .where('gender', "==", gender)
     .orderBy('postEnd')
     .get().then((snapshot)=>{
       $("#postList").children().remove();
@@ -197,7 +197,8 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post = `<div class='post' id=${doc.id}>
+              if(gender == "no" | gender == doc.data().gender){
+                var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
@@ -222,6 +223,7 @@ function sortAndFilter(){
             document.getElementById(doc.id).style.border = "2px solid red";
           }
         }
+              }
             } 
           }
         }
@@ -231,7 +233,6 @@ function sortAndFilter(){
   }
   else if(sort == "payOrder"){
     db.collection('jobOfferPost')
-    .where('gender', "==", gender)
     .orderBy('pay', 'desc')
     .get().then((snapshot)=>{
       $("#postList").children().remove();
@@ -253,7 +254,8 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post =`<div class='post' id=${doc.id}>
+              if(gender == "no" | gender == doc.data().gender){
+                var post = `<div class='post' id=${doc.id}>
               <label class='postTitle'>${title}</label>
               <label class='postWriter'><b>작성자</b> ${writer}</label>
               <label class='postPay'><b>시급</b> ${postPay}원</label>
@@ -278,6 +280,7 @@ function sortAndFilter(){
             document.getElementById(doc.id).style.border = "2px solid red";
           }
         }
+              }
             } 
           }
         }

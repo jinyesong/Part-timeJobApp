@@ -49,7 +49,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
-db.collection('jobSearchPost').get().then((snapshot)=>{
+db.collection('jobSearchPost').
+  orderBy('timestamp', 'desc').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
       var title = doc.data().title;
       var writer = doc.data().writerName;
@@ -62,9 +63,6 @@ db.collection('jobSearchPost').get().then((snapshot)=>{
         $('#postList').append(post);
   })
 });
-
-
-
 
 
 //게시글 클릭 이벤트
@@ -89,9 +87,8 @@ function sortAndFilter(){
   var pay = Number($("#pay").val());
   var sort = $("#sort_btn option:selected").val();
   console.log(sort);
-  if(sort == "latestOrderr"){
-    db.collection('jobOfferPost')
-    .where('gender', "==", gender)
+  if(sort == "latestOrder"){
+    db.collection('jobSearchPost')
     .orderBy('timestamp', 'desc')
     .get().then((snapshot)=>{
       $("#postList").children().remove();
@@ -112,12 +109,15 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post = `<div class='post' id=${doc.id}>
+              if(gender == "no" | gender == doc.data().gender){
+                var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
         <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
+              }
+              
             } 
           }
         }
@@ -126,8 +126,7 @@ function sortAndFilter(){
   });
   }
   else if(sort == "payOrder"){
-    db.collection('jobOfferPost')
-    .where('gender', "==", gender)
+    db.collection('jobSearchPost')
     .orderBy('pay')
     .get().then((snapshot)=>{
       $("#postList").children().remove();
@@ -148,13 +147,16 @@ function sortAndFilter(){
           if((area == "No") | area == doc.data().area){
             console.log(postPay);
             if(pay <= postPay){
-              var post = `<div class='post' id=${doc.id}>
+              if(gender =="no" | gender == doc.data().gender){
+                var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
         <label class='postPay'><b>시급</b> ${pay}원</label>
         </div>`
         $('#postList').append(post);
-            } 
+              }
+              
+            }     
           }
         }
       });
