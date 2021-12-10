@@ -240,15 +240,27 @@ h2 {
   text-align: left;
 }
 .offerComment {
-  border: black solid 1px;
+  border: #999 solid 1px;
   width: 320px;
   margin-bottom: 5px;
   margin-left: auto;
   margin-right: auto;
+  flex-direction: row;
+  border-radius: 3px;
 }
 
 #offerCommentContainer {
   text-align: left;
+}
+
+.offerProfile {
+  width: 50px;
+  height: 50px;
+  object-fit: fill;
+  overflow: hidden;
+  border-radius: 5px;
+  border: solid 1px #999;
+  margin: 5px;
 }
 
 .offerModalBtn {
@@ -272,22 +284,34 @@ h2 {
 }
 
 .offerCommentTitle {
-  width: 180px;
+  width: 250px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  font-weight: bold;
+  padding-top: 6px;
+}
+
+.offerCommentWord {
+  flex-direction: column;
+  width: 255px;
+  float: right;
+  padding-top: 8px;
 }
 
 .offerCommentApplicant {
   font-size: 14px;
-  width: 90px;
+  width: 250px;
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
+  /* margin-bottom: 10px; */
+  /* margin-left: 80px; */
+  /* float: right; */
 }
 
 #mapModal {
@@ -302,4 +326,9 @@ h2 {
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+#offerStart {
+  float: left;
+  margin-left: 20px;
 }
