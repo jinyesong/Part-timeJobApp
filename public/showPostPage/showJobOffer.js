@@ -234,6 +234,8 @@ $(document).ready(function () {
 //지도 팝업 창 띄우기
 $("#mapBtn").click(function(){
     document.getElementById("mapModal").style.display="block";
+    ps.keywordSearch('대전 궁동 마을', placesSearchCB);
+    map.relayout();
 });
 
 $("#mapCloseBtn").click(function(){
@@ -244,7 +246,7 @@ $("#mapCloseBtn").click(function(){
 var container = document.getElementById('map');
 	var options = {
 		center: new kakao.maps.LatLng(33.450701, 126.570667),
-		level: 3
+		level: 1
 	};
 
 var map = new kakao.maps.Map(container, options);
@@ -253,7 +255,7 @@ var map = new kakao.maps.Map(container, options);
 var ps = new kakao.maps.services.Places(); 
 
 // 키워드로 장소를 검색합니다
-ps.keywordSearch('대전 궁동 마을', placesSearchCB); 
+ 
 
 // 키워드 검색 완료 시 호출되는 콜백함수 입니다
 function placesSearchCB (data, status, pagination) {
@@ -284,6 +286,7 @@ function displayMarker(place) {
 
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, 'click', function() {
+        var infowindow = new kakao.maps.InfoWindow();
         // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
         infowindow.open(map, marker);
