@@ -97,10 +97,20 @@ body {
   margin-bottom: 20px;
 }
 #userPhotobox {
-  width: 130px;
+  width: 102px;
   height: 102px;
-  margin-right: 0;
+  margin-right: 0px;
+  margin-left: 13px;
   float: left;
+  object-fit: fill;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid #999;
+}
+#userPhotobox img {
+  width: 102px;
+  height: 102px;
+  object-fit: fill;
 }
 
 /* #userInfobox {
@@ -122,9 +132,10 @@ body {
 /**첨부파일**/
 .filebox {
   float: right;
-  width: 190px;
+  width: 180px;
   height: 102px;
   text-align: left;
+  margin-left: 10px;
 }
 .filebox label {
   display: inline-block;
