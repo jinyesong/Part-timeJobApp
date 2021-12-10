@@ -75,17 +75,21 @@ db.collection('jobSearchPost').doc(postId).get().then((doc)=>{
           var commentDiv;
           if(typeof doc.data().profile == "undefined"){
             commentDiv = `<div id="${offerPostId}" class="offerComment">
-            <img src="../myPage/Sample_User_Icon.png" id=${doc.id} height="30px">
+            <img src="../myPage/Sample_User_Icon.png" id=${doc.id} class="offerProfile">
+            <div class="offerCommentWord">
             <label class="offerCommentTitle">${title}</label> 
-            <label class="offerCommentApplicant"><b>지원자</b> ${writer}</label>
+            <label class="offerCommentApplicant"><b>근로제의자</b> ${writer}</label>
+            </div>
             </div>`;
           }
 
           else{
             commentDiv = `<div id="${offerPostId}" class="offerComment">
-            <img src=${doc.data().profile} id=${doc.id} height="30px">
+            <img src=${doc.data().profile} id=${doc.id} class="offerProfile">
+            <div class="offerCommentWord">
             <label class="offerCommentTitle">${title}</label> 
-            <label class="offerCommentApplicant"><b>지원자</b> ${writer}</label>
+            <label class="offerCommentApplicant"><b>근로제의자</b> ${writer}</label>
+            </div>
             </div>`;
           }
           $("#offerCommentContainer").append(commentDiv);
