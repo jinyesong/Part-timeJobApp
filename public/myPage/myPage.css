@@ -139,11 +139,12 @@ body {
   display: grid;
   grid-template-columns: auto auto auto auto;
   text-decoration: none;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .Btn {
-  background-color: khaki;
+  background-color: #eaebdc;
   border: 1px solid #999;
+
   margin: 0;
   text-decoration: none;
 }
@@ -174,6 +175,8 @@ body {
   text-align: center;
   text-decoration: none;
   padding: 1px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .list {

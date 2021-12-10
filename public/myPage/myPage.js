@@ -56,7 +56,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
           db.collection('customer').doc(doc.data().worker).get().then((doc)=>{
             
               var applyerpost = `<div>
-            <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
+            <div id='${post_id}' class='object applicant jobOfferPost' style="margin-bottom:0px;"><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
             <div id="applicantBtn">
                         <button id="profileBtn" class="Btn">프로필보기</button>
                         <button id="hiringCancelBtn" class="Btn">채용취소</button>
@@ -72,7 +72,7 @@ db.collection('jobOfferPost').get().then((snapshot)=>{
             db.collection('customer').doc(applicant).get().then((doc)=>{
               
                 var applyerpost = `<div>
-              <div id='${post_id}' class='object applicant jobOfferPost'><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
+              <div id='${post_id}' class='object applicant jobOfferPost' style="margin-bottom:0px;"><b id='${applicant}'>${doc.data().name}</b> ${title}</div>
               <div id="applicantBtn">
                           <button id="profileBtn" class="Btn">프로필보기</button>
                           <button id="hiringBtn" class="Btn">채용하기</button>
