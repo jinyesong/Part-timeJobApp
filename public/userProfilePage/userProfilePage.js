@@ -37,6 +37,9 @@ var firebaseConfig = {
             var starscoreNum = arr[1];
             $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1));
           $("#starscoreNum").text(starscoreNum);
+          }else{
+            $("#starscore").text((0.0).toFixed(1));
+          $("#starscoreNum").text(0);
           }
           if(doc.data().profile){
             $("#photo").attr("src", doc.data().profile);
