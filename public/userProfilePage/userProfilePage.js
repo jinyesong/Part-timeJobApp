@@ -31,6 +31,13 @@ var firebaseConfig = {
           $("#email").text(user_id);
           $("#phoneNumber").text(phoneNumber);
           $("#gender").text(gender);
+          if(doc.data().starScore){
+            var arr = doc.data().starScore;
+            var starscore = arr[0];
+            var starscoreNum = arr[1];
+            $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1));
+          $("#starscoreNum").text(starscoreNum);
+          }
           if(doc.data().profile){
             $("#photo").attr("src", doc.data().profile);
           }
