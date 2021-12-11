@@ -49,7 +49,7 @@ body {
   z-index: 1;
   top: 0;
   right: 0;
-  background-color: #dcebff;
+  background-color: #e0dedc;
   font-size: 30px;
   overflow-x: hidden;
   padding-top: 60px;
@@ -70,13 +70,33 @@ body {
   color: #fff;
 }
 .nav a {
-  display: block;
-  padding: 20px 30px;
   font-size: 25px;
   text-decoration: none;
   color: black;
 }
+.nav label {
+  font-size: 22px;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav img {
+  width: 48px;
+  height: 48px;
 
+  vertical-align: middle;
+}
+
+.sideBarLinkBox {
+  /* display: inline-; */
+}
+#mypageIcon {
+  width: 35px;
+  height: 35px;
+}
+.nav div {
+  padding: 20px;
+}
 .nav .close {
   position: absolute;
   top: 0;

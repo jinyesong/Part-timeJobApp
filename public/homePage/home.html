@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="home.css">
     <title>HOME</title>
 </head>
+
 <body>
     <div id="page">
         <span class="slide">
@@ -19,20 +21,32 @@
         </span>
 
         <div id="menu" class="nav">
-            <a href="#" class="close" onclick="closeSlideMenu()">
+            <a href="#" class="close" onclick="closeSlideMenu()" style="padding: 20px 30px;">
                 <span class="material-icons">close</span>
             </a>
-            <a href="#"><label class="homeUserName"></label>님</a>
-            <a href="../myPage/myPage.html">마이페이지</a>
-            <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
-            <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+            
+            <div>
+            <label class="homeUserName"></label><label>님</label>
+            </div>
+            <div class="sideBarLinkBox"> 
+                <img id="mypageIcon" src="../Icons/user.png">
+                <a href="../myPage/myPage.html">마이페이지</a>
+            </div>
+            <div class="sideBarLinkBox">
+                <img id="offerBoardIcon" src="../Icons/job-seeker.png" style=" transform: scaleX(-1); width: 42px; height: 42px;">
+                <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+            </div>
+            <div class="sideBarLinkBox">
+                <img id="searchBoardIcon" src="../Icons/job-search (2).png">
+                <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+            </div>
             <br>
-            <a id="logoutBtn">Logout</a>
+            <a id="logoutBtn">Logout</a><br>
             <a href="#"><i class="far fa-question-circle"></i></a>
         </div>
     </div>
     <div id="user">
-    <label class="homeUserName"></label>님
+        <label class="homeUserName"></label>님
     </div>
     <div class="board" onclick="location.href='../bulletinBoard/jobOfferBoard.html';">
         <h3>구인게시판</h3>
@@ -43,7 +57,8 @@
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
-      integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
     <script src="home.js"></script>
 </body>
+
 </html>
