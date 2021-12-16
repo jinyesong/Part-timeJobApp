@@ -100,7 +100,12 @@ db
           var boostStartDate = new Date(new Date(postEnd+" 23:59:59").setDate(postEndDate.getDate() - deadline));
           if((boostStartDate.valueOf() < today.valueOf()) || (boostStartDate.valueOf() === today.valueOf())){
             var dDay = postEndDate.getDate()-today.getDate();
-            $("#payboostInfo").html("모집마감 D-"+ dDay + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
+            if(dDay<0){
+                $("#payboostInfo").html("[모집마감]<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
+            }
+            else{
+                $("#payboostInfo").html("모집마감 D-"+ dDay + "<br>인상시급: " +  (pay+(pay*(0.01*increaseRate)))+"원");
+            }
             $("#payboostInfo").css("font-weight", "bold");
           }
         }
