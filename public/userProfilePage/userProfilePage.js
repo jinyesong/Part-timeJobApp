@@ -33,9 +33,16 @@ var firebaseConfig = {
           $("#gender").text(gender);
           if(doc.data().starScore){
             var arr = doc.data().starScore;
-            var starscore = arr[0];
-            var starscoreNum = arr[1];
+            var starscoreNum = arr.length;
             if(starscoreNum>=5){
+              arr.sort();
+              console.log(arr);
+              var starscore = 0;
+              // outlier 제외
+              for(var i=1; i<starscoreNum-1; i++){
+                starscore += arr[i]
+              }
+              starscoreNum -= 2; 
               $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1)+" / 5.0 ");
               $("#starscoreNum").text("( "+starscoreNum + "명 )");
             }

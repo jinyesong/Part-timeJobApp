@@ -246,7 +246,7 @@ $("#confirm").on('click', function () {
         .then((doc) => {
             console.log(doc.data().email);
             if (typeof doc.data().starScore == "undefined") {
-                const arr = [star, 1];
+                const arr = [star];
                 db
                     .collection('customer')
                     .doc(worker)
@@ -266,8 +266,7 @@ $("#confirm").on('click', function () {
                 const arr = doc
                     .data()
                     .starScore;
-                arr[0] += star;
-                arr[1] += 1;
+                arr.push(star);
                 db
                     .collection('customer')
                     .doc(worker)
