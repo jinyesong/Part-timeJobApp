@@ -131,6 +131,9 @@ db.collection("jobOfferPost")
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object applyPost jobOfferPost'><b>구인</b> ${title}</div>`;
       $("#applyPostList").append(post);
+      if(typeof doc.data().worker != "undefined" && doc.data().worker == sessionStorage.getItem("email")){
+        document.getElementById(doc.id).style.border = "2px solid red";
+      }
     });
   });
 
