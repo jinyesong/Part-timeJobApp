@@ -42,8 +42,7 @@ var firebaseConfig = {
               for(var i=1; i<starscoreNum-1; i++){
                 starscore += arr[i]
               }
-              starscoreNum -= 2; 
-              $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1)+" / 5.0 ");
+              $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum-2)).toFixed(1)+" / 5.0 ");
               $("#starscoreNum").text("( "+starscoreNum + "명 )");
             }
             else{
