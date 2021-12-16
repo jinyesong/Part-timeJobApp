@@ -234,7 +234,7 @@ $("#applicantList").click(function (event) {
 /* 별점평가 모달창 */
 $("#confirm").on('click', function () {
     $("#starScoreModal").css("display", "none");
-    var star = $("input[name='rating']:checked").val();
+    var star = Number($("input[name='rating']:checked").val());
     var worker = sessionStorage.getItem("user");
     var postId = sessionStorage.getItem("postId");
     console.log(worker, postId);
@@ -266,7 +266,7 @@ $("#confirm").on('click', function () {
                 const arr = doc
                     .data()
                     .starScore;
-                arr[0] += Number(star);
+                arr[0] += star;
                 arr[1] += 1;
                 db
                     .collection('customer')
