@@ -94,9 +94,9 @@
           <label>마감전 시급인상</label>
           <input type="radio" class="payboost" name="payboost" value="false" id="false" checked><label class=inputLabel>미사용</label>
           <input type="radio" class="payboost" name="payboost" value="true" id="true"><label class=inputLabel>사용</label><br>
-          <label>인상율</label>
-          <input type="text" id="increaseRate" name="increaseRate" disabled><label id=rateLabel>%</label><br>
-          <label>적용일 : 마감 D-</label><input type="text" id="deadline" name="deadline" disabled>
+          <label id="payBoostUpRate" style="color: gray;">인상율</label>
+          <input type="text" id="increaseRate" name="increaseRate" disabled><label id=rateLabel style="color: gray;">%</label><br>
+          <label id="payBoostStart" style="color: gray;">적용일 : 마감 D-</label><input type="text" id="deadline" name="deadline" disabled>
         </div>
       </div>
       <button id="saveBtn">저장</button><br>
