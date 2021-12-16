@@ -226,7 +226,7 @@ function sortAndFilter() {
                     var time = endDate.getTime() - strDate.getTime();
                     var day = time / (1000 * 60 * 60 * 24);
                     if ((periodList[period] == 0) | (periodList[period] == 1 && day <= 1) | (periodList[period] == 2 && day > 1 && day <= 7) | (periodList[period] == 3 && day > 7 && day <= 30) | (periodList[period] == 4 && day > 30)) {
-                        if ((area == "No") | area == doc.data().area) {
+                        if ((area == "No") | doc.data().area.includes(area)) {
                             console.log(postPay);
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
@@ -318,7 +318,7 @@ function sortAndFilter() {
                     var time = endDate.getTime() - strDate.getTime();
                     var day = time / (1000 * 60 * 60 * 24);
                     if ((periodList[period] == 0) | (periodList[period] == 1 && day <= 1) | (periodList[period] == 2 && day > 1 && day <= 7) | (periodList[period] == 3 && day > 7 && day <= 30) | (periodList[period] == 4 && day > 30)) {
-                        if ((area == "No") | area == doc.data().area) {
+                        if ((area == "No") | doc.data().area.includes(area)) {
                             console.log(postPay);
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
@@ -408,7 +408,7 @@ function sortAndFilter() {
                     var presentDate = new Date();
                     var day = time / (1000 * 60 * 60 * 24);
                     if ((periodList[period] == 0) | (periodList[period] == 1 && day <= 1) | (periodList[period] == 2 && day > 1 && day <= 7) | (periodList[period] == 3 && day > 7 && day <= 30) | (periodList[period] == 4 && day > 30)) {
-                        if ((area == "No") | area == doc.data().area) {
+                        if ((area == "No") | doc.data().area.includes(area)) {
                             console.log(postPay);
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
