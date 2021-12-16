@@ -123,16 +123,37 @@ select {
 .slide {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #0e3746;
   height: 50px;
-  padding-left: 25px;
-  padding-right: 20px;
+  margin-left: -25px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+#header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 0px;
+}
+#backIcon {
+  color: #f4f2ec;
+  font-size: smaller;
+}
 #menuIcon {
   color: #fff;
+}
+
+h1 {
+  margin: 0;
+  color: #ffffff;
+  /* height: 35px; */
+  vertical-align: middle;
+  padding-top: 5px;
+  font-size: 27px;
 }
 .nav a {
   font-size: 20px;

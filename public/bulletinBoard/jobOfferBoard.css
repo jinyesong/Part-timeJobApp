@@ -209,14 +209,14 @@ body {
 .slide {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: #0e3746;
   height: 50px;
-  padding-left: 25px;
-  padding-right: 20px;
+  margin-left: -25px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 #menuIcon {
   color: #fff;
 }
@@ -265,12 +265,13 @@ body {
   width: 100%;
 }
 
-h2 {
+h1 {
   margin: 0;
   color: #ffffff;
-  height: 50px;
-  margin-left: 15px;
-  padding-top: 10px;
+  /* height: 35px; */
+  vertical-align: middle;
+  padding-top: 5px;
+  font-size: 27px;
 }
 
 .post {
