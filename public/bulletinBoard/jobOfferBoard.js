@@ -233,7 +233,7 @@ function sortAndFilter() {
                     var workEndArr = workEnd.split("-");
                     var strDate = new Date(workStartArr[0], workStartArr[1], workStartArr[2]);
                     var endDate = new Date(workEndArr[0], workEndArr[1], workEndArr[2]);
-                    var postendDate = new Date(postEnd);
+                    var postendDate = new Date(postEnd+" 23:59:59");
                     var presentDate = new Date();
                     var time = endDate.getTime() - strDate.getTime();
                     var day = time / (1000 * 60 * 60 * 24);
@@ -243,43 +243,46 @@ function sortAndFilter() {
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
                                     if (postendDate.valueOf >= presentDate.valueOf) {
-                                        var post = `<div class='post' id=${doc
-                                            .id}>
-              <label class='postTitle'>${title}</label>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${postPay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
-                                            $('#postList')
-                                            .append(post);
-                                        //마감전 시급인상 적용시 div배경색 바뀜
-                                        var payboost = doc
-                                            .data()
-                                            .payboost;
-                                        // var increaseRate = doc.data().increaseRate;
-                                        var deadline = doc
-                                            .data()
-                                            .deadline;
-                                        var postEnd = doc
-                                            .data()
-                                            .postEnd;
+                                        var today = new Date();
+                                        var postEndDate = new Date(postEnd +" 23:59:59");
+                                        //마감전 시급인상 적용시 div테두리 바뀜 + 시급 인상되어 표시
+            var payboost = doc
+            .data()
+            .payboost;
+        var increaseRate = doc
+            .data()
+            .increaseRate;
+        var deadline = doc
+            .data()
+            .deadline;
+        var postEnd = doc
+            .data()
+            .postEnd;
 
-                                        if (payboost == "true") {
-                                            var today = new Date();
-                                            // var year = today.getFullYear(); var month = ('0' + (today.getMonth() +
-                                            // 1)).slice(-2); var day = ('0' + today.getDate()).slice(-2); var dateString =
-                                            // year + '-' + month  + '-' + day;
-                                            var postEndDate = new Date(postEnd);
-                                            var boostStartDate = new Date(
-                                                postEndDate.setDate(postEndDate.getDate() - deadline)
-                                            );
-                                            if ((boostStartDate < today) || (boostStartDate == today)) {
-                                                document
-                                                    .getElementById(doc.id)
-                                                    .style
-                                                    .border = "2px solid red";
-                                            }
-                                        }
+        var boostStartDate = new Date(
+            postEndDate.setDate(postEndDate.getDate() - deadline)
+        );
+        var payboosted = false;
+        if (payboost == "true" && (boostStartDate < today) || (boostStartDate == today)) {
+            payboosted = true;
+            pay = pay + pay * (0.01 * increaseRate);
+        }
+
+        var post = `<div class='post' id=${doc.id}>
+    <label class='postTitle'>${title}</label>
+    <label class='postWriter'><b>작성자</b> ${writer}</label>
+    <label class='postPay'><b>시급</b> ${pay}원</label>
+    <label class='postEnd'><b>마감일</b> ${postEnd}</label>
+    </div>`
+            $('#postList')
+            .append(post);
+
+        if (payboosted) {
+            document
+                .getElementById(doc.id)
+                .style
+                .border = "2px solid red";
+        }
                                     }
 
                                 }
@@ -325,7 +328,7 @@ function sortAndFilter() {
                     var workEndArr = workEnd.split("-");
                     var strDate = new Date(workStartArr[0], workStartArr[1], workStartArr[2]);
                     var endDate = new Date(workEndArr[0], workEndArr[1], workEndArr[2]);
-                    var postendDate = new Date(postEnd);
+                    var postendDate = new Date(postEnd+" 23:59:59");
                     var presentDate = new Date();
                     var time = endDate.getTime() - strDate.getTime();
                     var day = time / (1000 * 60 * 60 * 24);
@@ -335,43 +338,47 @@ function sortAndFilter() {
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
                                     if (postendDate.valueOf >= presentDate.valueOf) {
-                                        var post = `<div class='post' id=${doc
-                                            .id}>
-              <label class='postTitle'>${title}</label>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${postPay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
-                                            $('#postList')
-                                            .append(post);
-                                        //마감전 시급인상 적용시 div배경색 바뀜
-                                        var payboost = doc
-                                            .data()
-                                            .payboost;
-                                        // var increaseRate = doc.data().increaseRate;
-                                        var deadline = doc
-                                            .data()
-                                            .deadline;
-                                        var postEnd = doc
-                                            .data()
-                                            .postEnd;
+                                        var today = new Date();
+                                        var postEndDate = new Date(postEnd +" 23:59:59");
+                                        //마감전 시급인상 적용시 div테두리 바뀜 + 시급 인상되어 표시
+            var payboost = doc
+            .data()
+            .payboost;
+        var increaseRate = doc
+            .data()
+            .increaseRate;
+        var deadline = doc
+            .data()
+            .deadline;
+        var postEnd = doc
+            .data()
+            .postEnd;
 
-                                        if (payboost == "true") {
-                                            var today = new Date();
-                                            // var year = today.getFullYear(); var month = ('0' + (today.getMonth() +
-                                            // 1)).slice(-2); var day = ('0' + today.getDate()).slice(-2); var dateString =
-                                            // year + '-' + month  + '-' + day;
-                                            var postEndDate = new Date(postEnd);
-                                            var boostStartDate = new Date(
-                                                postEndDate.setDate(postEndDate.getDate() - deadline)
-                                            );
-                                            if ((boostStartDate < today) || (boostStartDate == today)) {
-                                                document
-                                                    .getElementById(doc.id)
-                                                    .style
-                                                    .border = "2px solid red";
-                                            }
-                                        }
+        var boostStartDate = new Date(
+            postEndDate.setDate(postEndDate.getDate() - deadline)
+        );
+        var payboosted = false;
+        if (payboost == "true" && (boostStartDate < today) || (boostStartDate == today)) {
+            payboosted = true;
+            pay = pay + pay * (0.01 * increaseRate);
+        }
+
+        var post = `<div class='post' id=${doc.id}>
+    <label class='postTitle'>${title}</label>
+    <label class='postWriter'><b>작성자</b> ${writer}</label>
+    <label class='postPay'><b>시급</b> ${pay}원</label>
+    <label class='postEnd'><b>마감일</b> ${postEnd}</label>
+    </div>`
+            $('#postList')
+            .append(post);
+
+        if (payboosted) {
+            document
+                .getElementById(doc.id)
+                .style
+                .border = "2px solid red";
+        }pend(post);
+                                        
                                     }
                                 }
                             }
@@ -416,7 +423,7 @@ function sortAndFilter() {
                     var strDate = new Date(workStartArr[0], workStartArr[1], workStartArr[2]);
                     var endDate = new Date(workEndArr[0], workEndArr[1], workEndArr[2]);
                     var time = endDate.getTime() - strDate.getTime();
-                    var postendDate = new Date(postEnd);
+                    var postendDate = new Date(postEnd+" 23:59:59");
                     var presentDate = new Date();
                     var day = time / (1000 * 60 * 60 * 24);
                     if ((periodList[period] == 0) | (periodList[period] == 1 && day <= 1) | (periodList[period] == 2 && day > 1 && day <= 7) | (periodList[period] == 3 && day > 7 && day <= 30) | (periodList[period] == 4 && day > 30)) {
@@ -425,44 +432,46 @@ function sortAndFilter() {
                             if (pay <= postPay) {
                                 if (gender == "no" | gender == doc.data().gender) {
                                     if (postendDate.valueOf >= presentDate.valueOf) {
+                                        var today = new Date();
+                                        var postEndDate = new Date(postEnd +" 23:59:59");
+                                        //마감전 시급인상 적용시 div테두리 바뀜 + 시급 인상되어 표시
+var payboost = doc
+.data()
+.payboost;
+var increaseRate = doc
+.data()
+.increaseRate;
+var deadline = doc
+.data()
+.deadline;
+var postEnd = doc
+.data()
+.postEnd;
 
-                                        var post = `<div class='post' id=${doc
-                                            .id}>
-              <label class='postTitle'>${title}</label>
-              <label class='postWriter'><b>작성자</b> ${writer}</label>
-              <label class='postPay'><b>시급</b> ${postPay}원</label>
-              <label class='postEnd'><b>마감일</b> ${postEnd}</label><br></div>
-              </div>`
-                                            $('#postList')
-                                            .append(post);
-                                        //마감전 시급인상 적용시 div배경색 바뀜
-                                        var payboost = doc
-                                            .data()
-                                            .payboost;
-                                        // var increaseRate = doc.data().increaseRate;
-                                        var deadline = doc
-                                            .data()
-                                            .deadline;
-                                        var postEnd = doc
-                                            .data()
-                                            .postEnd;
+var boostStartDate = new Date(
+postEndDate.setDate(postEndDate.getDate() - deadline)
+);
+var payboosted = false;
+if (payboost == "true" && (boostStartDate < today) || (boostStartDate == today)) {
+payboosted = true;
+pay = pay + pay * (0.01 * increaseRate);
+}
 
-                                        if (payboost == "true") {
-                                            var today = new Date();
-                                            // var year = today.getFullYear(); var month = ('0' + (today.getMonth() +
-                                            // 1)).slice(-2); var day = ('0' + today.getDate()).slice(-2); var dateString =
-                                            // year + '-' + month  + '-' + day;
-                                            var postEndDate = new Date(postEnd);
-                                            var boostStartDate = new Date(
-                                                postEndDate.setDate(postEndDate.getDate() - deadline)
-                                            );
-                                            if ((boostStartDate < today) || (boostStartDate == today)) {
-                                                document
-                                                    .getElementById(doc.id)
-                                                    .style
-                                                    .border = "2px solid red";
-                                            }
-                                        }
+var post = `<div class='post' id=${doc.id}>
+<label class='postTitle'>${title}</label>
+<label class='postWriter'><b>작성자</b> ${writer}</label>
+<label class='postPay'><b>시급</b> ${pay}원</label>
+<label class='postEnd'><b>마감일</b> ${postEnd}</label>
+</div>`
+$('#postList')
+.append(post);
+
+if (payboosted) {
+document
+    .getElementById(doc.id)
+    .style
+    .border = "2px solid red";
+}
                                     }
                                 }
                             }
