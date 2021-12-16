@@ -35,11 +35,16 @@ var firebaseConfig = {
             var arr = doc.data().starScore;
             var starscore = arr[0];
             var starscoreNum = arr[1];
-            $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1));
-          $("#starscoreNum").text(starscoreNum);
+            if(starscoreNum>=5){
+              $("#starscore").text((parseFloat(starscore)/parseFloat(starscoreNum)).toFixed(1)+" / 5.0 ");
+              $("#starscoreNum").text("( "+starscoreNum + "명 )");
+            }
+            else{
+              $("#starscore").text("별점 평가 건수가 적습니다.");
+              $("#starscoreNum").text("( "+starscoreNum + "명 )");
+            }
           }else{
-            $("#starscore").text((0.0).toFixed(1));
-          $("#starscoreNum").text(0);
+            $("#starscore").text("별점 평가 건수가 없습니다.");
           }
           if(doc.data().profile){
             $("#photo").attr("src", doc.data().profile);
@@ -54,7 +59,6 @@ var firebaseConfig = {
         } else {
             $("#prev_businessLicense").remove();
         }
-
       });
   
   
