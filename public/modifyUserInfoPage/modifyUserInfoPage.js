@@ -42,10 +42,10 @@ $(document).ready(function () {
             $("#area")
                 .val(area)
                 .prop("selected", true);
-            if (gender == "man") {
-                $("input:radio[name=userGender][value='man']").attr('checked', true);
-            } else if (gender == "woman") {
-                $("input:radio[name=userGender][value='woman']").attr('checked', true);
+            if (gender == "남") {
+                $("input:radio[name=userGender][value='남']").attr('checked', true);
+            } else if (gender == "여") {
+                $("input:radio[name=userGender][value='여']").attr('checked', true);
             }
             if (doc.data().resume) {
                 $("#prev_resume").attr("href", doc.data().resume);
