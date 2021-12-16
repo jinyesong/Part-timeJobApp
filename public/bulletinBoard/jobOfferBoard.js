@@ -192,13 +192,13 @@ function sortAndFilter() {
             .orderBy('timestamp', 'desc')
             .get()
             .then((snapshot) => {
-                if (doc.data().worker) {
-                    return;
-                }
                 $("#postList")
                     .children()
                     .remove();
                 snapshot.forEach((doc) => {
+                    if (doc.data().worker) {
+                        return;
+                    }
                     var title = doc
                         .data()
                         .title;
@@ -374,13 +374,13 @@ function sortAndFilter() {
             .orderBy('pay', 'desc')
             .get()
             .then((snapshot) => {
-                if (doc.data().worker) {
-                    return;
-                }
                 $("#postList")
                     .children()
                     .remove();
                 snapshot.forEach((doc) => {
+                    if (doc.data().worker) {
+                        return;
+                    }
                     var title = doc
                         .data()
                         .title;
