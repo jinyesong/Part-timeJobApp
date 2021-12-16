@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="userGuidePage.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <title>사용설명서</title>
+</head>
+
+<body>
+    <div id="page">
+        <span class="slide">
+            <span id="header">
+                <a href="javascript:history.back();" class="backBtn"><i id="backIcon"
+                        class="fas fa-chevron-left"></i></a>
+            </span>
+            <h1>사용설명서</h1>
+            <div style="width: 30px;"></div>
+        </span>
+    </div>
+
+
+
+    <div id="content">
+        
+        <li><b>게시글 작성 방법</b></li>
+        <label>구인/구직 게시판 -> 글쓰기 버튼 클릭</label>
+        <br> <br>
+        <li><b>아르바이트 지원 방법</b></li> 
+        <label>구인 게시판 -> 지원하고 싶은 게시글 클릭 -><br> 지원하기 버튼 클릭</label>
+        <br> <br>
+        <li><b>구직자 근로제의 방법</b></li>
+    <label>구직 게시판 -> 근로제의하고 싶은 게시글 클릭 -> 근로제의 버튼 클릭 -> 추천하고싶은 구인게시글 클릭 </label>
+        <br> <br>
+        <li><b>지원자 채용 방법</b></li> 
+    <label>마이페이지 -> 채용하고싶은 지원자의 채용하기 버튼 클릭</label><br><br>
+    <li><b>근로자 별점평가 방법</b></li> 
+    <label>마이페이지 -> 별점평가하기 버튼 클릭 -> 별점평가하기</label><br><br>
+
+    <li><b>회원정보변경 방법</b></li> 
+    <label>마이페이지 -> 회원정보변경 버튼 클릭</label>
+
+
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+    integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<!-- update the version number as needed -->
+<script src="../__/firebase/8.6.5/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script src="../__/firebase/8.6.5/firebase-firestore.js"></script>
+<script src="../__/firebase/8.6.5/firebase-storage.js"></script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+</script>
+
+
+</html>
