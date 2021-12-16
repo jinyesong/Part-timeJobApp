@@ -377,7 +377,7 @@ function sortAndFilter() {
                 .getElementById(doc.id)
                 .style
                 .border = "2px solid red";
-        }pend(post);
+        }
                                         
                                     }
                                 }
