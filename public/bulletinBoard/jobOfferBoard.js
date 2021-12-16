@@ -87,6 +87,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
+
 db
     .collection('jobOfferPost')
     .orderBy('timestamp', 'desc')
@@ -96,7 +97,6 @@ db
             if (doc.data().worker) {
                 return;
             }
-            //   console.log(doc.data().postEnd)
             var title = doc
                 .data()
                 .title;
@@ -109,6 +109,21 @@ db
             var pay = doc
                 .data()
                 .pay;
+
+            var today = new Date();
+            var postEndDate = new Date(postEnd +" 23:59:59");
+
+            //마감일 지나면 삭제 단, 채용된 게시글은 별점평가 후 삭제
+            if((postEndDate.valueOf() < today.valueOf()) && (typeof doc.data().worker == "undefined")){
+                db
+            .collection('jobOfferPost')
+            .doc(doc.id)
+            .delete()
+            .then(() => {
+                console.log("마감일 지난 게시글 삭제");
+            })
+            return;
+            }
 
             //마감전 시급인상 적용시 div테두리 바뀜 + 시급 인상되어 표시
             var payboost = doc
@@ -124,8 +139,6 @@ db
                 .data()
                 .postEnd;
 
-            var today = new Date();
-            var postEndDate = new Date(postEnd);
             var boostStartDate = new Date(
                 postEndDate.setDate(postEndDate.getDate() - deadline)
             );
@@ -135,8 +148,7 @@ db
                 pay = pay + pay * (0.01 * increaseRate);
             }
 
-            var post = `<div class='post' id=${doc
-                .id}>
+            var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
         <label class='postPay'><b>시급</b> ${pay}원</label>
