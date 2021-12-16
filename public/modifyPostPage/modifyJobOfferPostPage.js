@@ -62,7 +62,7 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     $("#workEnd").val(workEnd);
     $("#postEnd").val(postEnd);
     $("#pay").val(pay);
-    $("#area").val(area);
+    $("#address_kakao").val(area);
 
     if(payBoost == "true"){
         $("input:radio[name=payboost][value='true']").attr('checked', "true");
@@ -158,7 +158,7 @@ $("#saveBtn").click(function() {
       var title = $("#titlebox").val();
       var content = $("#contentbox").val();
       var gender = $("input[name='userGender']:checked").val();
-      var area = $("#area option:selected").val();
+      var area = $("#address_kakao").val();
       var pay = Number($("#pay").val());
       var workEnd = $("#workEnd").val();
       var workStart = $("#workStart").val();
@@ -254,3 +254,15 @@ $(".payboost").on('click',function(){
           $("#deadline").attr("disabled", true);
       }
 });
+
+//카카오 주소 API
+window.onload = function(){
+    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address_kakao").value = data.address; // 주소 넣기
+            }
+        }).open();
+    });
+  }
