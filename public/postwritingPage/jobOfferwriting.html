@@ -70,7 +70,9 @@
         <label>게시마감일</label><input type="date" id="postEnd"><br>
         <label>시급</label> <input type="text" id="pay" value="8720"> <label id=payLabel>원</label><br>
         
-        <label>지역</label> <select name="area" id="area" size="1">
+        <label>지역</label> 
+        <input type="text" id="address_kakao" name="address" readonly />
+        <!-- <select name="area" id="area" size="1">
           <option value="서울">서울</option>
           <option value="경기">경기</option>
           <option value="인천">인천</option>
@@ -88,7 +90,7 @@
           <option value="전남">전남</option>
           <option value="전북">전북</option>
           <option value="제주">제주</option>
-        </select><br>
+        </select><br> -->
 
         <div id="payboostbox">
           <label>마감전 시급인상</label>
@@ -113,7 +115,7 @@
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
 </script>
-<script src="postwriting.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="jobOfferwriting.js"></script>
 
 </html>

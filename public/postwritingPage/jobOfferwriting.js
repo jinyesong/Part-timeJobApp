@@ -90,7 +90,7 @@ $("#saveBtn").click(function () {
     var title = $("#titlebox").val();
     var content = $("#contentbox").val();
     var gender = $("input[name='gender']:checked").val();
-    var area = $("#area option:selected").val();
+    var area = $("#address_kakao").val();
     var pay = Number($("#pay").val());
     var workEnd = $("#workEnd").val();
     var workStart = $("#workStart").val();
@@ -208,3 +208,15 @@ $("#logoutBtn").click(function () {
 // 사이드바 끝
 
 $(".homeUserName").html(sessionStorage.getItem("name")); //~님
+
+//카카오 주소 API
+window.onload = function(){
+  document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+      //카카오 지도 발생
+      new daum.Postcode({
+          oncomplete: function(data) { //선택시 입력값 세팅
+              document.getElementById("address_kakao").value = data.address; // 주소 넣기
+          }
+      }).open();
+  });
+}
