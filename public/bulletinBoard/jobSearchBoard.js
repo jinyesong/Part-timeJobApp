@@ -113,7 +113,7 @@ function sortAndFilter(){
                 var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
-        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postPay'><b>시급</b> ${postPay}원</label>
         </div>`
         $('#postList').append(post);
               }
@@ -151,7 +151,7 @@ function sortAndFilter(){
                 var post = `<div class='post' id=${doc.id}>
         <label class='postTitle'>${title}</label>
         <label class='postWriter'><b>작성자</b> ${writer}</label>
-        <label class='postPay'><b>시급</b> ${pay}원</label>
+        <label class='postPay'><b>시급</b> ${postPay}원</label>
         </div>`
         $('#postList').append(post);
               }
