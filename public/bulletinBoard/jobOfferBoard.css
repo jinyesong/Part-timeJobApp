@@ -148,7 +148,7 @@ body {
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 70%;
+  width: 78%;
 }
 
 .modal_content h3 {
@@ -170,12 +170,14 @@ body {
   width: 60px;
 }
 #modal_info b {
-  margin-right: 5px;
+  margin-right: 3px;
 }
 .genderInfo {
+  font-size: 14px;
   margin-left: -6px;
 }
 #womanLabel {
+  font-size: 14px;
   margin-left: -1px;
 }
 
@@ -219,13 +221,33 @@ body {
   color: #fff;
 }
 .nav a {
-  display: block;
-  padding: 20px 30px;
-  font-size: 25px;
+  font-size: 20px;
   text-decoration: none;
   color: black;
 }
+.nav label {
+  font-size: 22px;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav img {
+  width: 42px;
+  height: 42px;
+  margin-right: -7px;
+  vertical-align: middle;
+  padding-top: 5px;
+}
 
+#mypageIcon {
+  width: 35px;
+  height: 35px;
+  margin-right: 0px;
+  padding-top: 0px;
+}
+.nav div {
+  padding: 20px;
+}
 .nav .close {
   position: absolute;
   top: 0;

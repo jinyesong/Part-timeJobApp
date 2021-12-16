@@ -25,17 +25,28 @@
     </span>
 
     <div id="menu" class="nav">
-      <a href="#" class="close" onclick="closeSlideMenu()">
-        <span class="material-icons">close</span>
+      <a href="#" class="close" onclick="closeSlideMenu()" style="padding: 20px 30px;">
+          <span class="material-icons">close</span>
       </a>
-      <a href="#"><label class="homeUserName"></label>님</a>
-      <a href="../myPage/myPage.html">마이페이지</a>
-      <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
-      <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
-      <br>
-      <a id="logoutBtn">Logout</a>
-      <a href="#"><i class="far fa-question-circle"></i></a>
-    </div>
+      <div>
+      <label class="homeUserName"></label><label>님</label>
+      </div>
+      <div class="sideBarLinkBox"> 
+          <img id="mypageIcon" src="../Icons/user (2).png">
+          <a href="../myPage/myPage.html">마이페이지</a>
+      </div>
+      <div class="sideBarLinkBox">
+          <img id="offerBoardIcon" src="../Icons/look-for (3).png">
+          <a href="../bulletinBoard/jobOfferBoard.html">구인게시판</a>
+      </div>
+      <div class="sideBarLinkBox">
+          <img id="searchBoardIcon" src="../Icons/search (2).png">
+          <a href="../bulletinBoard/jobSearchBoard.html">구직게시판</a>
+      </div>
+      <div style="padding:13px;"></div>
+      <a id="logoutBtn" style="font-size: 21px;">Logout</a><br>
+      <a href="#"><img src="../Icons/question.png" style="width: 25px; height: 25px; margin-top: 10px;"></a>
+  </div>
   </div>
 
 

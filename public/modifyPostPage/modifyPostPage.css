@@ -19,7 +19,6 @@ body {
   font-size: smaller;
 }
 
-
 #content {
   margin: 20px;
   flex-direction: column;
@@ -136,13 +135,33 @@ select {
   color: #fff;
 }
 .nav a {
-  display: block;
-  padding: 20px 30px;
-  font-size: 25px;
+  font-size: 20px;
   text-decoration: none;
   color: black;
 }
+.nav label {
+  font-size: 22px;
+  font-weight: bolder;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav img {
+  width: 42px;
+  height: 42px;
+  margin-right: -7px;
+  vertical-align: middle;
+  padding-top: 5px;
+}
 
+#mypageIcon {
+  width: 35px;
+  height: 35px;
+  margin-right: 0px;
+  padding-top: 0px;
+}
+.nav div {
+  padding: 20px;
+}
 .nav .close {
   position: absolute;
   top: 0;
