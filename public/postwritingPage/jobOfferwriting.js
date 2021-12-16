@@ -34,8 +34,8 @@ $("#workStart").change(function(){
     $("#workEnd").attr('min', workstart.toISOString().substring(0, 10));
 });
 $("#workEnd").change(function(){
-    $("#postEnd").attr("disabled", false);
     $("#postEnd").val("");
+    $("#postEnd").attr("disabled", false);
     var workEnd = new Date($("#workEnd").val());
     $("#postEnd").attr('min', todayDate);
     $("#postEnd").attr('max', workEnd.toISOString().substring(0, 10));
