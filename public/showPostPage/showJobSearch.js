@@ -266,14 +266,11 @@ $("#offerCancelBtn").click(function () {
 
 //근로제의 댓글 눌렀을 때
 $("#offerCommentContainer").click(function (event) {
-  if (event.target.tagName == "DIV") {
-    sessionStorage.setItem("postId", event.target.id);
-    location.href = "../showPostPage/showJobOffer.html";
-  } else if (event.target.tagName == "IMG") {
+  if (event.target.tagName == "IMG") {
     sessionStorage.setItem("user", event.target.id);
     location.href = "../userProfilePage/userProfilePage.html";
   } else {
-    sessionStorage.setItem("postId", event.target.parentElement.id);
+    sessionStorage.setItem("postId", event.target.parentElement.parentElement.id);
     location.href = "../showPostPage/showJobOffer.html";
   }
 });
