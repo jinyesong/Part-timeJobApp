@@ -75,6 +75,7 @@ db
             });
         }
       });
+    })
 
 // 작성한 게시글 불러오기
 db.collection("jobOfferPost")
