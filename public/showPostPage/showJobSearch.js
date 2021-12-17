@@ -164,9 +164,7 @@ db.collection("jobOfferPost")
       }
     });
   });
-
-//선택한 게시글 배경색 바뀌게 하고싶다 근데 못하겠음 눈물 굉굉
-
+  
 //근로제의 - 게시글을 선택하고 확인 버튼 눌렀을 때
 $("#offerOKBtn").click(function () {
   var offerPostId = $("input[name=offerPost]:checked").attr("id");

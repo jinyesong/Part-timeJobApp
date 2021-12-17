@@ -1,8 +1,3 @@
-// var today = new Date();           var year = today.getFullYear();
-// var month = ('0' + (today.getMonth() + 1)).slice(-2);           var day =
-// ('0' + today.getDate()).slice(-2);           var dateString = year + '-' +
-// month  + '-' + day;           console.log(dateString);
-
 var firebaseConfig = {
   apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
   authDomain: "part-time-job-38ba6.firebaseapp.com",
@@ -31,6 +26,55 @@ db.collection("customer")
     if (typeof doc.data().profile != "undefined") {
       $("#photo").attr("src", doc.data().profile);
     }
+  });
+
+//구인게시글 마감일 지나면 삭제
+db.collection("jobOfferPost")
+  .orderBy("timestamp", "desc")
+  .get()
+  .then((snapshot) => {
+    snapshot.forEach((doc) => {
+      if (doc.data().worker) {
+        return;
+      }
+
+      var postEnd = doc.data().postEnd;
+
+      var today = new Date();
+      var postEndDate = new Date(postEnd + " 23:59:59");
+      var postId = doc.id;
+
+      //마감일 지나면 삭제 단, 채용된 게시글은 별점평가 후 삭제
+      if (
+        postEndDate.valueOf() < today.valueOf() &&
+        typeof doc.data().worker == "undefined"
+      ) {
+        db.collection("jobOfferPost")
+          .doc(postId)
+          .delete()
+          .then(() => {
+            //jobOffer 목록에서 삭제 후
+            db.collection("jobSearchPost") //jobSearch 댓글 삭제하러감
+              .get()
+              .then((snapshot) => {
+                snapshot.forEach((doc) => {
+                  //jobSearchPost 탐색
+                  var arr = doc.data().offerPostList;
+                  if (typeof arr != "undefined") {
+                    arr.splice($.inArray(postId, arr), 1);
+                    db.collection("jobSearchPost")
+                      .doc(postId)
+                      .update({ offerPostList: arr })
+                      .then(() => {
+                        console.log("댓글도 삭제됨");
+                      });
+                  }
+                });
+              });
+            return;
+          });
+      }
+    });
   });
 
 // 작성한 게시글 불러오기
@@ -131,11 +175,12 @@ db.collection("jobOfferPost")
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object applyPost jobOfferPost'><b>구인</b> ${title}</div>`;
       $("#applyPostList").append(post);
+
       if (
         typeof doc.data().worker != "undefined" &&
         doc.data().worker == sessionStorage.getItem("email")
       ) {
-        document.getElementById(doc.id).style.border = "2px solid #f2b531";
+        $(`#${doc.id}`).prepend("<b class='confirmTag'>채용</b>");
       }
     });
   });
