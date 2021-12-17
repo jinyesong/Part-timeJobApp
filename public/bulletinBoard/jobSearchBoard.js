@@ -36,6 +36,56 @@ function openSlideMenu(){
 
   $(".homeUserName").html(sessionStorage.getItem("name"));
 
+//구인게시글 마감일 지나면 삭제
+db
+    .collection('jobOfferPost')
+    .orderBy('timestamp', 'desc')
+    .get()
+    .then((snapshot) => {
+        snapshot.forEach((doc) => {
+            if (doc.data().worker) {
+                return;
+            }
+
+            var postEnd = doc
+                .data()
+                .postEnd;
+
+            var today = new Date();
+            var postEndDate = new Date(postEnd +" 23:59:59");
+            var postId = doc.id;
+
+            //마감일 지나면 삭제 단, 채용된 게시글은 별점평가 후 삭제
+            if((postEndDate.valueOf() < today.valueOf()) && (typeof doc.data().worker == "undefined")){
+                db
+            .collection('jobOfferPost')
+            .doc(postId)
+            .delete()
+            .then(() => { //jobOffer 목록에서 삭제 후 
+                db.collection("jobSearchPost") //jobSearch 댓글 삭제하러감
+            .get()
+            .then((snapshot) => {
+                snapshot.forEach((doc) => {//jobSearchPost 탐색
+                var arr = doc.data().offerPostList; 
+                if (typeof arr != "undefined") { 
+                    arr.splice($.inArray(postId, arr), 1);
+                    db
+                        .collection('jobSearchPost')
+                        .doc(postId)
+                        .update({offerPostList: arr})
+                        .then(() => {
+                            console.log("댓글도 삭제됨");
+                    });
+                }
+            });
+            })
+            return;
+            });
+        }
+      });
+
+
+
   // DB에서 게시판 목록 가져오기 
 var firebaseConfig = {
   apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
