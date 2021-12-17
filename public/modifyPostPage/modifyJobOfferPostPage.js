@@ -80,6 +80,28 @@ db.collection('jobOfferPost').doc(postId).get().then((doc)=>{
     }
 });
 
+// 달력 min, max 설정
+var today = new Date();
+today.setDate(today.getDate()+1);
+var todayDate = today.toISOString().substring(0, 10);
+$("#workStart").attr('min', todayDate);
+$("#workStart").change(function(){
+  $("#workEnd").val("");
+  $("#postEnd").val("");
+  $("#postEnd").attr("disabled", true);
+    $("#workEnd").attr("disabled", false);
+    var workstart = new Date($("#workStart").val());
+    $("#workEnd").attr('min', workstart.toISOString().substring(0, 10));
+});
+$("#workEnd").change(function(){
+    $("#postEnd").val("");
+    $("#postEnd").attr("disabled", false);
+    var workEnd = new Date($("#workEnd").val());
+    $("#postEnd").attr('min', todayDate);
+    $("#postEnd").attr('max', workEnd.toISOString().substring(0, 10));
+});
+
+
 function isTitle() {
   if ($("#titlebox").val()) {
       return true;

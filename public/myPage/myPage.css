@@ -168,6 +168,12 @@ body {
   background-color: #fff;
   margin-bottom: 4px;
 }
+/*지원한 게시글 채용 div*/
+.confirmTag{
+  float: right;
+  color: #be2623;
+}
+
 #applicantBtn {
   width: 322px;
   display: grid;
