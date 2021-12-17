@@ -131,8 +131,11 @@ db.collection("jobOfferPost")
       var title = doc.data().title;
       var post = `<div id='${doc.id}' class='object applyPost jobOfferPost'><b>구인</b> ${title}</div>`;
       $("#applyPostList").append(post);
-      if(typeof doc.data().worker != "undefined" && doc.data().worker == sessionStorage.getItem("email")){
-        document.getElementById(doc.id).style.border = "2px solid red";
+      if (
+        typeof doc.data().worker != "undefined" &&
+        doc.data().worker == sessionStorage.getItem("email")
+      ) {
+        document.getElementById(doc.id).style.border = "2px solid #f2b531";
       }
     });
   });
@@ -235,57 +238,49 @@ $("#applicantList").click(function (event) {
 });
 
 /* 별점평가 모달창 */
-$("#confirm").on('click', function () {
-    $("#starScoreModal").css("display", "none");
-    var star = Number($("input[name='rating']:checked").val());
-    var worker = sessionStorage.getItem("user");
-    var postId = sessionStorage.getItem("postId");
-    console.log(worker, postId);
-    console.log(star);
-    db
-        .collection('customer')
-        .doc(worker)
-        .get()
-        .then((doc) => {
-            console.log(doc.data().email);
-            if (typeof doc.data().starScore == "undefined") {
-                const arr = [star];
-                db
-                    .collection('customer')
-                    .doc(worker)
-                    .update({starScore: arr})
-                    .then((result) => {
-                        db
-                            .collection('jobOfferPost')
-                            .doc(postId)
-                            .delete()
-                            .then(() => {
-                                alert("별점평가되었습니다.");
-                                location.href = "./myPage.html";
-                            });
-
-                    });
-            } else {
-                const arr = doc
-                    .data()
-                    .starScore;
-                arr.push(star);
-                db
-                    .collection('customer')
-                    .doc(worker)
-                    .update({starScore: arr})
-                    .then((result) => {
-                      db
-                      .collection('jobOfferPost')
-                      .doc(postId)
-                      .delete()
-                      .then(() => {
-                          alert("별점평가되었습니다.");
-                          location.href = "./myPage.html";
-                      });
-                    });
-            }
-        });
+$("#confirm").on("click", function () {
+  $("#starScoreModal").css("display", "none");
+  var star = Number($("input[name='rating']:checked").val());
+  var worker = sessionStorage.getItem("user");
+  var postId = sessionStorage.getItem("postId");
+  console.log(worker, postId);
+  console.log(star);
+  db.collection("customer")
+    .doc(worker)
+    .get()
+    .then((doc) => {
+      console.log(doc.data().email);
+      if (typeof doc.data().starScore == "undefined") {
+        const arr = [star];
+        db.collection("customer")
+          .doc(worker)
+          .update({ starScore: arr })
+          .then((result) => {
+            db.collection("jobOfferPost")
+              .doc(postId)
+              .delete()
+              .then(() => {
+                alert("별점평가되었습니다.");
+                location.href = "./myPage.html";
+              });
+          });
+      } else {
+        const arr = doc.data().starScore;
+        arr.push(star);
+        db.collection("customer")
+          .doc(worker)
+          .update({ starScore: arr })
+          .then((result) => {
+            db.collection("jobOfferPost")
+              .doc(postId)
+              .delete()
+              .then(() => {
+                alert("별점평가되었습니다.");
+                location.href = "./myPage.html";
+              });
+          });
+      }
+    });
 });
 $("#cancel").on("click", function () {
   $("#starScoreModal").css("display", "none");
