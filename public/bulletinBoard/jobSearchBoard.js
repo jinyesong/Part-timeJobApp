@@ -36,6 +36,20 @@ function openSlideMenu(){
 
   $(".homeUserName").html(sessionStorage.getItem("name"));
 
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
+    authDomain: "part-time-job-38ba6.firebaseapp.com",
+    projectId: "part-time-job-38ba6",
+    storageBucket: "part-time-job-38ba6.appspot.com",
+    messagingSenderId: "107342558639",
+    appId: "1:107342558639:web:f0e8e5c3845e6ed667eb5a"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  
+  const db = firebase.firestore();
+    
 //구인게시글 마감일 지나면 삭제
 db
     .collection('jobOfferPost')
@@ -88,18 +102,6 @@ db
 
 
   // DB에서 게시판 목록 가져오기 
-var firebaseConfig = {
-  apiKey: "AIzaSyCqJYyU3LacLWMFjix0SfgZt0Ajsuo5c-Q",
-  authDomain: "part-time-job-38ba6.firebaseapp.com",
-  projectId: "part-time-job-38ba6",
-  storageBucket: "part-time-job-38ba6.appspot.com",
-  messagingSenderId: "107342558639",
-  appId: "1:107342558639:web:f0e8e5c3845e6ed667eb5a"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
 db.collection('jobSearchPost').
   orderBy('timestamp', 'desc').get().then((snapshot)=>{
   snapshot.forEach((doc)=>{
